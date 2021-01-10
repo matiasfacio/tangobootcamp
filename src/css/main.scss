@@ -4,10 +4,11 @@ $nav-btn-color: white;
 $signin-bg-color: rgb(247, 126, 126);
 $signin-color: white;
 $nav-bg-color: rgb(81, 145, 145);
+$input-bg-color: rgb(221, 235, 235);
 
 // borders
 $body-padding: 0em;
-$box-shadow: 1px 1px 20px rgb(80, 80, 80);
+$box-shadow: 1px 1px 20px rgb(133, 133, 133);
 
 // fonts
 $font-size-nav: 1.1rem;
@@ -386,7 +387,7 @@ section#instructors {
 
 section#footer {
   width: 100vw;
-  height: 20vh;
+  height: 100px;
   overflow: hidden;
   padding: 0;
   margin: 0;
@@ -399,7 +400,7 @@ section#footer {
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
 }
 
@@ -407,7 +408,7 @@ form {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  padding: 10px;
+  padding-top:20px;
   width: 300px;
   ::placeholder {
     font-size: 0.8rem;
@@ -416,9 +417,12 @@ form {
   input {
     padding: 5px;
     font-size: 1.1rem;
+    border: none;
+    background-color: $input-bg-color;
   }
   label {
     padding: 5px 0;
+    font-size: 0.6rem;
   }
   button {
     font-size: 1rem;
@@ -429,32 +433,48 @@ form {
 }
 
 section#login {
-  padding: 20vh 2em;
+  padding: 0vh 2em;
+  margin-top: 20vh;
+  border-left:rgb(247, 126, 126) 2px solid;
   .login_container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 50vh;
+    h2 {
+      font-weight: 600;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      padding: 10px;
+    }
   }
 }
 
 section#login_register {
+  margin-top: 20vh;
   .login_register_container {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    align-items: center;
   }
 }
 
 section#register {
-  padding: 30vh 2em;
+  padding: 0vh 2em;
+  border-left:rgb(247, 126, 126) 2px solid;
   .register-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: space-around;
     height: 400px;
+    h2 {
+      font-weight: 600;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      padding-bottom: 10px;
+    }
   }
 }
 

@@ -1,18 +1,21 @@
-import * as React from 'react';
+import * as React from "react";
 
+export type UserProps = {
+  login: boolean;
+  setLogin: React.Dispatch<React.SetStateAction<boolean>>;
+};
 
-export type UserProps = { 
-    login: boolean }
+const initialState = false
 
-export const UserContext = React.createContext({} as UserProps)
+export const UserContext = React.createContext({} as UserProps);
 
-export const UserContextProvider: React.FC = (props) => {
-    const [loggedIn, setLoggedIn ] = React.useState<boolean>(true)
-    return (
-        <UserContext.Provider value = {{login: loggedIn}}>
-            {props.children}
-            </UserContext.Provider>
-    )
+export const UserContextProvider: React.FC = (props:any) => {
+  const [loggedIn, setLoggedIn] = React.useState<boolean>(initialState);
+  return (
+    <UserContext.Provider value={{ login: loggedIn, setLogin: setLoggedIn }}>
+      {props.children}
+    </UserContext.Provider>
+  );
 };
 
 export default UserContextProvider;

@@ -6,11 +6,11 @@ import Instructors from "./Instructors";
 import NavBar from "./NavBar";
 import TheBootCamp from "./TheBootCamp";
 import Footer from "./Footer";
-import LoginRegister from "./LoginRegister";
 import Admin from "./Admin";
 import AdminAreaProvider from "../contexts/AdminArea";
-import UserArea from "./UserArea";
 import UserContextProvider from "../contexts/UserContext";
+import Login from "./Login";
+
 
 export interface RouterMenuProps {}
 
@@ -25,16 +25,15 @@ const RouterMenu: React.FunctionComponent<RouterMenuProps> = () => {
           <Demo />
           <Instructors />
         </Route>
-        <Route path="/login" component={LoginRegister} />
+        <Route path = "/login">
+          <UserContextProvider>
+            <Login/>
+          </UserContextProvider>
+        </Route>
         <Route path="/admin">
           <AdminAreaProvider>
             <Admin />
           </AdminAreaProvider>
-        </Route>
-        <Route path="/userarea">
-          <UserContextProvider>
-            <UserArea />
-          </UserContextProvider>
         </Route>
       </Switch>
       <Footer />

@@ -24,7 +24,7 @@ const Register: React.FunctionComponent = () => {
   return (
     <section id="register">
       <div className="register-container">
-        <h2>Create an account</h2>
+        <h2>Register to the bootcamp</h2>
         <form
           onSubmit={(e) => {
             e.preventDefault();

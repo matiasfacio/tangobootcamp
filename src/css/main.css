@@ -34,8 +34,8 @@ nav {
   left: 0;
   height: 80px;
   background-color: #519191;
-  -webkit-box-shadow: 1px 1px 20px #505050;
-          box-shadow: 1px 1px 20px #505050;
+  -webkit-box-shadow: 1px 1px 20px #858585;
+          box-shadow: 1px 1px 20px #858585;
   z-index: 99;
 }
 
@@ -276,8 +276,8 @@ section#what-is .cards-container {
 }
 
 section#what-is .cards-container .card {
-  -webkit-box-shadow: 1px 1px 20px #505050;
-          box-shadow: 1px 1px 20px #505050;
+  -webkit-box-shadow: 1px 1px 20px #858585;
+          box-shadow: 1px 1px 20px #858585;
   background-color: white;
   border-radius: 20px;
   max-width: 300px;
@@ -480,8 +480,8 @@ section#instructors .instructors-container .matias img {
   height: 300px;
   border-radius: 50%;
   border: 3px #519191 solid;
-  -webkit-box-shadow: 1px 1px 20px #505050;
-          box-shadow: 1px 1px 20px #505050;
+  -webkit-box-shadow: 1px 1px 20px #858585;
+          box-shadow: 1px 1px 20px #858585;
 }
 
 section#instructors .instructors-container .javier img {
@@ -489,13 +489,13 @@ section#instructors .instructors-container .javier img {
   height: 300px;
   border-radius: 50%;
   border: 3px #519191 solid;
-  -webkit-box-shadow: 1px 1px 20px #505050;
-          box-shadow: 1px 1px 20px #505050;
+  -webkit-box-shadow: 1px 1px 20px #858585;
+          box-shadow: 1px 1px 20px #858585;
 }
 
 section#footer {
   width: 100vw;
-  height: 20vh;
+  height: 100px;
   overflow: hidden;
   padding: 0;
   margin: 0;
@@ -518,7 +518,7 @@ section#footer .footer-container {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }
 
 form {
@@ -530,7 +530,7 @@ form {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  padding: 10px;
+  padding-top: 20px;
   width: 300px;
 }
 
@@ -557,10 +557,13 @@ form ::placeholder {
 form input {
   padding: 5px;
   font-size: 1.1rem;
+  border: none;
+  background-color: #ddebeb;
 }
 
 form label {
   padding: 5px 0;
+  font-size: 0.6rem;
 }
 
 form button {
@@ -571,7 +574,9 @@ form button {
 }
 
 section#login {
-  padding: 20vh 2em;
+  padding: 0vh 2em;
+  margin-top: 20vh;
+  border-left: #f77e7e 2px solid;
 }
 
 section#login .login_container {
@@ -591,6 +596,17 @@ section#login .login_container {
   height: 50vh;
 }
 
+section#login .login_container h2 {
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  padding: 10px;
+}
+
+section#login_register {
+  margin-top: 20vh;
+}
+
 section#login_register .login_register_container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -601,10 +617,14 @@ section#login_register .login_register_container {
           flex-direction: row;
   -ms-flex-pack: distribute;
       justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 section#register {
-  padding: 30vh 2em;
+  padding: 0vh 2em;
+  border-left: #f77e7e 2px solid;
 }
 
 section#register .register-container {
@@ -615,12 +635,16 @@ section#register .register-container {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   -ms-flex-pack: distribute;
       justify-content: space-around;
   height: 400px;
+}
+
+section#register .register-container h2 {
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  padding-bottom: 10px;
 }
 
 section#fetchingData {

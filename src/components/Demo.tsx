@@ -1,17 +1,20 @@
 import * as React from 'react';
 import video1 from '../images/Volcada.mp4'
 import video2 from '../images/PasitoDeLosMiercoles.mp4'
+import { useHistory } from 'react-router-dom'
 
 export interface DemoProps {
     
 }
  
 const Demo: React.FunctionComponent<DemoProps> = () => {
+    const history = useHistory()
+
     return ( <section id="section-sample">
     <div className="section-container">
       <div className="section-title"><h2>Demo 1</h2></div>
       <div className="video-container">
-        <video autoPlay muted>
+        <video controls muted controlsList='nodownload'>
           <source src={video2} type="video/mp4" />
         </video>
         <div className="video-description">
@@ -25,14 +28,14 @@ const Demo: React.FunctionComponent<DemoProps> = () => {
             tempore laborum reprehenderit eligendi dolor fugit, iste
             exeritatatum enim nisi itaque corrupti!
           </div>
-          <button id="btn-watchmore">Watch more</button>
+          <button id="btn-watchmore" onClick = {()=> history.push('/login')}>Watch more</button>
         </div>
       </div>
     </div>
     <div className="section-container">
       <div className="section-title"><h2>Demo 2</h2></div>
       <div className="video-container">
-        <video autoPlay muted>
+        <video controls controlsList='nodownload' muted>
           <source src={video1} type="video/mp4" />
         </video>
         <div className="video-description">
@@ -46,7 +49,7 @@ const Demo: React.FunctionComponent<DemoProps> = () => {
             tempore laborum reprehenderit eligendi dolor fugit, iste
             exeritatatum enim nisi itaque corrupti!
           </div>
-          <button id="btn-watchmore">Watch more</button>
+          <button id="btn-watchmore" onClick = {()=> history.push('/login')}>Watch more</button>
         </div>
       </div>
     </div>

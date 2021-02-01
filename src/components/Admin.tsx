@@ -8,7 +8,7 @@ export const Admin: React.FC = () => {
 
   return (
     <section id="admin_area">
-      <h2>Welcome to the Admin Area </h2>
+      <h2>Admin Area </h2>
       {login && <button onClick={() => setLogin(!login)}>logout</button>}
       {login && (
         <div>

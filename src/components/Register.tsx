@@ -1,22 +1,24 @@
 import * as React from "react";
+import { UserContext } from "../contexts/UserContext";
+import {UserInfo as UserInterface} from "../contexts/UserContext"
 
-export type RegDataType = {
-  userId?: string;
-  name?: string;
-  lastname?: string;
-  email?: string;
-  password?: string;
-  passwordRentry?: string;
-};
+
+// export type RegDataType = {
+//   userId?: string;
+//   name?: string;
+//   lastname?: string;
+//   email?: string;
+//   password?: string;
+// };
 
 const Register: React.FunctionComponent = () => {
-  const [registrationData, setRegistrationData] = React.useState<RegDataType>({
+  const { setUserInfo, setLogin } = React.useContext(UserContext);
+  const [registrationData, setRegistrationData] = React.useState<UserInterface>({
     userId: "",
     name: "",
-    lastname: "",
+    lastName: "",
     email: "",
     password: "",
-    passwordRentry: "",
   });
 
   const inputRef = React.useRef<HTMLInputElement>(null);
@@ -28,14 +30,15 @@ const Register: React.FunctionComponent = () => {
         <form
           onSubmit={(e) => {
             e.preventDefault();
+            setUserInfo(registrationData);
+            setLogin(true);
             inputRef.current?.focus();
             setRegistrationData({
               userId: "",
               name: "",
-              lastname: "",
+              lastName: "",
               email: "",
               password: "",
-              passwordRentry: "",
             });
           }}
         >
@@ -67,11 +70,11 @@ const Register: React.FunctionComponent = () => {
           <input
             type="text"
             placeholder="your last name"
-            value={registrationData?.lastname}
+            value={registrationData?.lastName}
             onChange={(e) =>
               setRegistrationData({
                 ...registrationData,
-                lastname: e.target.value,
+                lastName: e.target.value,
               })
             }
             required
@@ -102,7 +105,7 @@ const Register: React.FunctionComponent = () => {
             }
             required
           />
-          <label>Re-entry your password</label>
+          {/* <label>Re-entry your password</label>
           <input
             type="password-rentry"
             placeholder="re-enter your password"
@@ -114,7 +117,7 @@ const Register: React.FunctionComponent = () => {
               })
             }
             required
-          />
+          /> */}
           <button type="submit">Sign up</button>
         </form>
       </div>

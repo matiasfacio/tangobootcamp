@@ -16,8 +16,7 @@ export const AdminLogin: React.FC = () => {
   });
 
   return (
-    <div>
-      <h2>Admin Login Area</h2>
+    <div id = "adminlogin-container">
       <form
         onSubmit={(e) => {
           e.preventDefault();

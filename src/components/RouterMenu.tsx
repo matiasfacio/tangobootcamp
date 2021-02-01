@@ -10,7 +10,7 @@ import Admin from "./Admin";
 import AdminAreaProvider from "../contexts/AdminArea";
 import UserContextProvider from "../contexts/UserContext";
 import Login from "./Login";
-
+import Contact from "./Contact";
 
 export interface RouterMenuProps {}
 
@@ -19,22 +19,26 @@ const RouterMenu: React.FunctionComponent<RouterMenuProps> = () => {
     <div>
       <NavBar />
       <Switch>
-        <Route path="/" exact>
-          <Header />
-          <TheBootCamp />
-          <Demo />
-          <Instructors />
-        </Route>
-        <Route path = "/login">
+        <AdminAreaProvider>
           <UserContextProvider>
-            <Login/>
+            <Route path="/" exact>
+              <Header />
+              <TheBootCamp />
+              <Demo />
+              <Instructors />
+              <Contact />
+            </Route>
+            <Route path="/login">
+              <Login />
+            </Route>
+            <Route path="/admin">
+              <Admin />
+            </Route>
+            {/* <Route path="/contact">
+              <Contact />
+            </Route> */}
           </UserContextProvider>
-        </Route>
-        <Route path="/admin">
-          <AdminAreaProvider>
-            <Admin />
-          </AdminAreaProvider>
-        </Route>
+        </AdminAreaProvider>
       </Switch>
       <Footer />
     </div>

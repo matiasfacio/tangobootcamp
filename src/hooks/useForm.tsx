@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-function useForm(form: Object = {}) {
-  const [formData, setFormData] = useState<any>({});
+function useForm(initialForm: Object = {}) {
+  const [formData, setFormData] = useState<any>(initialForm);
 
   function clearForm() {
     const emptyForm = Object.fromEntries(Object.entries(formData).map(([key, value]) => [key,""]));
@@ -16,7 +16,7 @@ function useForm(form: Object = {}) {
     } 
 
     if (type === 'file') {
-        value[0] = event.target.files
+        [value] = event.target.files
     }
 
     setFormData({
@@ -26,7 +26,7 @@ function useForm(form: Object = {}) {
   }
 
   function resetForm() {
-      setFormData(form)
+      setFormData(initialForm)
   }
 
   return {

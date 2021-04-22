@@ -1,19 +1,10 @@
 import * as React from "react";
 import { UserContext } from "../contexts/UserContext";
-import {UserInfo as UserInterface} from "../contexts/UserContext"
-
-
-// export type RegDataType = {
-//   userId?: string;
-//   name?: string;
-//   lastname?: string;
-//   email?: string;
-//   password?: string;
-// };
+import useForm from "../hooks/useForm";
 
 const Register: React.FunctionComponent = () => {
   const { setUserInfo, setLogin } = React.useContext(UserContext);
-  const [registrationData, setRegistrationData] = React.useState<UserInterface>({
+  const { formData, handleChange, clearForm, resetForm } = useForm({
     userId: "",
     name: "",
     lastName: "",
@@ -30,99 +21,64 @@ const Register: React.FunctionComponent = () => {
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            setUserInfo(registrationData);
             setLogin(true);
+            setUserInfo(formData);
+            clearForm();
+            resetForm();
             inputRef.current?.focus();
-            setRegistrationData({
-              userId: "",
-              name: "",
-              lastName: "",
-              email: "",
-              password: "",
-            });
           }}
         >
-          <label>UserId</label>
+          <label htmlFor="userId">UserId</label>
           <input
+            id="userId"
             ref={inputRef}
             type="text"
             name="userId"
             placeholder="choose your user Id"
-            value={registrationData?.userId}
-            onChange={(e) =>
-              setRegistrationData({
-                ...registrationData,
-                userId: e.target.value,
-              })
-            }
+            value={formData.userId}
+            onChange={handleChange}
             required
           />
-          <label>Name</label>
+          <label htmlFor="name">Name</label>
           <input
+            id="name"
             type="text"
             name="name"
             placeholder="your name"
-            value={registrationData?.name}
-            onChange={(e) =>
-              setRegistrationData({ ...registrationData, name: e.target.value })
-            }
+            value={formData?.name}
+            onChange={handleChange}
             required
           />
-          <label>Last Name</label>
+          <label htmlFor="lastName">Last Name</label>
           <input
+            id="lastName"
             type="text"
             name="lastName"
             placeholder="your last name"
-            value={registrationData?.lastName}
-            onChange={(e) =>
-              setRegistrationData({
-                ...registrationData,
-                lastName: e.target.value,
-              })
-            }
+            value={formData?.lastName}
+            onChange={handleChange}
             required
           />
-          <label>Email</label>
+          <label htmlFor="email">Email</label>
           <input
+            id="email"
             type="email"
             name="email"
             placeholder="your email"
-            value={registrationData?.email}
-            onChange={(e) =>
-              setRegistrationData({
-                ...registrationData,
-                email: e.target.value,
-              })
-            }
+            value={formData?.email}
+            onChange={handleChange}
             required
           />
-          <label>Password</label>
+          <label htmlFor="password">Password</label>
           <input
+            id="password"
             type="password"
             placeholder="enter a password"
             name="password"
-            value={registrationData?.password}
-            onChange={(e) =>
-              setRegistrationData({
-                ...registrationData,
-                password: e.target.value,
-              })
-            }
+            value={formData?.password}
+            onChange={handleChange}
             required
           />
-          {/* <label>Re-entry your password</label>
-          <input
-            type="password-rentry"
-            placeholder="re-enter your password"
-            value={registrationData?.passwordRentry}
-            onChange={(e) =>
-              setRegistrationData({
-                ...registrationData,
-                passwordRentry: e.target.value,
-              })
-            }
-            required
-          /> */}
           <button type="submit">Sign up</button>
         </form>
       </div>

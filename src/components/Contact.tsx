@@ -1,12 +1,12 @@
 import * as React from "react";
 import useForm from "../hooks/useForm";
 
-export interface FormInfo {
+export type FormInfo = {
   name?: string;
   email?: string;
   about?: string;
   text?: string;
-}
+};
 
 export const Contact: React.FC = () => {
   const { formData, handleChange, resetForm, clearForm } = useForm({
@@ -18,12 +18,19 @@ export const Contact: React.FC = () => {
 
   return (
     <section id="contact">
-      <form>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          resetForm();
+          clearForm();
+        }}
+      >
         <div className="contact-container">
           <div className="subcontainer-left">
             <h2>Contact</h2>
             <label>Your Name</label>
             <input
+              id="name"
               type="text"
               name="name"
               required
@@ -32,6 +39,7 @@ export const Contact: React.FC = () => {
             />
             <label>Email</label>
             <input
+              id="email"
               type="email"
               name="email"
               required
@@ -40,6 +48,7 @@ export const Contact: React.FC = () => {
             />
             <label>About</label>
             <input
+              id="about"
               type="text"
               name="about"
               required
@@ -49,6 +58,7 @@ export const Contact: React.FC = () => {
           </div>
           <div className="subcontainer-right">
             <textarea
+              id="text"
               placeholder="send us a message!"
               name="text"
               required
@@ -56,12 +66,6 @@ export const Contact: React.FC = () => {
               onChange={handleChange}
             ></textarea>
             <button type="submit">Submit</button>
-            <button type="button" onClick={clearForm}>
-              Clear Form
-            </button>
-            <button type="button" onClick={resetForm}>
-              Reset Form
-            </button>
           </div>
         </div>
       </form>

@@ -8,11 +8,11 @@ export type UserProps = {
 };
 
 export type UserInfo = {
-  name: string;
-  lastName: string;
-  userId: string;
-  email: string;
-  password: string;
+  name?: string;
+  lastName?: string;
+  userId?: string;
+  email?: string;
+  password?: string;
 }
 
 const initialState = false

@@ -46,6 +46,7 @@ const Register: React.FunctionComponent = () => {
           <input
             ref={inputRef}
             type="text"
+            name="userId"
             placeholder="choose your user Id"
             value={registrationData?.userId}
             onChange={(e) =>
@@ -59,6 +60,7 @@ const Register: React.FunctionComponent = () => {
           <label>Name</label>
           <input
             type="text"
+            name="name"
             placeholder="your name"
             value={registrationData?.name}
             onChange={(e) =>
@@ -69,6 +71,7 @@ const Register: React.FunctionComponent = () => {
           <label>Last Name</label>
           <input
             type="text"
+            name="lastName"
             placeholder="your last name"
             value={registrationData?.lastName}
             onChange={(e) =>
@@ -82,6 +85,7 @@ const Register: React.FunctionComponent = () => {
           <label>Email</label>
           <input
             type="email"
+            name="email"
             placeholder="your email"
             value={registrationData?.email}
             onChange={(e) =>
@@ -96,6 +100,7 @@ const Register: React.FunctionComponent = () => {
           <input
             type="password"
             placeholder="enter a password"
+            name="password"
             value={registrationData?.password}
             onChange={(e) =>
               setRegistrationData({

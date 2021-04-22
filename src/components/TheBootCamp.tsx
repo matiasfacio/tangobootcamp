@@ -6,7 +6,7 @@ const TheBootCamp: React.FunctionComponent<TheBootCampProps> = () => {
   return (
     <section id="what-is">
       <div className="section-title">
-        <h2>What is The Tango's Structure Bootcamp ?</h2>
+        <h2>What is Tango's Structure Bootcamp ?</h2>
         <h3>( and why you should join! )</h3>
       </div>
       <div className="cards-container">

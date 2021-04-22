@@ -33,6 +33,7 @@ const LoginUser: React.FunctionComponent = () => {
         <input
           ref={inputRef}
           type="text"
+          name="userId"
           placeholder="your userID"
           value={formData?.userId}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
@@ -43,6 +44,7 @@ const LoginUser: React.FunctionComponent = () => {
         <label>Email</label>
         <input
           type="email"
+          name="email"
           placeholder="your email"
           value={formData?.email}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
@@ -53,6 +55,7 @@ const LoginUser: React.FunctionComponent = () => {
         <label>Password</label>
         <input
           type="password"
+          name="password"
           placeholder="password"
           value={formData?.password}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>

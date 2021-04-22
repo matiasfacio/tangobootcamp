@@ -25,13 +25,28 @@ const NavBar: React.FunctionComponent = () => {
     });
   }, []);
 
+  React.useEffect(() => {
+    const handleClick = () => setMenuOpen(false);
+    const allLinksInMenu = document.querySelectorAll("nav ul a");
+    if (menuOpen) {
+      allLinksInMenu.forEach((a) => {
+        a.addEventListener("click", (e) => handleClick());
+      });
+    }
+
+    return allLinksInMenu.forEach((a) => {
+      a.removeEventListener("click", handleClick);
+    });
+    
+  }, [menuOpen]);
+
   const menuResponsiveStyle: menuResponsiveCss = {
     backgroundColor: "rgb(60, 107, 107)",
     color: menuOpen ? "white" : "rgb(60, 107, 107)",
-    width: "60vw",
+    width: "100vw",
     position: "fixed",
     top: 0,
-    left: menuOpen ? "0" : "-70vw",
+    left: menuOpen ? "0" : "-100vw",
     height: "100vh",
     transition: "all 0.5s ease-in-out",
   };
@@ -41,16 +56,16 @@ const NavBar: React.FunctionComponent = () => {
     flexDirection: "column",
     alignItems: "flex-end",
     justifyContent: "center",
-    boxShadow: "10px 10px 20px black",
-    paddingRight: '10px'
+    paddingRight: "10px",
   };
 
   return (
     <div id="menu-wrapper">
       {smallDevices && (
-        <button onClick={() => setMenuOpen(!menuOpen)}>
-          {menuOpen ? "<<<" : ">>>"}
-        </button>
+        <div
+          id="menu-wrapper-symbol"
+          onClick={() => setMenuOpen(!menuOpen)}
+        ></div>
       )}
       <nav style={smallDevices ? menuResponsiveStyle : {}}>
         <ul style={smallDevices ? menuResponsiveStyleUL : {}}>

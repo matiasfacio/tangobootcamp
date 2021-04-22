@@ -24,7 +24,7 @@ export const UserContextProvider: React.FC = (props:any) => {
   const [userInfo, setUserInfo] = React.useState<UserInfo>({name: '', lastName: '', userId: '', email: '', password:""});
 
   React.useEffect(()=>{
-    console.log('the user logged in/out');
+   
   }, [loggedIn])
   
 

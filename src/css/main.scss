@@ -8,11 +8,12 @@ $input-bg-color: rgb(221, 235, 235);
 
 // borders
 $body-padding: 0em;
-$box-shadow: 10px 10px 20px rgb(133, 133, 133);
+$box-shadow: 10px 10px 20px rgb(213, 213, 213);
 
 // fonts
 $font-size-nav: 1.1rem;
-$h1-font-size: clamp(3rem, 10vw, 5rem); // 4rem
+$h1-font-size: clamp(3rem, 10vw, 4rem); // 4rem
+$h1-font-color: rgb(65, 62, 62);
 $h2-font-size: 1.5rem;
 $h2-color: rgb(70, 70, 70);
 
@@ -21,7 +22,8 @@ $h2-color: rgb(70, 70, 70);
 $btn-fontsize: 1.2rem;
 $btn-color: white;
 $btn-weight: bold;
-$btn-padding: 5px 10px;
+$btn-padding: 10px 10px;
+$box-shadow-button: 10px 10px 20px rgb(213, 213, 213);
 
 * {
   padding: 0;
@@ -53,13 +55,38 @@ a {
 #menu-wrapper {
   button {
     position: fixed;
-    top:0px;
-    right:0px; 
+    top: 0px;
+    right: 0px;
     background-color: rgb(60, 107, 107);
     color: white;
     font-weight: bolder;
     height: 32px;
-    box-shadow: 10px 10px 20px black;
+    box-shadow: $box-shadow-button;
+  }
+  #menu-wrapper-symbol {
+    height: 8px;
+    width: 50px;
+    background-color: $signin-bg-color;
+    position: fixed;
+    top: 30px;
+    right: 20px;
+    border-radius: 5px;
+    z-index: 1000;
+    &::before,
+    &::after {
+      position: absolute;
+      content: "";
+      height: 8px;
+      width: 50px;
+      background-color: $signin-bg-color;
+      border-radius: 5px;
+    }
+    &::before {
+      transform: translateY(-15px);
+    }
+    &::after {
+      transform: translateY(15px);
+    }
   }
 }
 
@@ -128,6 +155,7 @@ button {
   border-radius: 10px;
   color: $btn-color;
   margin: 10px 0;
+  box-shadow: $box-shadow-button;
 }
 
 #btn-register {
@@ -163,8 +191,9 @@ section#header-section {
       padding-left: 10vw;
       h1 {
         font-size: $h1-font-size;
-        text-transform: capitalize;
-        letter-spacing: -1px;
+        text-transform: uppercase;
+        letter-spacing: -3px;
+        color: $h1-font-color;
       }
       h2 {
         font-size: $h2-font-size;
@@ -172,11 +201,11 @@ section#header-section {
         text-transform: capitalize;
       }
       span {
-        //   color:rgb(247, 126, 126);
         box-shadow: 1px 1px 10px;
         background-color: rgb(247, 126, 126);
         padding: 5px;
         font-size: 4rem;
+        transform: rotateZ(20deg);
       }
       .btn-container {
         width: 60%;
@@ -265,7 +294,9 @@ section#what-is {
       box-shadow: $box-shadow;
       background-color: white;
       margin: 20px auto;
+      padding: 20px;
       border-radius: 20px;
+      border: 0.5px teal solid;
       width: clamp(300px, 30%, 500px);
       height: auto;
       display: flex;
@@ -276,8 +307,8 @@ section#what-is {
         padding: 10px 0px;
         text-align: center;
         background-color: rgb(81, 145, 145);
-        border-top-right-radius: 18px;
-        border-top-left-radius: 18px;
+        border-radius: 10px;
+        margin-bottom: 10px;
         h3 {
           font-size: 1.2rem;
           color: white;
@@ -290,6 +321,7 @@ section#what-is {
           list-style: none;
           li {
             padding: 5px 0px;
+            font-size: 1rem;
           }
         }
         span {
@@ -329,7 +361,7 @@ section#section-sample {
       padding-bottom: 50px;
       video {
         width: clamp(300px, 70%, 600px);
-        border: 10px $nav-bg-color solid;
+        border: 1px $nav-bg-color solid;
         border-radius: 10px;
         z-index: 1;
       }
@@ -411,7 +443,7 @@ section#instructors {
         height: 200px;
         border-radius: 50%;
         // margin-right: 10vw;
-        border: 3px rgb(81, 145, 145) solid;
+        border: 1px rgb(81, 145, 145) solid;
         box-shadow: $box-shadow;
       }
     }
@@ -421,7 +453,7 @@ section#instructors {
         height: 200px;
         border-radius: 50%;
         // margin-left: 10vw;
-        border: 3px rgb(81, 145, 145) solid;
+        border: 1px rgb(81, 145, 145) solid;
         box-shadow: $box-shadow;
         // filter: grayscale(100%);
       }
@@ -620,10 +652,8 @@ section#contact {
   justify-content: center;
   align-items: center;
   background-color: $nav-bg-color;
-  // min-height: 100vh;
-  // width: 100%;
   margin-top: 60px;
-  min-height: calc(100vh - 60px - 60px);
+  min-height: calc(100vh);
   h2 {
     font-weight: 600;
     font-size: 1.1rem;

@@ -34,8 +34,38 @@ a {
   color: white;
   font-weight: bolder;
   height: 32px;
-  -webkit-box-shadow: 10px 10px 20px black;
-          box-shadow: 10px 10px 20px black;
+  -webkit-box-shadow: 10px 10px 20px #d5d5d5;
+          box-shadow: 10px 10px 20px #d5d5d5;
+}
+
+#menu-wrapper #menu-wrapper-symbol {
+  height: 8px;
+  width: 50px;
+  background-color: #f77e7e;
+  position: fixed;
+  top: 30px;
+  right: 20px;
+  border-radius: 5px;
+  z-index: 1000;
+}
+
+#menu-wrapper #menu-wrapper-symbol::before, #menu-wrapper #menu-wrapper-symbol::after {
+  position: absolute;
+  content: "";
+  height: 8px;
+  width: 50px;
+  background-color: #f77e7e;
+  border-radius: 5px;
+}
+
+#menu-wrapper #menu-wrapper-symbol::before {
+  -webkit-transform: translateY(-15px);
+          transform: translateY(-15px);
+}
+
+#menu-wrapper #menu-wrapper-symbol::after {
+  -webkit-transform: translateY(15px);
+          transform: translateY(15px);
 }
 
 nav {
@@ -99,7 +129,7 @@ button {
   border: none;
   font-size: 1.2rem;
   font-weight: bold;
-  padding: 5px 10px;
+  padding: 10px 10px;
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
 }
@@ -111,10 +141,12 @@ button {
   -webkit-box-shadow: 1px 1px 10px #464646;
           box-shadow: 1px 1px 10px #464646;
   font-size: 1.2rem;
-  padding: 5px 10px;
+  padding: 10px 10px;
   border-radius: 10px;
   color: white;
   margin: 10px 0;
+  -webkit-box-shadow: 10px 10px 20px #d5d5d5;
+          box-shadow: 10px 10px 20px #d5d5d5;
 }
 
 #btn-register {
@@ -171,9 +203,10 @@ section#header-section header .header-left {
 }
 
 section#header-section header .header-left h1 {
-  font-size: clamp(3rem, 10vw, 5rem);
-  text-transform: capitalize;
-  letter-spacing: -1px;
+  font-size: clamp(3rem, 10vw, 4rem);
+  text-transform: uppercase;
+  letter-spacing: -3px;
+  color: #413e3e;
 }
 
 section#header-section header .header-left h2 {
@@ -188,6 +221,8 @@ section#header-section header .header-left span {
   background-color: #f77e7e;
   padding: 5px;
   font-size: 4rem;
+  -webkit-transform: rotateZ(20deg);
+          transform: rotateZ(20deg);
 }
 
 section#header-section header .header-left .btn-container {
@@ -325,11 +360,13 @@ section#what-is .cards-container {
 }
 
 section#what-is .cards-container .card {
-  -webkit-box-shadow: 10px 10px 20px #858585;
-          box-shadow: 10px 10px 20px #858585;
+  -webkit-box-shadow: 10px 10px 20px #d5d5d5;
+          box-shadow: 10px 10px 20px #d5d5d5;
   background-color: white;
   margin: 20px auto;
+  padding: 20px;
   border-radius: 20px;
+  border: 0.5px teal solid;
   width: clamp(300px, 30%, 500px);
   height: auto;
   display: -webkit-box;
@@ -349,8 +386,8 @@ section#what-is .cards-container .card .card-title {
   padding: 10px 0px;
   text-align: center;
   background-color: #519191;
-  border-top-right-radius: 18px;
-  border-top-left-radius: 18px;
+  border-radius: 10px;
+  margin-bottom: 10px;
 }
 
 section#what-is .cards-container .card .card-title h3 {
@@ -369,6 +406,7 @@ section#what-is .cards-container .card .card-content ul {
 
 section#what-is .cards-container .card .card-content ul li {
   padding: 5px 0px;
+  font-size: 1rem;
 }
 
 section#what-is .cards-container .card .card-content span {
@@ -430,7 +468,7 @@ section#section-sample .section-container .video-container {
 
 section#section-sample .section-container .video-container video {
   width: clamp(300px, 70%, 600px);
-  border: 10px #519191 solid;
+  border: 1px #519191 solid;
   border-radius: 10px;
   z-index: 1;
 }
@@ -542,18 +580,18 @@ section#instructors .instructors-container .matias img {
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  border: 3px #519191 solid;
-  -webkit-box-shadow: 10px 10px 20px #858585;
-          box-shadow: 10px 10px 20px #858585;
+  border: 1px #519191 solid;
+  -webkit-box-shadow: 10px 10px 20px #d5d5d5;
+          box-shadow: 10px 10px 20px #d5d5d5;
 }
 
 section#instructors .instructors-container .javier img {
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  border: 3px #519191 solid;
-  -webkit-box-shadow: 10px 10px 20px #858585;
-          box-shadow: 10px 10px 20px #858585;
+  border: 1px #519191 solid;
+  -webkit-box-shadow: 10px 10px 20px #d5d5d5;
+          box-shadow: 10px 10px 20px #d5d5d5;
 }
 
 section#footer {
@@ -855,7 +893,7 @@ section#contact {
           align-items: center;
   background-color: #519191;
   margin-top: 60px;
-  min-height: calc(100vh - 60px - 60px);
+  min-height: calc(100vh);
 }
 
 section#contact h2 {

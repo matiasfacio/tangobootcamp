@@ -15,18 +15,25 @@ const TheBootCamp: React.FunctionComponent<TheBootCampProps> = () => {
             <h3>Assisted Virtual Learning</h3>
           </div>
           <div className="card-content">
-            <p>
-              <b>Full Online Learning and Training System</b> developed
-              specially for Tango lovers!
-            </p>
-            <p>
-              Either you are a <span>INSTRUCTOR</span> looking for deeppening
-              into the fundamentals, or you are looking for becoming a
-              <span>PRO</span> or you are a truly Tango <span>LOVER.</span>
-              <br />
-              The program includes one hour consultancy with one of the teacher
-              per week.
-            </p>
+            <ul>
+              <li>
+                <p>
+                  <b>Full Online Learning and Training System</b> developed
+                  specially for Tango lovers!
+                </p>
+              </li>
+              <li>
+                <p>
+                  Either you are a <span>INSTRUCTOR</span> looking for
+                  deeppening into the fundamentals, or you are looking for
+                  becoming a<span>PRO</span> or you are a truly Tango{" "}
+                  <span>LOVER.</span>
+                  <br />
+                  The program includes one hour consultancy with one of the
+                  teacher per week.
+                </p>
+              </li>
+            </ul>
           </div>
         </div>
         <div className="card">

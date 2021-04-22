@@ -6224,10 +6224,10 @@
   "resolved" "https://registry.yarnpkg.com/is-string/-/is-string-1.0.5.tgz"
   "version" "1.0.5"
 
-"is-svg@^3.0.0":
+"is-svg@^4.2.2":
   "integrity" "sha512-gi4iHK53LR2ujhLVVj+37Ykh9GLqYHX6JOVXbLAucaG/Cqw9xwdFOjDM2qeifLs1sF1npXXFvDu0r5HNgCMrzQ=="
-  "resolved" "https://registry.yarnpkg.com/is-svg/-/is-svg-3.0.0.tgz"
-  "version" "3.0.0"
+  "resolved" "https://registry.yarnpkg.com/is-svg/-/is-svg-4.2.2.tgz"
+  "version" "4.2.2"
   dependencies:
     "html-comment-regex" "^1.1.0"
 
@@ -8888,7 +8888,7 @@
   "resolved" "https://registry.yarnpkg.com/postcss-svgo/-/postcss-svgo-4.0.2.tgz"
   "version" "4.0.2"
   dependencies:
-    "is-svg" "^3.0.0"
+    "is-svg" "^4.2.2"
     "postcss" "^7.0.0"
     "postcss-value-parser" "^3.0.0"
     "svgo" "^1.0.0"

@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,400;0,500;0,700;0,800;1,600;1,800&display=swap");
 * {
   padding: 0;
   margin: 0;
@@ -19,11 +20,20 @@ body {
 
 p {
   line-height: 1.6;
+  font-size: 1.1rem;
+  font-family: "Fira Sans", sans-serif;
 }
 
 a {
   color: white;
   text-decoration: none;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Fira Sans", sans-serif;
+  font-style: italic;
 }
 
 #menu-wrapper button {
@@ -74,7 +84,7 @@ nav {
   top: 0;
   left: 0;
   height: 60px;
-  background-color: #519191;
+  background-color: #2d99c7;
   z-index: 99;
 }
 
@@ -154,12 +164,12 @@ button {
 }
 
 #btn-register:hover {
-  background-color: #519191;
+  background-color: #2d99c7;
   color: black;
 }
 
 #btn-program {
-  background-color: #519191;
+  background-color: #2d99c7;
 }
 
 #btn-program:hover {
@@ -169,11 +179,12 @@ button {
 
 section#header-section {
   max-width: 1200px;
-  margin: 80px auto;
+  margin: 0 auto;
+  padding-top: 50px;
 }
 
 section#header-section header {
-  min-height: calc(100vh - 80px);
+  min-height: calc(100vh);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -331,6 +342,7 @@ section#what-is .section-title h2 {
   color: #464646;
   text-transform: uppercase;
   text-align: center;
+  font-family: "Fira Sans", sans-serif;
 }
 
 section#what-is .section-title h3 {
@@ -339,6 +351,7 @@ section#what-is .section-title h3 {
   text-align: center;
   font-weight: 400;
   text-align: center;
+  font-family: "Fira Sans", sans-serif;
 }
 
 section#what-is .cards-container {
@@ -385,7 +398,7 @@ section#what-is .cards-container .card {
 section#what-is .cards-container .card .card-title {
   padding: 10px 0px;
   text-align: center;
-  background-color: #519191;
+  background-color: #2d99c7;
   border-radius: 10px;
   margin-bottom: 10px;
 }
@@ -437,13 +450,9 @@ section#section-sample .section-container {
   width: 100%;
 }
 
-section#section-sample .section-container .section-title {
-  padding-bottom: 50px;
-}
-
 section#section-sample .section-container .section-title h2 {
   font-size: 2.5rem;
-  color: #464646;
+  color: #2d99c7;
   text-transform: uppercase;
 }
 
@@ -468,7 +477,7 @@ section#section-sample .section-container .video-container {
 
 section#section-sample .section-container .video-container video {
   width: clamp(300px, 70%, 600px);
-  border: 1px #519191 solid;
+  border: 1px #2d99c7 solid;
   border-radius: 10px;
   z-index: 1;
 }
@@ -480,7 +489,7 @@ section#section-sample .section-container .video-container .video-description {
 
 section#section-sample .section-container .video-container .video-description h2 {
   padding: 20px 0;
-  color: #519191;
+  color: #2d99c7;
 }
 
 section#section-sample .section-container .video-container .video-description button#btn-watchmore {
@@ -525,7 +534,7 @@ section#instructors .section-title {
 
 section#instructors .section-title h2 {
   font-size: 2.5rem;
-  color: #464646;
+  color: #2d99c7;
   text-transform: uppercase;
   text-align: center;
 }
@@ -563,7 +572,7 @@ section#instructors .instructors-container .instructor {
 section#instructors .instructors-container .instructor .name h2 {
   font-size: 1.5rem;
   padding: 20px 0;
-  color: #519191;
+  color: #2d99c7;
   text-transform: uppercase;
 }
 
@@ -599,7 +608,7 @@ section#footer {
   min-height: 60px;
   overflow: hidden;
   padding: 20px auto;
-  background-color: #519191;
+  background-color: #2d99c7;
 }
 
 section#footer .footer-container {
@@ -721,10 +730,10 @@ section#login .login_container h2 {
 }
 
 section#login_register {
-  margin-top: 60px;
-  min-height: calc(100vh - 60px - 60px);
+  padding-top: 60px;
+  min-height: calc(100vh - 60px);
   padding: 2em;
-  background-color: #519191;
+  background-color: #2d99c7;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -829,7 +838,7 @@ section#admin_area {
   margin-top: 60px;
   padding-top: 0px;
   height: calc(100vh - 60px);
-  background-color: #519191;
+  background-color: #2d99c7;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -891,7 +900,7 @@ section#contact {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: #519191;
+  background-color: #2d99c7;
   margin-top: 60px;
   min-height: calc(100vh);
 }

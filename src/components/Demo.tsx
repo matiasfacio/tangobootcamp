@@ -20,6 +20,7 @@ const Demo: React.FunctionComponent<DemoProps> = () => {
         <div className="video-description">
           <div>
             <h2>Circles & Line Combinations</h2>
+            <p>
             Lorem, ipsum dolor sit amet consectetur adipisicing elit.
             Consequatur ex dignissimos laborum assumenda quibusdam autem culpa
             recusandae ut ipsam, voluptatem distinctio, quaerat hic deleniti
@@ -27,6 +28,7 @@ const Demo: React.FunctionComponent<DemoProps> = () => {
             Aperiam ipsa mollitia placeat repellendus ipsam quis esse fuga
             tempore laborum reprehenderit eligendi dolor fugit, iste
             exeritatatum enim nisi itaque corrupti!
+            </p>
           </div>
           <button id="btn-watchmore" onClick = {()=> history.push('/login')}>Watch more</button>
         </div>
@@ -41,6 +43,7 @@ const Demo: React.FunctionComponent<DemoProps> = () => {
         <div className="video-description">
           <div>
             <h2>Circles & Line Combinations II</h2>
+            <p>
             Lorem, ipsum dolor sit amet consectetur adipisicing elit.
             Consequatur ex dignissimos laborum assumenda quibusdam autem culpa
             recusandae ut ipsam, voluptatem distinctio, quaerat hic deleniti
@@ -48,6 +51,7 @@ const Demo: React.FunctionComponent<DemoProps> = () => {
             Aperiam ipsa mollitia placeat repellendus ipsam quis esse fuga
             tempore laborum reprehenderit eligendi dolor fugit, iste
             exeritatatum enim nisi itaque corrupti!
+            </p>
           </div>
           <button id="btn-watchmore" onClick = {()=> history.push('/login')}>Watch more</button>
         </div>

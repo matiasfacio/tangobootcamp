@@ -1,9 +1,14 @@
+// fonts
+
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,400;0,500;0,700;0,800;1,600;1,800&display=swap");
+
 // colors
 $bg-color: white;
 $nav-btn-color: white;
 $signin-bg-color: rgb(247, 126, 126);
 $signin-color: white;
-$nav-bg-color: rgb(81, 145, 145);
+$nav-bg-color: rgb(45, 153, 199);
+// $nav-bg-color: rgb(81, 145, 145);
 $input-bg-color: rgb(221, 235, 235);
 
 // borders
@@ -45,11 +50,20 @@ body {
 
 p {
   line-height: 1.6;
+  font-size: 1.1rem;
+  font-family: "Fira Sans", sans-serif;
 }
 
 a {
   color: $nav-btn-color;
   text-decoration: none;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Fira Sans", sans-serif;
+  font-style: italic;
 }
 
 #menu-wrapper {
@@ -161,13 +175,13 @@ button {
 #btn-register {
   background-color: rgb(247, 126, 126);
   &:hover {
-    background-color: rgb(81, 145, 145);
+    background-color: rgb(45, 153, 199);
     color: black;
   }
 }
 
 #btn-program {
-  background-color: rgb(81, 145, 145);
+  background-color: rgb(45, 153, 199);
   &:hover {
     background-color: rgb(247, 126, 126);
     color: black;
@@ -176,9 +190,10 @@ button {
 
 section#header-section {
   max-width: 1200px;
-  margin: 80px auto;
+  margin: 0 auto;
+  padding-top: 50px;
   header {
-    min-height: calc(100vh - 80px);
+    min-height: calc(100vh);
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -273,6 +288,7 @@ section#what-is {
       color: rgb(70, 70, 70);
       text-transform: uppercase;
       text-align: center;
+      font-family: "Fira Sans", sans-serif;
     }
     h3 {
       color: rgb(70, 70, 70);
@@ -280,6 +296,7 @@ section#what-is {
       text-align: center;
       font-weight: 400;
       text-align: center;
+      font-family: "Fira Sans", sans-serif;
     }
   }
   .cards-container {
@@ -306,7 +323,7 @@ section#what-is {
       .card-title {
         padding: 10px 0px;
         text-align: center;
-        background-color: rgb(81, 145, 145);
+        background-color: rgb(45, 153, 199);
         border-radius: 10px;
         margin-bottom: 10px;
         h3 {
@@ -345,10 +362,9 @@ section#section-sample {
     width: 100%;
 
     .section-title {
-      padding-bottom: 50px;
       h2 {
         font-size: 2.5rem;
-        color: rgb(70, 70, 70);
+        color: rgb(45, 153, 199);
         text-transform: uppercase;
       }
     }
@@ -370,7 +386,7 @@ section#section-sample {
         width: clamp(330px, 100%, 500px);
         h2 {
           padding: 20px 0;
-          color: rgb(81, 145, 145);
+          color: rgb(45, 153, 199);
         }
         button#btn-watchmore {
           display: block;
@@ -402,7 +418,7 @@ section#instructors {
     justify-content: center;
     h2 {
       font-size: 2.5rem;
-      color: rgb(70, 70, 70);
+      color: rgb(45, 153, 199);
       text-transform: uppercase;
       text-align: center;
     }
@@ -423,7 +439,7 @@ section#instructors {
         h2 {
           font-size: 1.5rem;
           padding: 20px 0;
-          color: rgb(81, 145, 145);
+          color: rgb(45, 153, 199);
           text-transform: uppercase;
         }
         .description {
@@ -542,8 +558,8 @@ section#login {
 }
 
 section#login_register {
-  margin-top: 60px;
-  min-height: calc(100vh - 60px - 60px);
+  padding-top: 60px;
+  min-height: calc(100vh - 60px);
   padding: 2em;
   background-color: $nav-bg-color;
   display: flex;

@@ -30,7 +30,7 @@ const Register: React.FunctionComponent = () => {
         >
           <label htmlFor="userId">UserId</label>
           <input
-            id="userId"
+            id="userIdRegister"
             ref={inputRef}
             type="text"
             name="userId"
@@ -41,7 +41,7 @@ const Register: React.FunctionComponent = () => {
           />
           <label htmlFor="name">Name</label>
           <input
-            id="name"
+            id="nameRegister"
             type="text"
             name="name"
             placeholder="your name"
@@ -51,7 +51,7 @@ const Register: React.FunctionComponent = () => {
           />
           <label htmlFor="lastName">Last Name</label>
           <input
-            id="lastName"
+            id="lastNameRegister"
             type="text"
             name="lastName"
             placeholder="your last name"
@@ -61,7 +61,7 @@ const Register: React.FunctionComponent = () => {
           />
           <label htmlFor="email">Email</label>
           <input
-            id="email"
+            id="emailRegister"
             type="email"
             name="email"
             placeholder="your email"
@@ -71,7 +71,7 @@ const Register: React.FunctionComponent = () => {
           />
           <label htmlFor="password">Password</label>
           <input
-            id="password"
+            id="passwordRegister"
             type="password"
             placeholder="enter a password"
             name="password"

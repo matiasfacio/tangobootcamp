@@ -41,8 +41,8 @@ const NavBar: React.FunctionComponent = () => {
   }, [menuOpen]);
 
   const menuResponsiveStyle: menuResponsiveCss = {
-    backgroundColor: "rgb(60, 107, 107)",
-    color: menuOpen ? "white" : "rgb(60, 107, 107)",
+    backgroundColor: "rgb(45, 153, 199)",
+    color: menuOpen ? "white" : "rgb(45, 153, 199)",
     width: "100vw",
     position: "fixed",
     top: 0,

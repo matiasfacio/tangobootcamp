@@ -26,7 +26,7 @@ const TheBootCamp: React.FunctionComponent<TheBootCampProps> = () => {
                 <p>
                   Either you are a <span>INSTRUCTOR</span> looking for
                   deeppening into the fundamentals, or you are looking for
-                  becoming a<span>PRO</span> or you are a truly Tango{" "}
+                  becoming a <span>PRO</span> or you are a truly Tango{" "}
                   <span>LOVER.</span>
                   <br />
                   The program includes one hour consultancy with one of the
@@ -44,7 +44,7 @@ const TheBootCamp: React.FunctionComponent<TheBootCampProps> = () => {
             <ul>
               <li>
                 <p>
-                  <span>40+</span> Videos with <span>120+</span>
+                  <span>40+</span> Videos with <span>200+</span>
                   <b>Minutes of Theorie and Exercises.</b>
                 </p>
               </li>

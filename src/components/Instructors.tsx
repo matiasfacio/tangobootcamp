@@ -16,6 +16,7 @@ const Instructors: React.FunctionComponent<InstructorsProps> = () => {
           <h2>Matias Facio</h2>
           <div className="rol"><h3>Creator / Instructor</h3></div>
           <div className="description">
+            <p>
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat
             voluptatem itaque iure esse soluta laboriosam alias consectetur
             laudantium ab, voluptas porro, suscipit, voluptates optio
@@ -28,6 +29,7 @@ const Instructors: React.FunctionComponent<InstructorsProps> = () => {
             veritatis reps ipsum dicta, quis velit rem inventore sunt
             perspiciatis facere? Odit magni aperiam ipsum dolorem non id
             obcaecati nobis.
+            </p>
           </div>
          
         </div>
@@ -38,6 +40,7 @@ const Instructors: React.FunctionComponent<InstructorsProps> = () => {
           <h2>Javier Antar</h2>
           <div className="rol"><h3>Creator / Instructor</h3></div>
           <div className="description">
+            <p>
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat
             voluptatem itaque iure esse soluta laboriosam alias consectetur
             laudantium ab, voluptas porro, suscipit, voluptates optio
@@ -50,6 +53,7 @@ const Instructors: React.FunctionComponent<InstructorsProps> = () => {
             veritatis reps ipsum dicta, quis velit rem inventore sunt
             perspiciatis facere? Odit magni aperiam ipsum dolorem non id
             obcaecati nobis.
+            </p>
           </div>
           
         </div>

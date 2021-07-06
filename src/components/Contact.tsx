@@ -65,7 +65,7 @@ export const Contact: React.FC = () => {
               value={formData?.text}
               onChange={handleChange}
             ></textarea>
-            <button type="submit">Submit</button>
+            <button type="submit" id = "buttonContactSubmit">Submit</button>
           </div>
         </div>
       </form>

@@ -6,7 +6,9 @@ const TheBootCamp: React.FunctionComponent<TheBootCampProps> = () => {
   return (
     <section id="what-is">
       <div className="section-title">
-        <h2>What is Tango <br/> Structure Bootcamp ?</h2>
+        <h2>
+          What is Tango <br /> Structure Bootcamp ?
+        </h2>
         <h3>( and why you should join! )</h3>
       </div>
       <div className="cards-container">
@@ -28,9 +30,6 @@ const TheBootCamp: React.FunctionComponent<TheBootCampProps> = () => {
                   deeppening into the fundamentals, or you are looking for
                   becoming a <span>PRO</span> or you are a truly Tango{" "}
                   <span>LOVER.</span>
-                  <br />
-                  The program includes one hour consultancy with one of the
-                  teacher per week.
                 </p>
               </li>
             </ul>
@@ -49,7 +48,13 @@ const TheBootCamp: React.FunctionComponent<TheBootCampProps> = () => {
                 </p>
               </li>
               <li>
-                <p>Notation System.</p>
+                <p>
+                  The program includes one hour consultancy with one of the
+                  teacher per week.
+                </p>
+              </li>
+              <li>
+                <p>You will learn a Tango Notation System.</p>
               </li>
               <li>
                 <p>

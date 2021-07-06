@@ -177,6 +177,16 @@ button {
   color: black;
 }
 
+#buttonContactSubmit {
+  background-color: #f77e7e;
+  color: white;
+}
+
+#buttonContactSubmit:hover {
+  background-color: #f77e7e;
+  color: black;
+}
+
 section#header-section {
   max-width: 1200px;
   margin: 0 auto;
@@ -283,31 +293,31 @@ section#header-section header .header-right #primary-image #secondary-image img#
 
 @-webkit-keyframes rotateImages {
   0% {
-    -webkit-transform: rotateY(0deg) translate(-3vw, -25%);
-            transform: rotateY(0deg) translate(-3vw, -25%);
+    -webkit-transform: rotateY(0deg);
+            transform: rotateY(0deg);
   }
   50% {
-    -webkit-transform: rotateY(45deg) translate(-3vw, -25%);
-            transform: rotateY(45deg) translate(-3vw, -25%);
+    -webkit-transform: rotateY(45deg);
+            transform: rotateY(45deg);
   }
   100% {
-    -webkit-transform: rotateY(0deg) translate(-3vw, -25%);
-            transform: rotateY(0deg) translate(-3vw, -25%);
+    -webkit-transform: rotateY(0deg);
+            transform: rotateY(0deg);
   }
 }
 
 @keyframes rotateImages {
   0% {
-    -webkit-transform: rotateY(0deg) translate(-3vw, -25%);
-            transform: rotateY(0deg) translate(-3vw, -25%);
+    -webkit-transform: rotateY(0deg);
+            transform: rotateY(0deg);
   }
   50% {
-    -webkit-transform: rotateY(45deg) translate(-3vw, -25%);
-            transform: rotateY(45deg) translate(-3vw, -25%);
+    -webkit-transform: rotateY(45deg);
+            transform: rotateY(45deg);
   }
   100% {
-    -webkit-transform: rotateY(0deg) translate(-3vw, -25%);
-            transform: rotateY(0deg) translate(-3vw, -25%);
+    -webkit-transform: rotateY(0deg);
+            transform: rotateY(0deg);
   }
 }
 
@@ -503,7 +513,7 @@ section#section-sample .section-container .video-container .video-description bu
 }
 
 section#section-sample .section-container .video-container .video-description button#btn-watchmore:hover {
-  background-color: #519191;
+  background-color: #2d99c7;
   color: black;
 }
 
@@ -551,7 +561,7 @@ section#instructors .instructors-container {
       flex-wrap: wrap;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  padding: 0 auto;
+  padding: 0 2em;
 }
 
 section#instructors .instructors-container .instructor {
@@ -601,6 +611,37 @@ section#instructors .instructors-container .javier img {
   border: 1px #519191 solid;
   -webkit-box-shadow: 10px 10px 20px #d5d5d5;
           box-shadow: 10px 10px 20px #d5d5d5;
+}
+
+#life-long-access {
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0 auto;
+  padding: 50px 2em;
+  max-width: 1200px;
+  min-height: 70vh;
+  -webkit-transform: rotateZ(-10deg);
+          transform: rotateZ(-10deg);
+}
+
+#life-long-access h2 {
+  color: #413e3e;
+  font-size: 2.5rem;
+}
+
+#life-long-access span {
+  color: white;
+  background-color: #2d99c7;
+  padding: 5px 10px;
+  border-radius: 10px;
 }
 
 section#footer {

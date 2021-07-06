@@ -11,6 +11,7 @@ import AdminAreaProvider from "../contexts/AdminArea";
 import UserContextProvider from "../contexts/UserContext";
 import Login from "./Login";
 import Contact from "./Contact";
+import LifeLongAccess from "./LifeLongAccess";
 
 export interface RouterMenuProps {}
 
@@ -24,6 +25,7 @@ const RouterMenu: React.FunctionComponent<RouterMenuProps> = () => {
             <Route path="/" exact>
               <Header />
               <TheBootCamp />
+              <LifeLongAccess/>
               <Demo />
               <Instructors />
               <Contact />

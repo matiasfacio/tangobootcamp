@@ -1,45 +1,25 @@
 import * as React from "react";
+import { Card, Col, Row } from "antd";
+import styled from "styled-components";
 
 export interface TheBootCampProps {}
 
 const TheBootCamp: React.FunctionComponent<TheBootCampProps> = () => {
+  const headStyles = {
+    fontSize: "1.3rem",
+  };
+
   return (
-    <section id="what-is">
+    <Section id="what-is">
       <div className="section-title">
         <h2>
           What is Tango <br /> Structure Bootcamp ?
         </h2>
         <h3>( and why you should join! )</h3>
       </div>
-      <div className="cards-container">
-        <div className="card">
-          <div className="card-title">
-            <h3>Assisted Virtual Learning</h3>
-          </div>
-          <div className="card-content">
-            <ul>
-              <li>
-                <p>
-                  <b>Full Online Learning and Training System</b> developed
-                  specially for Tango lovers!
-                </p>
-              </li>
-              <li>
-                <p>
-                  Either you are a <span>INSTRUCTOR</span> looking for
-                  deeppening into the fundamentals, or you are looking for
-                  becoming a <span>PRO</span> or you are a truly Tango{" "}
-                  <span>LOVER.</span>
-                </p>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div className="card">
-          <div className="card-title">
-            <h3>Content</h3>
-          </div>
-          <div className="card-content">
+      <Row gutter={16}>
+        <Col span={8}>
+          <CardStyle title="Content" size="small" headStyle={headStyles}>
             <ul>
               <li>
                 <p>
@@ -49,48 +29,104 @@ const TheBootCamp: React.FunctionComponent<TheBootCampProps> = () => {
               </li>
               <li>
                 <p>
-                  The program includes one hour consultancy with one of the
-                  teacher per week.
+                  The program includes two hours consultancy with one of the
+                  teacher.
                 </p>
-              </li>
-              <li>
-                <p>You will learn a Tango Notation System.</p>
               </li>
               <li>
                 <p>
-                  Lot of <span>Homework.</span>
+                  We have also prepare <span>Homework</span> for you to better
+                  understand the concepts!
                 </p>
               </li>
-              <li>
-                <p>One Final Project.</p>
-              </li>
             </ul>
-          </div>
-        </div>
-        <div className="card">
-          <div className="card-title">
-            <h3>Certificates</h3>
-          </div>
-          <div className="card-content">
+          </CardStyle>
+        </Col>
+        <Col span={8}>
+          <CardStyle title="Who are you ?" size="small" headStyle={headStyles}>
             <ul>
               <li>
                 <p>
-                  One <span>Attendance Certificate</span> to
-                  <b>The Tango's Structure Bootcamp.</b>
+                  Either you are an <span>INSTRUCTOR</span> looking for
+                  deeppening into the fundamentals, or you are looking for
+                  becoming a <span>PRO</span> or you are a truly Tango{" "}
+                  <span>LOVER.</span>
                 </p>
               </li>
               <li>
                 <p>
-                  Optional: get Certificate of <span>Approval</span> of
-                  <b>The Tango's Structure Bootmcamp Program.</b>
+                  Your level is not a limitation! This bootcamp was created to
+                  be accesible for everyone in any level!
                 </p>
               </li>
             </ul>
-          </div>
-        </div>
-      </div>
-    </section>
+          </CardStyle>
+        </Col>
+
+        <Col span={8}>
+          <CardStyle title="Certificates" size="small" headStyle={headStyles}>
+            <ul>
+              <li>
+                <p>
+                  <span>Attendance Certificate</span> to
+                  <b> The Tango's Structure Bootcamp.</b>
+                </p>
+              </li>
+              <li>
+                <p>
+                  Optional: get a Certificate of <span>Approval</span> of
+                  <b> The Tango's Structure Bootcamp Program.</b>
+                </p>
+              </li>
+            </ul>
+          </CardStyle>
+        </Col>
+      </Row>
+    </Section>
   );
 };
 
 export default TheBootCamp;
+
+const Section = styled.section`
+  background-color: #292929;
+  padding: 20px 2em;
+  margin: 0px auto;
+  min-height: calc(100vh + 60px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  .section-title {
+    min-height: 10vh;
+    padding-bottom: 10px;
+    position: relative;
+    h2 {
+      font-size: 2.5rem;
+      color: white;
+      text-transform: uppercase;
+      text-align: center;
+    }
+    h3 {
+      color: white;
+      font-size: 1.4rem;
+      text-align: center;
+      font-weight: 400;
+      text-align: center;
+    }
+  }
+`;
+
+const CardStyle = styled(Card)`
+  min-height: 350px;
+  max-width: 330px;
+  ul {
+    list-style: none;
+    padding: 10px;
+  }
+  span {
+    color: var(--pink);
+    font-weight: 700;
+  }
+`;

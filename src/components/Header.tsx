@@ -1,7 +1,10 @@
 import * as React from "react";
 import silouette from "../images/siluette.png";
 import headerImg from "../images/header-img.svg";
+import styled from "styled-components";
 import { useHistory } from "react-router-dom";
+import { SecondaryButton } from "./UIComponents/SecondaryButton";
+import { PrimaryButton } from "./UIComponents/PrimaryButton";
 
 export interface HeaderProps {}
 
@@ -17,10 +20,10 @@ const Header: React.FunctionComponent<HeaderProps> = () => {
           </h1>
           <h2>An online bootcamp for Argentine Tango lovers</h2>
           <div className="btn-container">
-            <button id="btn-register" onClick={() => history.push("/login")}>
+            <PrimaryButtonBoost onClick={() => history.push("/login")}>
               SIGN UP
-            </button>
-            <button id="btn-program">CHECK OUR PROGRAM</button>
+            </PrimaryButtonBoost>
+            <SecondaryButtonBoost>PROGRAM</SecondaryButtonBoost>
           </div>
         </div>
         <div className="header-right">
@@ -37,3 +40,14 @@ const Header: React.FunctionComponent<HeaderProps> = () => {
 };
 
 export default Header;
+
+const SecondaryButtonBoost = styled(SecondaryButton)`
+  display: inline-block;
+  margin: 10px 10px;
+  padding: 5px 10px;
+`;
+
+const PrimaryButtonBoost = styled(PrimaryButton)`
+  box-shadow: 10px 10px 20px rgb(213, 213, 213);
+  padding: 5px 10px;
+`;

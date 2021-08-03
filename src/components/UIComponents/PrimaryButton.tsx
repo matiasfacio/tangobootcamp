@@ -1,15 +1,12 @@
-import * as React from 'react';
+import styled from "styled-components";
 
- 
-const PrimaryButton: React.FunctionComponent = (props) => {
-    const buttonStyle = {
-        backgroundColor: "rgb(247, 126, 126)",
-    }
-    return ( 
-        <button style = {buttonStyle}>
-            {props.children}
-        </button>
-     );
-}
- 
-export default PrimaryButton;
+export const PrimaryButton = styled.button`
+  background-color: rgb(247, 126, 126);
+  border-radius: "2px";
+  padding: 3px 10px;
+  color: white;
+  &:hover {
+    background-color: black;
+    color: white;
+  }
+`;

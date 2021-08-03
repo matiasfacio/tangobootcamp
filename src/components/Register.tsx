@@ -5,7 +5,6 @@ import useForm from "../hooks/useForm";
 const Register: React.FunctionComponent = () => {
   const { setUserInfo, setLogin } = React.useContext(UserContext);
   const { formData, handleChange, clearForm, resetForm } = useForm({
-    userId: "",
     name: "",
     lastName: "",
     email: "",
@@ -28,17 +27,6 @@ const Register: React.FunctionComponent = () => {
             inputRef.current?.focus();
           }}
         >
-          <label htmlFor="userId">UserId</label>
-          <input
-            id="userIdRegister"
-            ref={inputRef}
-            type="text"
-            name="userId"
-            placeholder="choose your user Id"
-            value={formData.userId}
-            onChange={handleChange}
-            required
-          />
           <label htmlFor="name">Name</label>
           <input
             id="nameRegister"

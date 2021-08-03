@@ -1,20 +1,26 @@
 import * as React from "react";
-import {useHistory} from "react-router-dom"
+import styled from "styled-components";
 
 export interface FooterProps {}
 
 const Footer: React.FunctionComponent<FooterProps> = () => {
-  const history = useHistory()
   return (
-    <section id="footer">
-      <div className="footer-container">
-          <div>www.tangobootcamp.net</div>
-          <div>info@tangobootcamp.net</div>
-          <div>impressum</div>
-          <div style = {{cursor: 'pointer'}}onClick = {()=> history.push('/admin')}>admin</div>
-      </div>
-    </section>
+    <FooterContainer>
+      <div>Impressum</div>
+    </FooterContainer>
   );
 };
 
 export default Footer;
+
+const FooterContainer = styled.footer`
+  width: 100vw;
+  min-height: 60px;
+  overflow: hidden;
+  padding: 20px auto;
+  background-color: var(--black);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+`;

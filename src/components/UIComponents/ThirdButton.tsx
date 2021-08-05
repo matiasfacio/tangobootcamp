@@ -6,6 +6,10 @@ export const ThirdButton = styled.button`
   font-size: 1.2rem;
   border-radius: 2px;
   width: 150px;
+  font-size: var(--btn-fontsize);
+  font-weight: var(--btn-weight);
+  border: none;
+  outline: none;
   &:hover {
     background-color: rgb(247, 126, 126);
     color: white;

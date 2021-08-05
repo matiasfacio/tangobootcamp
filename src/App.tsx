@@ -1,13 +1,11 @@
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import "antd/dist/antd.css";
-import "./css/main.css";
 import RouterMenu from "./components/RouterMenu";
 import { QueryClientProvider, QueryClient } from "react-query";
 import { Cookie } from "./components/Cookie";
 import { Auth0Provider } from "@auth0/auth0-react";
 import { createGlobalStyle } from "styled-components";
-// require("dotenv").config();
 
 const GlobalStyle = createGlobalStyle`
   :root {
@@ -15,12 +13,15 @@ const GlobalStyle = createGlobalStyle`
     --pink: rgb(247, 126, 126);
     --white: white;
     --blue: rgb(45, 153, 199);
+    --btn-fontsize: 1.2rem;
+    --btn-weight: bold;
   }
   html {
     scroll-behavior: smooth;
     overflow-x: hidden;
   };
-  body {
+  
+  * {
     padding:0;
     margin:0;
     box-sizing: border-box;
@@ -45,6 +46,50 @@ const GlobalStyle = createGlobalStyle`
   color: white;
   text-decoration: none;
   }
+
+  form {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+  width: 300px;
+  ::placeholder {
+    font-size: 0.8rem;
+    color: rgba(70, 70, 70, 0.479);
+    text-transform: capitalize;
+  }
+  input {
+    padding: 7px;
+    font-size: 1.1rem;
+    border: none;
+    background-color: white;
+    border-radius: 2px;
+    outline: none;
+  }
+  label {
+    padding: 5px 0;
+    font-size: 0.6rem;
+    color: white;
+  }
+  button {
+    font-size: 1rem;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: rgb(247, 126, 126);
+    border-radius: 2px;
+  }
+  textarea {
+    margin-top: 20px;
+    width: clamp(250px, 40vw, 400px);
+    height: 300px;
+    padding: 5px;
+    border: none;
+    background-color: white;
+    border-radius: 2px;
+  }
+
+  
+}
 `;
 
 // const REDIRECT_URL =
@@ -60,7 +105,7 @@ function App() {
     <Auth0Provider
       domain="dev-r45f9tll.eu.auth0.com"
       clientId="eNYipEzbx0t5EFsmPCBp1hGBylFxBB3G"
-      redirectUri={"https://www.tangobootcamp.net"}
+      redirectUri={"http://localhost:3000"}
     >
       <QueryClientProvider client={queryClient}>
         <BrowserRouter>

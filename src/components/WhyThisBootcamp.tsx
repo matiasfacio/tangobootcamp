@@ -9,23 +9,23 @@ export const WhyThisBootcamp = () => {
           <h2>Why this Tango Structure Bootcamp ?</h2>
         </Title>
         <q>
-          Fact: 100% of the tango dancers that don't know how to improve, know
-          very little about structure.
+          Fact: 100% of dancers who feel they could do better, have problems
+          understanding the Tango structure.
         </q>
         <ul>
           <li>
             <p>
-              After more than 20 years of experience teaching Argentine Tango,
-              we keep seeing that the same problems repeat and repeat over the
-              years, no matter the culture or the level...
+              After 20+ years of experience teaching Argentine Tango, we keep
+              seeing that the same problems repeat and repeat, no matter the
+              culture nor the level.
             </p>
           </li>
           <li>
             <p>
               The Tango Structure isn't hard to understand, actually it is quite
               simple! But still, most of the dancers we know, not matter if they
-              are professionals dancers, teachers, maestros or great popular,
-              dancers don't know sometimes the simple things!
+              are professionals dancers, teachers, maestros or great popular
+              dancers, don't know sometimes the simple things!
             </p>
           </li>
           <li>

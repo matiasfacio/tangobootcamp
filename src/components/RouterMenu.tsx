@@ -12,13 +12,15 @@ import UserContextProvider from "../contexts/UserContext";
 import Login from "./Login";
 import Contact from "./Contact";
 import LifeLongAccess from "./LifeLongAccess";
-import { Backend } from "../backend/Backend";
-import UserArea from "./UserArea";
+import { Courses } from "../backend/Courses";
+import { Course } from "../backend/Course";
+import { UserArea } from "../backend/UserArea";
 import ArrowPullDown from "./UIComponents/ArrowPullDown";
 import { useAuth0 } from "@auth0/auth0-react";
 import { AccountInformation } from "../backend/AccountInformation";
 import { Pricing } from "./Pricing";
 import { WhyThisBootcamp } from "./WhyThisBootcamp";
+import { UserAreaMenu } from "../backend/UserAreaMenu";
 
 export interface RouterMenuProps {}
 
@@ -54,13 +56,19 @@ const RouterMenu: React.FunctionComponent<RouterMenuProps> = () => {
             </Route>
             {isAuthenticated && (
               <>
+                <Route path="/courses">
+                  <UserAreaMenu />
+                  <Courses />
+                </Route>
                 <Route path="/course">
-                  <Backend />
+                  <UserAreaMenu />
+                  <Course />
                 </Route>
                 <Route path="/userarea">
                   <UserArea />
                 </Route>
                 <Route path="/account-settings">
+                  <UserAreaMenu />
                   <AccountInformation />
                 </Route>
               </>

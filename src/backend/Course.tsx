@@ -5,14 +5,13 @@ import { VideoInterface } from "../components/UIComponents/VideoInterface";
 import VideoDescription from "./VideoDescription";
 import { useQueryAllVideos } from "./queries";
 import { useAuth0 } from "@auth0/auth0-react";
-import { PrimaryButton } from "../components/UIComponents/PrimaryButton";
 import { List } from "antd";
 import { DoubleRightOutlined, DoubleLeftOutlined } from "@ant-design/icons";
 import { Video } from "./VideoApi";
 
 export interface BackendProps {}
 
-export const Backend: React.FC<BackendProps> = () => {
+export const Course: React.FC<BackendProps> = () => {
   const history = useHistory();
   const { data: videos, isLoading } = useQueryAllVideos();
   const [actualVideo, setActualVideo] = React.useState<Video | null>(null);
@@ -37,22 +36,22 @@ export const Backend: React.FC<BackendProps> = () => {
             </ChooseVideoContainer>
           )}
         </LeftSideScreen>
-        <OpenVideoList onClick={() => setShowVideos(!showVideos)}>
-          {showVideos ? (
-            <>
-              Hide Content
-              <DoubleRightOutlined style={{ marginLeft: 20 }} />
-            </>
-          ) : (
-            <>
-              Course Content
-              <DoubleLeftOutlined style={{ marginLeft: 20 }} />
-            </>
-          )}
-        </OpenVideoList>
+        {!showVideos && (
+          <OpenVideoList onClick={() => setShowVideos(true)}>
+            Course Content
+            <DoubleLeftOutlined style={{ marginLeft: 20 }} />
+          </OpenVideoList>
+        )}
         <RightSideScreen theme={showVideos}>
           <List
-            header={<h3>Course Content</h3>}
+            header={
+              <>
+                <CloseVideoList onClick={() => setShowVideos(false)}>
+                  Course Content
+                  <DoubleRightOutlined style={{ marginLeft: 20 }} />
+                </CloseVideoList>
+              </>
+            }
             size="large"
             bordered
             style={{
@@ -83,7 +82,7 @@ export const Backend: React.FC<BackendProps> = () => {
 
 const BackendLayout = styled.div`
   width: 100%;
-  margin: 0 auto;
+  margin: 50px auto;
   padding: 0 0em;
   min-height: 100vh;
   background-color: white;
@@ -93,7 +92,7 @@ const BackendLayout = styled.div`
   ${({ theme }) =>
     theme !== true
       ? "grid-template-columns: 100%; grid-template-areas: 'video' 'transcription';"
-      : "grid-template-columns: 75% 25%;grid-template-areas: 'video .' 'transcription .'"};
+      : "grid-template-columns: 80% 20%;grid-template-areas: 'video .' 'transcription .'"};
   grid-template-rows: auto auto;
   @media screen and (max-width: 1000px) {
     grid-template-columns: 100%;
@@ -116,7 +115,7 @@ const LeftSideScreen = styled.div`
 `;
 
 const RightSideScreen = styled.div`
-  width: 25vw;
+  width: 20vw;
   position: absolute;
   top: 50px;
   right: 0;
@@ -136,11 +135,24 @@ const Transcription = styled.div`
   overflow-y: scroll;
 `;
 
-const OpenVideoList = styled(PrimaryButton)`
+const OpenVideoList = styled.div`
   position: fixed;
-  top: 0px;
+  top: 60px;
   right: 0px;
   padding: 5px 10px;
+  z-index: 1001;
+  cursor: pointer;
+  font-size: 1.3rem;
+  color: white;
+  &:hover {
+    background-color: var(--black);
+  }
+`;
+
+const CloseVideoList = styled.div`
+  display: inline-block;
+  font-size: 1.3rem;
+  cursor: pointer;
 `;
 
 const ChooseVideoContainer = styled.div`

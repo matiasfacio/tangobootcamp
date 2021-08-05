@@ -8,7 +8,6 @@ import { UpdateUserInformation } from "./UpdateUserInformation";
 
 export const AccountInformation = () => {
   const { user } = useAuth0();
-  // const BASE_URL = process.env.REACT_APP_BASE_URL;
   const { data, isLoading, isSuccess, isError } = useQueryUser(user);
 
   const columns = [
@@ -74,6 +73,7 @@ const AccountSettingsContainer = styled.section`
   min-height: 100vh;
   max-width: 800px;
   background-color: var(--white);
+  margin: 50px auto;
 `;
 
 const Title = styled.div`

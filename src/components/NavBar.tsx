@@ -68,7 +68,7 @@ const BurgerMenuContainer = styled.div`
 `;
 
 const MenuContainer = styled.nav`
-  height: 60px;
+  height: 50px;
   width: 100vw;
   background-color: var(--black);
   ul {

@@ -4,12 +4,14 @@ import styled from "styled-components";
 import IconMenuOpen from "../images/menu_open.svg";
 import IconMenuClose from "../images/close.svg";
 import { useAuth0 } from "@auth0/auth0-react";
+import { PrimaryButton } from "./UIComponents/PrimaryButton";
+import { UserOutlined } from "@ant-design/icons";
 
 export type menuResponsiveCss = React.CSSProperties | undefined;
 
 const NavBar: React.FunctionComponent = () => {
   const [menuOpen, setMenuOpen] = React.useState(false);
-  const { isAuthenticated } = useAuth0();
+  const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
 
   React.useEffect(() => {
     const handleClick = () => setMenuOpen(false);
@@ -25,6 +27,12 @@ const NavBar: React.FunctionComponent = () => {
     });
   }, [menuOpen]);
 
+  const authenticateUser = () => {
+    !isAuthenticated
+      ? loginWithRedirect()
+      : logout({ returnTo: window.location.origin });
+  };
+
   return (
     <>
       <BurgerMenuContainer onClick={() => setMenuOpen(!menuOpen)}>
@@ -34,19 +42,22 @@ const NavBar: React.FunctionComponent = () => {
           width="60px"
         />
       </BurgerMenuContainer>
-      <MenuContainer theme={menuOpen}>
+      <MenuContainer theme={menuOpen.toString()}>
         <ul>
           <HashLink to="/#">home</HashLink>
           <HashLink to="/#what-is">the bootcamp</HashLink>
-          <HashLink to="/#how-does-it-work">demo</HashLink>
           <HashLink to="/#instructors">instructors</HashLink>
           <HashLink to="/#price">Price</HashLink>
           <HashLink to="/#program">Program</HashLink>
           <HashLink to="/#contact">contact</HashLink>
           {!isAuthenticated ? (
-            <HashLink to="/login">Sign In</HashLink>
+            <PrimaryButton onClick={() => authenticateUser()}>
+              Login / Register
+            </PrimaryButton>
           ) : (
-            <HashLink to="/userarea">User Area</HashLink>
+            <HashLink to="/userarea">
+              <UserOutlined />
+            </HashLink>
           )}
         </ul>
       </MenuContainer>
@@ -92,7 +103,7 @@ const MenuContainer = styled.nav`
       }
     }
     & a:last-child {
-      padding: 10px 10px;
+      padding: 10px 20px;
       border-radius: 2px;
       transition: all 0.3s ease-in-out;
       cursor: pointer;
@@ -109,10 +120,10 @@ const MenuContainer = styled.nav`
     top: 0;
     background-color: var(--black);
     transform: ${({ theme }) =>
-      theme === true ? "translateX(0)" : "translateX(-50%)"};
-    opacity: ${({ theme }) => (theme === true ? "1" : "0")};
+      theme === "true" ? "translateX(0)" : "translateX(-50%)"};
+    opacity: ${({ theme }) => (theme === "true" ? "1" : "0")};
     height: 100vh;
-    width: ${({ theme }) => (theme === true ? "100vw" : "30vw")};
+    width: ${({ theme }) => (theme === "true" ? "100vw" : "30vw")};
     transition: all 500ms ease-in-out;
     z-index: 999;
     ul {

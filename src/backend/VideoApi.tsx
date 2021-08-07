@@ -8,6 +8,30 @@ export type Video = {
 
 let nextId = 0;
 
+export const Improvisation: Video[] = [
+  {
+    name: "Introduction",
+    id: 1,
+    url: "https://vimeo.com/583806355",
+    snippet: "Intoduction to Improvisation in Tango",
+    description: "So much going on!",
+  },
+  {
+    name: "Facing the unknown",
+    id: 2,
+    url: "https://vimeo.com/583814684",
+    snippet: "Intoduction to Improvisation in Tango",
+    description: "So much going on!",
+  },
+  {
+    name: "State of Improvisation",
+    id: 3,
+    url: "https://vimeo.com/583804568",
+    snippet: "Intoduction to Improvisation in Tango",
+    description: "So much going on!",
+  },
+];
+
 export const videoList: Video[] = [
   {
     name: "Positions",
@@ -50,6 +74,17 @@ export const videoList: Video[] = [
   { name: "UserArea", id: 99, url: "https://vimeo.com/581727033" },
 ];
 
+const CoursesId = [
+  {
+    id: 1,
+    videoList: videoList,
+  },
+  {
+    id: 3,
+    videoList: Improvisation,
+  },
+];
+
 export const delay = (timeInMiliSeconds: number): Promise<void> =>
   new Promise((resolve) => {
     setTimeout(resolve, timeInMiliSeconds);
@@ -58,9 +93,10 @@ export const delay = (timeInMiliSeconds: number): Promise<void> =>
 const apiDelay = 1000;
 
 export const VideoApi = {
-  loadAllVideos: async (): Promise<Video[]> => {
+  loadAllVideos: async (id: number): Promise<Video[]> => {
     await delay(apiDelay);
-    return videoList;
+    const list = CoursesId.find((course) => course.id === id);
+    return list.videoList;
   },
   loadVideo: async (request: string): Promise<Video[]> => {
     await delay(apiDelay);

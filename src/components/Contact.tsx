@@ -28,14 +28,14 @@ export const Contact: React.FC = () => {
         }}
       >
         <SubcontainerInformation>
-          <h2>Contact Us:</h2>
+          <h2>Contact us:</h2>
           <div>Phone: (0049) 01774946117 (Germany)</div>
           <div>Email: info@tangobootcamp.net</div>
         </SubcontainerInformation>
         <Container>
           <SubContainer>
             <h2>Or use our Contact Form</h2>
-            <label>Your Name</label>
+            <label>Your name</label>
             <input
               id="name"
               type="text"

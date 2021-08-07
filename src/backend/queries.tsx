@@ -12,9 +12,9 @@ export const useQueryVideo = (props: string) => {
   );
 };
 
-export const useQueryAllVideos = () => {
+export const useQueryAllVideos = (id: number) => {
   const queryClient = useQueryClient();
-  return useQuery("videos", async () => VideoApi.loadAllVideos(), {
-    onSuccess: () => queryClient.invalidateQueries("videos"),
+  return useQuery(["videos", id], async () => VideoApi.loadAllVideos(id), {
+    onSuccess: () => queryClient.invalidateQueries(["videos", id]),
   });
 };

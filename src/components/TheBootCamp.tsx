@@ -13,7 +13,7 @@ const TheBootCamp: React.FunctionComponent<TheBootCampProps> = () => {
     <Section id="what-is">
       <div className="section-title">
         <h2>
-          What is Tango <br /> Structure Bootcamp ?
+          What is The Tango <br /> Structure Bootcamp ?
         </h2>
         <h3>( and why you should join! )</h3>
       </div>
@@ -29,13 +29,13 @@ const TheBootCamp: React.FunctionComponent<TheBootCampProps> = () => {
               </li>
               <li>
                 <p>
-                  The program includes two hours consultancy with one of the
+                  The program includes one hour consultancy with one of the
                   teacher.
                 </p>
               </li>
               <li>
                 <p>
-                  We have also prepare <span>Homework</span> for you to better
+                  We have also prepared <span>Homework</span> for you to better
                   understand the concepts!
                 </p>
               </li>

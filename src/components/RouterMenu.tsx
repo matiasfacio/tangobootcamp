@@ -1,15 +1,11 @@
 import * as React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import Demo from "./Demo";
 import Header from "./Header";
 import Instructors from "./Instructors";
 import NavBar from "./NavBar";
 import TheBootCamp from "./TheBootCamp";
 import Footer from "./Footer";
-import Admin from "./Admin";
-import AdminAreaProvider from "../contexts/AdminArea";
-import UserContextProvider from "../contexts/UserContext";
-import Login from "./Login";
 import Contact from "./Contact";
 import LifeLongAccess from "./LifeLongAccess";
 import { Courses } from "../backend/Courses";
@@ -20,61 +16,69 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { AccountInformation } from "../backend/AccountInformation";
 import { Pricing } from "./Pricing";
 import { WhyThisBootcamp } from "./WhyThisBootcamp";
+import { TangoStructure } from "./TangoStructure";
 import { UserAreaMenu } from "../backend/UserAreaMenu";
+import { BackToTop } from "./BackToTop";
+import { Cart } from "./Cart/Cart";
+// import CheckoutForm from "./Cart/CheckoutForm";
+import { PaymentConfirmation } from "./Cart/PaymentConfirmation";
 
-export interface RouterMenuProps {}
-
-const RouterMenu: React.FunctionComponent<RouterMenuProps> = () => {
+const RouterMenu = () => {
   const { isAuthenticated } = useAuth0();
   return (
     <div>
+      {isAuthenticated && <Redirect to="/userarea" />}
       <Switch>
-        <AdminAreaProvider>
-          <UserContextProvider>
-            <Route path="/" exact>
-              <NavBar />
-              <Header />
-              <TheBootCamp />
-              <WhyThisBootcamp />
-              <LifeLongAccess />
-              <Demo />
-              <Instructors />
-              <Pricing />
-              <Contact />
-              <Footer />
-              <ArrowPullDown />
+        <Route path="/" exact>
+          <NavBar />
+          <Header />
+          <TheBootCamp />
+          <WhyThisBootcamp />
+          <TangoStructure />
+          <LifeLongAccess />
+          <Demo />
+          <Instructors />
+          <Pricing />
+          <Contact />
+          <Footer />
+          <ArrowPullDown />
+          <BackToTop />
+        </Route>
+        {isAuthenticated && (
+          <>
+            <Route path="/courses">
+              <UserAreaMenu />
+              <Courses />
             </Route>
-            <Route path="/login">
-              <NavBar />
-              <Login />
-              <Footer />
+            <Route path="/course/:id">
+              <UserAreaMenu />
+              <Course />
             </Route>
-            <Route path="/admin">
-              <NavBar />
-              <Admin />
-              <Footer />
+            <Route path="/userarea">
+              <UserArea />
             </Route>
-            {isAuthenticated && (
-              <>
-                <Route path="/courses">
-                  <UserAreaMenu />
-                  <Courses />
-                </Route>
-                <Route path="/course">
-                  <UserAreaMenu />
-                  <Course />
-                </Route>
-                <Route path="/userarea">
-                  <UserArea />
-                </Route>
-                <Route path="/account-settings">
-                  <UserAreaMenu />
-                  <AccountInformation />
-                </Route>
-              </>
-            )}
-          </UserContextProvider>
-        </AdminAreaProvider>
+            <Route path="/account-settings">
+              <UserAreaMenu />
+              <AccountInformation />
+            </Route>
+            <Route path="/cart">
+              <UserAreaMenu />
+              <Cart />
+            </Route>
+            <Route path="/payment-confirmation">
+              <UserAreaMenu />
+              <PaymentConfirmation />
+            </Route>
+            {/* <Route path="/checkout">
+              <UserAreaMenu />
+              <CheckoutForm />
+            </Route> */}
+          </>
+        )}
+
+        <Route path="*">
+          <Redirect to="/" />
+        </Route>
       </Switch>
     </div>
   );

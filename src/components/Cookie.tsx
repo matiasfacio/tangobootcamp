@@ -17,7 +17,7 @@ export const Cookie: React.FC<CookieProps> = () => {
   return (
     <>
       {!cookie && (
-        <CookieContainer theme={cookie}>
+        <CookieContainer theme={!!cookie}>
           This website uses cookies, if you continue to navigate you accept the
           use of them.
           <CookieIcon onClick={() => saveCookie()} />

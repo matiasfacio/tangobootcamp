@@ -27,12 +27,10 @@ export const AccountInformation = () => {
               field === "approved"
                 ? {
                     backgroundColor: "green",
-                    padding: "5px 10px",
                     color: "white",
                   }
                 : {
                     backgroundColor: "red",
-                    padding: "5px 10px",
                     color: "white",
                   }
             }

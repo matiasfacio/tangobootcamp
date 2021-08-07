@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { VideoInterface } from "../components/UIComponents/VideoInterface";
 import VideoDescription from "./VideoDescription";
 import { useQueryAllVideos } from "./queries";
@@ -13,7 +13,9 @@ export interface BackendProps {}
 
 export const Course: React.FC<BackendProps> = () => {
   const history = useHistory();
-  const { data: videos, isLoading } = useQueryAllVideos();
+  const params: { id: string } = useParams();
+  console.log(params?.id);
+  const { data: videos, isLoading } = useQueryAllVideos(parseInt(params.id));
   const [actualVideo, setActualVideo] = React.useState<Video | null>(null);
   const [showVideos, setShowVideos] = React.useState<boolean>(true);
   const { isAuthenticated } = useAuth0();
@@ -21,8 +23,8 @@ export const Course: React.FC<BackendProps> = () => {
   return (
     <>
       {!isAuthenticated && history.push("/login")}
-      <BackendLayout theme={showVideos}>
-        <LeftSideScreen theme={showVideos}>
+      <BackendLayout theme={showVideos.toString()}>
+        <LeftSideScreen theme={showVideos.toString()}>
           {actualVideo ? (
             <VideoInterface
               video={actualVideo}
@@ -39,16 +41,20 @@ export const Course: React.FC<BackendProps> = () => {
         {!showVideos && (
           <OpenVideoList onClick={() => setShowVideos(true)}>
             Course Content
-            <DoubleLeftOutlined style={{ marginLeft: 20 }} />
+            <DoubleLeftOutlined
+              style={{ marginLeft: 20, display: "inline-block" }}
+            />
           </OpenVideoList>
         )}
-        <RightSideScreen theme={showVideos}>
+        <RightSideScreen theme={showVideos.toString()}>
           <List
             header={
               <>
                 <CloseVideoList onClick={() => setShowVideos(false)}>
                   Course Content
-                  <DoubleRightOutlined style={{ marginLeft: 20 }} />
+                  <DoubleRightOutlined
+                    style={{ marginLeft: 20, display: "inline-block" }}
+                  />
                 </CloseVideoList>
               </>
             }
@@ -90,7 +96,7 @@ const BackendLayout = styled.div`
   justify-content: flex;
   align-items: flex-start;
   ${({ theme }) =>
-    theme !== true
+    theme !== "true"
       ? "grid-template-columns: 100%; grid-template-areas: 'video' 'transcription';"
       : "grid-template-columns: 80% 20%;grid-template-areas: 'video .' 'transcription .'"};
   grid-template-rows: auto auto;
@@ -98,13 +104,19 @@ const BackendLayout = styled.div`
     grid-template-columns: 100%;
     grid-template-rows: auto auto 500px;
   }
+  @media screen and (max-width: 1200px) {
+    ${({ theme }) =>
+      theme !== "true"
+        ? "grid-template-columns: 100%; grid-template-areas: 'video' 'transcription';"
+        : "grid-template-columns: 60% 40%;grid-template-areas: 'video .' 'transcription .'"};
+  }
 `;
 
 const LeftSideScreen = styled.div`
   background-color: black;
   grid-area: video;
   width: 100%;
-  min-height: ${({ theme }) => (theme === true ? "60vh" : "80vh")};
+  min-height: ${({ theme }) => (theme === "true" ? "60vh" : "80vh")};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -121,8 +133,11 @@ const RightSideScreen = styled.div`
   right: 0;
   height: 100%;
   transform: ${(props) =>
-    props.theme === true ? "translateX(0)" : "translateX(100vw)"};
+    props.theme === "true" ? "translateX(0)" : "translateX(100vw)"};
   transition: all 500ms ease-in-out;
+  @media screen and (max-width: 1200px) {
+    width: 40vw;
+  }
 `;
 
 const Transcription = styled.div`

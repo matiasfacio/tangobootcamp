@@ -2,14 +2,17 @@ import * as React from "react";
 import silouette from "../images/siluette.png";
 import headerImg from "../images/header-img.svg";
 import styled from "styled-components";
-import { useHistory } from "react-router-dom";
 import { SecondaryButton } from "./UIComponents/SecondaryButton";
 import { PrimaryButton } from "./UIComponents/PrimaryButton";
+import { useAuth0 } from "@auth0/auth0-react";
 
 export interface HeaderProps {}
 
 const Header: React.FunctionComponent<HeaderProps> = () => {
-  const history = useHistory();
+  const { isAuthenticated, loginWithRedirect } = useAuth0();
+  const authenticateUser = () => {
+    !isAuthenticated && loginWithRedirect();
+  };
 
   return (
     <HeaderSection>
@@ -20,10 +23,12 @@ const Header: React.FunctionComponent<HeaderProps> = () => {
           </h1>
           <h2>An online bootcamp for Argentine Tango lovers</h2>
           <div className="btn-container">
-            <PrimaryButtonBoost onClick={() => history.push("/login")}>
+            <PrimaryButtonBoost onClick={() => authenticateUser()}>
               SIGN UP
             </PrimaryButtonBoost>
-            <SecondaryButtonBoost>PROGRAM</SecondaryButtonBoost>
+            <SecondaryButtonBoost onClick={() => authenticateUser()}>
+              FREE CONTENT
+            </SecondaryButtonBoost>
           </div>
         </HeaderLeft>
         <HeaderRight>

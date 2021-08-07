@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Form, Input } from "antd";
 import { useUserMutations } from "../util/useUserMutations";
-import { SecondaryButton } from "../components/UIComponents/SecondaryButton";
+import { PrimaryButton } from "../components/UIComponents/PrimaryButton";
 
 export const UpdateUserInformation = ({ user }) => {
   const userUpdate = useUserMutations(user);
@@ -42,7 +42,7 @@ export const UpdateUserInformation = ({ user }) => {
           <Input placeholder={user.phone || "Phone number"} />
         </Form.Item>
         <Form.Item style={{ alignSelf: "flex-end" }}>
-          <SecondaryButton type="submit">Submit</SecondaryButton>
+          <PrimaryButton type="submit">Submit</PrimaryButton>
         </Form.Item>
       </Form>
     </Container>

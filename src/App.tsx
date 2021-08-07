@@ -2,10 +2,17 @@ import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import "antd/dist/antd.css";
 import RouterMenu from "./components/RouterMenu";
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
 import { QueryClientProvider, QueryClient } from "react-query";
 import { Cookie } from "./components/Cookie";
 import { Auth0Provider } from "@auth0/auth0-react";
 import { createGlobalStyle } from "styled-components";
+import CartContextProvider from "./contexts/CartContext";
+
+const promise = loadStripe(
+  "pk_test_51JLPEJGSbvKyqkt6N9SUPRbrzGgHyNQDPkyO2TbGF0XdolDWdjhNaQktlLoVylWs6nlV7BqDMis38xRiVNK6vou6009yTWVhDF"
+);
 
 const GlobalStyle = createGlobalStyle`
   :root {
@@ -27,6 +34,7 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   };
   
+
   h1, h2, h3 {
   font-family: 'Merriweather', serif;
   }
@@ -92,11 +100,8 @@ const GlobalStyle = createGlobalStyle`
 }
 `;
 
-// const REDIRECT_URL =
-//   process.env.NODE_ENV === "production"
-//     ? process.env.REACT_APP_REDIRECT_URL
-//     : "http://localhost:3000/userarea";
 // https://www.tangobootcamp.net
+// http://localhost:8008
 
 function App() {
   const queryClient = new QueryClient();
@@ -105,13 +110,17 @@ function App() {
     <Auth0Provider
       domain="dev-r45f9tll.eu.auth0.com"
       clientId="eNYipEzbx0t5EFsmPCBp1hGBylFxBB3G"
-      redirectUri={"http://localhost:3000"}
+      redirectUri={"http://localhost:8008"}
     >
       <QueryClientProvider client={queryClient}>
         <BrowserRouter>
-          <RouterMenu />
-          <Cookie />
-          <GlobalStyle />
+          <Elements stripe={promise}>
+            <CartContextProvider>
+              <RouterMenu />
+              <Cookie />
+              <GlobalStyle />
+            </CartContextProvider>
+          </Elements>
         </BrowserRouter>
       </QueryClientProvider>
     </Auth0Provider>

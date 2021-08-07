@@ -3,15 +3,15 @@ import styled from "styled-components";
 import { PrimaryButton } from "../components/UIComponents/PrimaryButton";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
-import { useQueryUser } from "../util/useQueryUser";
 import { Modal } from "antd";
-import { HomeOutlined } from "@ant-design/icons";
+import { HomeOutlined, ShoppingCartOutlined } from "@ant-design/icons";
+import { CartContext } from "../contexts/CartContext";
 
 export const UserAreaMenu = () => {
-  const { user, isAuthenticated, logout } = useAuth0();
-  const { data, isSuccess } = useQueryUser(user);
+  const { cart } = React.useContext(CartContext);
+
+  const { logout } = useAuth0();
   const [modalVisibility, setModalVisibility] = React.useState<boolean>(false);
-  const findCourse = data?.courses?.find((course) => course.code === "001");
   const onOk = () => {
     logout({ returnTo: window.location.origin });
     setModalVisibility(false);
@@ -24,38 +24,49 @@ export const UserAreaMenu = () => {
   return (
     <Nav>
       <Menu>
-        <ListItem>
-          <Link to="/">
-            <PrimaryButtonBoost>
-              <HomeOutlined />
-            </PrimaryButtonBoost>
-          </Link>
-        </ListItem>
-        {isAuthenticated && isSuccess && findCourse?.status === "approved" ? (
+        <MenuLeft>
+          <ListItem className="home">
+            <Link to="/" style={{ width: "100%", height: "100%" }}>
+              <HomeOutlined size={32} />
+            </Link>
+          </ListItem>
           <ListItem>
             <Link to="/courses">
               <p>Courses</p>
             </Link>
           </ListItem>
-        ) : (
-          <ListItem>
-            <p>Buy bootcamp</p>
+        </MenuLeft>
+        <MenuRight>
+          <ListItem
+            className="home"
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Link to="/cart">
+              <CartContainer>
+                <StyledShoppingCartOutlined theme={cart} />
+                <div>{cart.length}</div>
+              </CartContainer>
+            </Link>
           </ListItem>
-        )}
-        <ListItem>
-          <Link to="/account-settings">
-            <p>Account Information</p>
-          </Link>
-        </ListItem>
+          <ListItem>
+            <Link to="/account-settings">
+              <p>Account Information</p>
+            </Link>
+          </ListItem>
 
-        <ListItem onClick={() => setModalVisibility(true)}>
-          <p>Logout</p>
-        </ListItem>
+          <ListItem onClick={() => setModalVisibility(true)}>
+            <p>Logout</p>
+          </ListItem>
+        </MenuRight>
       </Menu>
       <Modal
         visible={modalVisibility}
         onCancel={() => onCancel()}
-        title="Log out"
+        title="Warning"
         footer={<PrimaryButton onClick={() => onOk()}>Ok</PrimaryButton>}
       >
         You are about to log out.
@@ -82,7 +93,7 @@ const Menu = styled.ul`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
   height: 100%;
   width: 100%;
   padding: 0;
@@ -90,6 +101,28 @@ const Menu = styled.ul`
 
   @media screen and (max-width: 800px) {
     flex-wrap: wrap;
+  }
+`;
+
+const MenuRight = styled.div`
+  display: flex;
+`;
+
+const MenuLeft = styled.div`
+  display: flex;
+  align-items: baseline;
+  .home {
+    background-color: var(--pink);
+    margin-left: 20px;
+    .anticon {
+      width: 60px;
+      padding: 10px 0;
+      height: 100%;
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+    }
   }
 `;
 
@@ -109,8 +142,47 @@ const ListItem = styled.li`
     font-size: 1.1rem;
     margin-bottom: 0;
   }
+
+  &:not(:first-child) {
+    border-bottom: 2px transparent solid;
+  }
+
+  &:hover {
+    &:not(.home) {
+      border-bottom: 2px var(--pink) solid;
+    }
+  }
 `;
 
-const PrimaryButtonBoost = styled(PrimaryButton)`
-  font-size: 0.9rem;
+const StyledShoppingCartOutlined = styled(ShoppingCartOutlined)`
+  display: inline-block;
+  margin-right: 10px;
+  background-color: var(--pink);
+  padding: 4px;
+  border-radius: 50%;
+  position: relative;
+
+  svg {
+    fill: white;
+    width: 20px;
+    height: 20px;
+  }
+`;
+
+const CartContainer = styled.div`
+  display: flex;
+  position: relative;
+  div {
+    position: absolute;
+    top: -2px;
+    right: 0;
+    background-color: white;
+    color: black;
+    padding: 0px 4px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.7rem;
+  }
 `;

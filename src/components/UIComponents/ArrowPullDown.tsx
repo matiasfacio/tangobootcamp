@@ -8,7 +8,6 @@ const ArrowPullDown: React.FC<ArrowPullDownProps> = () => {
 
   React.useEffect(() => {
     const handleScroll = (e) => {
-      console.log(e.scrollY);
       e.scrollY > 200 ? setIconArrow(true) : setIconArrow(false);
     };
 

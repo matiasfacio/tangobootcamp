@@ -6,7 +6,7 @@ export const WhyThisBootcamp = () => {
     <WhyContainer>
       <WhyContent>
         <Title>
-          <h2>Why this Tango Structure Bootcamp ?</h2>
+          <h2>Why we have created it?</h2>
         </Title>
         <q>
           Fact: 100% of dancers who feel they could do better, have problems
@@ -43,7 +43,6 @@ export const WhyThisBootcamp = () => {
 
 const WhyContainer = styled.section`
   background-color: var(--black);
-  min-height: 100vh;
   width: 100%;
   padding: 2em;
   display: flex;

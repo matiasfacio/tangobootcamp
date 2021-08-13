@@ -13,26 +13,26 @@ export type Currency = "eur" | "usd";
 
 const CoursesAvailable: Course[] = [
   {
-    name: "Tango's Structure Bootcamp",
-    id: 1,
+    name: "The Tango Structure Bootcamp",
+    id: "1",
     value: 99,
     currency: "eur",
   },
   {
-    name: "Musicality",
-    id: 2,
+    name: "The Tango Musicality Bootcamp",
+    id: "2",
     value: 59,
     currency: "eur",
   },
   {
     name: "A few words about Improvisation",
-    id: 3,
+    id: "3",
     value: 0,
     currency: "eur",
   },
   {
     name: "Excercises",
-    id: 4,
+    id: "4",
     value: 50,
     currency: "eur",
   },
@@ -44,6 +44,8 @@ export const Courses = () => {
   const { user, isAuthenticated } = useAuth0();
   const { data, isSuccess } = useQueryUser(user);
   const [modalVisibility, setModalVisibility] = React.useState(false);
+  const [modalPurchaseVisibility, setModalPurchaseVisibility] =
+    React.useState(false);
   const { addProductToCart, error, handleError } =
     React.useContext(CartContext);
 
@@ -55,6 +57,13 @@ export const Courses = () => {
       (course: any) =>
         courseName.id === course.id && course.status === "approved"
     );
+  };
+
+  const handleAddCourseToCart = (course) => {
+    addProductToCart(course);
+    if (!error) {
+      setModalPurchaseVisibility(true);
+    }
   };
 
   return (
@@ -104,9 +113,11 @@ export const Courses = () => {
                     <>
                       <PrimaryButton
                         style={{ margin: "10px 0px", width: "100%" }}
-                        onClick={() => addProductToCart(course)}
+                        onClick={() => {
+                          handleAddCourseToCart(course);
+                        }}
                       >
-                        Buy
+                        Purchase
                       </PrimaryButton>
                     </>
                     <SecondaryButton style={{ width: "100%" }}>
@@ -141,6 +152,17 @@ export const Courses = () => {
         }}
       >
         {error}
+      </Modal>
+      <Modal
+        visible={modalPurchaseVisibility}
+        title="Cart Information"
+        footer={
+          <PrimaryButton onClick={() => setModalPurchaseVisibility(false)}>
+            Ok
+          </PrimaryButton>
+        }
+      >
+        The course was added to your cart
       </Modal>
     </CoursesSection>
   );

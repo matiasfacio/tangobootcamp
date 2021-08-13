@@ -12,8 +12,9 @@ export const UpdateUserInformation = ({ user }) => {
     wrapperCol: { span: 16 },
   };
 
-  const onFinish = (newUser) => {
-    userUpdate.mutate(newUser);
+  const onFinish = (newData) => {
+    newData.id = user.id;
+    userUpdate.mutate(newData);
   };
 
   return (
@@ -22,6 +23,7 @@ export const UpdateUserInformation = ({ user }) => {
       <Form
         {...layout}
         initialValues={{
+          id: user.id,
           name: user.name,
           lastName: user.lastName,
           email: user.email,

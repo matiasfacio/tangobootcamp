@@ -4,12 +4,18 @@ import { Table, Modal } from "antd";
 import { CartContext, Course } from "../../contexts/CartContext";
 import { DeleteOutlined } from "@ant-design/icons";
 import { PrimaryButton } from "../UIComponents/PrimaryButton";
-import CheckoutForm from "./CheckoutForm";
 import { SecurityModal } from "./SecurityModal";
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
+import { CheckoutCartForm } from "./CheckoutCartForm";
+// import { CheckoutForm } from "./CheckoutForm";
+
+const promise = loadStripe(
+  "pk_test_51JLPEJGSbvKyqkt6N9SUPRbrzGgHyNQDPkyO2TbGF0XdolDWdjhNaQktlLoVylWs6nlV7BqDMis38xRiVNK6vou6009yTWVhDF"
+);
 
 export const Cart = () => {
   const { cart, removeProductFromCart } = React.useContext(CartContext);
-  const [modalVisibility, setModalVisibility] = React.useState<boolean>(false);
   const [modalSecurityVisibility, setModalSecurityVisibility] =
     React.useState<boolean>(false);
 
@@ -43,7 +49,6 @@ export const Cart = () => {
     },
     {
       title: "Action",
-      key: "action",
       render: (field: Course) => {
         return (
           <DeleteOutlined onClick={() => removeProductFromCart(field.id)} />
@@ -69,42 +74,19 @@ export const Cart = () => {
             </div>
           )}
         />
-        <PrimaryButton
-          key="payment"
-          disabled={!!!cartTotal}
-          style={
-            !!!cartTotal
-              ? {
-                  marginTop: 20,
-                  alignSelf: "flex-end",
-                  opacity: 0.3,
-                  cursor: "not-allowed",
-                }
-              : { marginTop: 20, alignSelf: "flex-end", opacity: 1 }
-          }
-          onClick={() => setModalVisibility(true)}
-        >
-          Proceed to Payment
-        </PrimaryButton>
+
+        <Elements stripe={promise}>
+          <CheckoutCartForm cart={cart} />
+          {/* <CheckoutForm /> */}
+        </Elements>
+
         <PrimaryButton
           key="security"
-          style={{ marginTop: 20, alignSelf: "flex-end" }}
+          style={{ marginTop: 20, alignSelf: "center" }}
           onClick={() => setModalSecurityVisibility(true)}
         >
           How do we handle security
         </PrimaryButton>
-        <Modal
-          destroyOnClose
-          visible={modalVisibility}
-          onCancel={() => setModalVisibility(false)}
-          footer={
-            <PrimaryButton onClick={() => setModalVisibility(false)}>
-              Cancel
-            </PrimaryButton>
-          }
-        >
-          <CheckoutForm />
-        </Modal>
         <Modal
           title="How do we handle Security in Tangobootcamp.net"
           visible={modalSecurityVisibility}

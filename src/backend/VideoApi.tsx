@@ -76,11 +76,11 @@ export const videoList: Video[] = [
 
 const CoursesId = [
   {
-    id: 1,
+    id: "1",
     videoList: videoList,
   },
   {
-    id: 3,
+    id: "3",
     videoList: Improvisation,
   },
 ];
@@ -93,7 +93,7 @@ export const delay = (timeInMiliSeconds: number): Promise<void> =>
 const apiDelay = 1000;
 
 export const VideoApi = {
-  loadAllVideos: async (id: number): Promise<Video[]> => {
+  loadAllVideos: async (id: string): Promise<Video[]> => {
     await delay(apiDelay);
     const list = CoursesId.find((course) => course.id === id);
     return list.videoList;

@@ -2,17 +2,12 @@ import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import "antd/dist/antd.css";
 import RouterMenu from "./components/RouterMenu";
-import { loadStripe } from "@stripe/stripe-js";
-import { Elements } from "@stripe/react-stripe-js";
+
 import { QueryClientProvider, QueryClient } from "react-query";
 import { Cookie } from "./components/Cookie";
 import { Auth0Provider } from "@auth0/auth0-react";
 import { createGlobalStyle } from "styled-components";
 import CartContextProvider from "./contexts/CartContext";
-
-const promise = loadStripe(
-  "pk_test_51JLPEJGSbvKyqkt6N9SUPRbrzGgHyNQDPkyO2TbGF0XdolDWdjhNaQktlLoVylWs6nlV7BqDMis38xRiVNK6vou6009yTWVhDF"
-);
 
 const GlobalStyle = createGlobalStyle`
   :root {
@@ -114,13 +109,11 @@ function App() {
     >
       <QueryClientProvider client={queryClient}>
         <BrowserRouter>
-          <Elements stripe={promise}>
-            <CartContextProvider>
-              <RouterMenu />
-              <Cookie />
-              <GlobalStyle />
-            </CartContextProvider>
-          </Elements>
+          <CartContextProvider>
+            <RouterMenu />
+            <Cookie />
+            <GlobalStyle />
+          </CartContextProvider>
         </BrowserRouter>
       </QueryClientProvider>
     </Auth0Provider>

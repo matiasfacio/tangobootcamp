@@ -1,7 +1,7 @@
 import React from "react";
 
 export type Course = {
-  id: number;
+  id: string;
   name: string;
   value: number;
   currency: "eur" | "usd";
@@ -10,10 +10,11 @@ export type Course = {
 export type CartProps = {
   cart: Course[];
   addProductToCart: (Product: Course) => void;
-  removeProductFromCart: (id: number) => void;
+  removeProductFromCart: (id: string) => void;
   error: string | null;
   handleError: () => void;
   emptyCart: () => void;
+  onPayment: () => void;
 };
 
 export const CartContext = React.createContext({} as CartProps);
@@ -21,6 +22,25 @@ export const CartContext = React.createContext({} as CartProps);
 const CartContextProvider = ({ children }) => {
   const [cart, setCart] = React.useState([]);
   const [error, setError] = React.useState<string | null>(null);
+  const [paid, setPaid] = React.useState<boolean>(false);
+
+  React.useEffect(() => {
+    const handlePaid = async () => {
+      try {
+        const result = await fetch(
+          "https://tbc.tangodefinitions.com/api/retrieve-session"
+        );
+        const data = result.json();
+        console.log(data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    if (paid) {
+      handlePaid();
+    }
+  }, [paid]);
 
   const addProductToCart = (Product: Course) => {
     if (cart.length === 0) {
@@ -41,13 +61,17 @@ const CartContextProvider = ({ children }) => {
     setCart([]);
   };
 
-  const removeProductFromCart = (id: number) => {
+  const removeProductFromCart = (id: string) => {
     const newCart = cart.filter((product) => product.id !== id);
     setCart(newCart);
   };
 
   const handleError = () => {
     setError(null);
+  };
+
+  const onPayment = () => {
+    setPaid(true);
   };
 
   return (
@@ -59,6 +83,7 @@ const CartContextProvider = ({ children }) => {
         error,
         handleError,
         emptyCart,
+        onPayment,
       }}
     >
       {children}

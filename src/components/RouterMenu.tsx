@@ -22,6 +22,7 @@ import { BackToTop } from "./BackToTop";
 import { Cart } from "./Cart/Cart";
 // import CheckoutForm from "./Cart/CheckoutForm";
 import { PaymentConfirmation } from "./Cart/PaymentConfirmation";
+import { RetrieveSession } from "./Cart/RetriveSession";
 
 const RouterMenu = () => {
   const { isAuthenticated } = useAuth0();
@@ -69,10 +70,9 @@ const RouterMenu = () => {
               <UserAreaMenu />
               <PaymentConfirmation />
             </Route>
-            {/* <Route path="/checkout">
-              <UserAreaMenu />
-              <CheckoutForm />
-            </Route> */}
+            <Route path="/retrieve-session">
+              <RetrieveSession />
+            </Route>
           </>
         )}
 

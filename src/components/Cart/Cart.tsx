@@ -8,6 +8,7 @@ import { SecurityModal } from "./SecurityModal";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import { CheckoutCartForm } from "./CheckoutCartForm";
+import { Link } from "react-router-dom";
 // import { CheckoutForm } from "./CheckoutForm";
 
 const promise = loadStripe(
@@ -78,6 +79,9 @@ export const Cart = () => {
         <Elements stripe={promise}>
           <CheckoutCartForm cart={cart} />
           {/* <CheckoutForm /> */}
+          <Link to="/retrieve-session">
+            <PrimaryButton>Retrive Session</PrimaryButton>
+          </Link>
         </Elements>
 
         <PrimaryButton

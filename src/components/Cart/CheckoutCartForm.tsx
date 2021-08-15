@@ -6,7 +6,7 @@
 */
 
 import React from "react";
-import { Course } from "../../contexts/CartContext";
+import { Course } from "../../backend/types";
 import { PrimaryButton } from "../UIComponents/PrimaryButton";
 
 export const CheckoutCartForm = ({ cart }: { cart: Course[] }) => {

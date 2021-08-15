@@ -14,7 +14,6 @@ export interface BackendProps {}
 export const Course: React.FC<BackendProps> = () => {
   const history = useHistory();
   const params: { id: string } = useParams();
-  console.log(params?.id);
   const { data: videos, isLoading } = useQueryAllVideos(params.id);
   const [actualVideo, setActualVideo] = React.useState<Video | null>(null);
   const [showVideos, setShowVideos] = React.useState<boolean>(true);

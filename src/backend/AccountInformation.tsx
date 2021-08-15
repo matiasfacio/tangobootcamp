@@ -2,9 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useQueryUser } from "../util/useQueryUser";
-import { Table, Tag } from "antd";
+import { Table } from "antd";
 // require("dotenv").config();
 import { UpdateUserInformation } from "./UpdateUserInformation";
+import { CoursesAvailable } from "./types";
 
 export const AccountInformation = () => {
   const { user } = useAuth0();
@@ -13,31 +14,13 @@ export const AccountInformation = () => {
   const columns = [
     {
       title: "Course",
-      dataIndex: "name",
+      dataIndex: "course_id",
       width: "300px",
-    },
-    {
-      title: "Status",
-      dataIndex: "status",
-      width: "120px",
       render: (field) => {
-        return (
-          <Tag
-            style={
-              field === "approved"
-                ? {
-                    backgroundColor: "green",
-                    color: "white",
-                  }
-                : {
-                    backgroundColor: "red",
-                    color: "white",
-                  }
-            }
-          >
-            {field}
-          </Tag>
+        const courseFounded = CoursesAvailable.find(
+          (course) => course.id === field
         );
+        return <div>{courseFounded?.name}</div>;
       },
     },
   ];

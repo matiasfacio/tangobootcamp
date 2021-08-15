@@ -1,15 +1,16 @@
 import React from "react";
 import styled from "styled-components";
 import { Table, Modal } from "antd";
-import { CartContext, Course } from "../../contexts/CartContext";
+import { CartContext } from "../../contexts/CartContext";
 import { DeleteOutlined } from "@ant-design/icons";
 import { PrimaryButton } from "../UIComponents/PrimaryButton";
 import { SecurityModal } from "./SecurityModal";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
-import { CheckoutCartForm } from "./CheckoutCartForm";
-import { Link } from "react-router-dom";
-// import { CheckoutForm } from "./CheckoutForm";
+// import { CheckoutCartForm } from "./CheckoutCartForm";
+import { CheckoutForm } from "./CheckoutForm";
+import { SecondaryButton } from "../UIComponents/SecondaryButton";
+import { Course } from "../../backend/types";
 
 const promise = loadStripe(
   "pk_test_51JLPEJGSbvKyqkt6N9SUPRbrzGgHyNQDPkyO2TbGF0XdolDWdjhNaQktlLoVylWs6nlV7BqDMis38xRiVNK6vou6009yTWVhDF"
@@ -77,20 +78,16 @@ export const Cart = () => {
         />
 
         <Elements stripe={promise}>
-          <CheckoutCartForm cart={cart} />
-          {/* <CheckoutForm /> */}
-          <Link to="/retrieve-session">
-            <PrimaryButton>Retrive Session</PrimaryButton>
-          </Link>
+          <CheckoutForm cart={cart} />
         </Elements>
 
-        <PrimaryButton
+        <SecondaryButton
           key="security"
           style={{ marginTop: 20, alignSelf: "center" }}
           onClick={() => setModalSecurityVisibility(true)}
         >
           How do we handle security
-        </PrimaryButton>
+        </SecondaryButton>
         <Modal
           title="How do we handle Security in Tangobootcamp.net"
           visible={modalSecurityVisibility}

@@ -14,7 +14,6 @@ export const useQueryUser = (user) => {
         body: JSON.stringify(user),
       });
       const data = await result.json();
-
       if (result.ok) {
         return data;
       } else {

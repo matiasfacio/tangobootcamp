@@ -8,11 +8,11 @@ CURRENTLY IN USE
 
 import React, { useState, useEffect } from "react";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
-import { PrimaryButton } from "../../components/UIComponents/PrimaryButton";
 import { CartContext } from "../../contexts/CartContext";
 import { useHistory } from "react-router";
+import { SecondaryButton } from "../UIComponents/SecondaryButton";
 
-export const CheckoutForm = () => {
+export const CheckoutForm = ({ cart }) => {
   const [succeeded, setSucceeded] = useState(false);
   const { emptyCart } = React.useContext(CartContext);
   const history = useHistory();
@@ -24,6 +24,10 @@ export const CheckoutForm = () => {
   const stripe = useStripe();
   const elements = useElements();
 
+  const cartTotal: number = cart
+    .map((course) => course.value)
+    .reduce((a, b) => a + b, 0);
+
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
     const fetchData = async () => {
@@ -34,7 +38,7 @@ export const CheckoutForm = () => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ items: [{ id: "xl-tshirt" }] }),
+          body: JSON.stringify(cart),
         }
       );
 
@@ -43,7 +47,7 @@ export const CheckoutForm = () => {
     };
 
     fetchData();
-  }, []);
+  }, [cart]);
 
   const cardStyle = {
     style: {
@@ -63,12 +67,12 @@ export const CheckoutForm = () => {
     },
   };
 
-  // const handleChange = async (event) => {
-  //   // Listen for changes in the CardElement
-  //   // and display any errors as the customer types their card details
-  //   setDisabled(event.empty);
-  //   setError(event.error ? event.error.message : "");
-  // };
+  const handleChange = async (event) => {
+    // Listen for changes in the CardElement
+    // and display any errors as the customer types their card details
+    setDisabled(event.empty);
+    setError(event.error ? event.error.message : "");
+  };
 
   const handleSubmit = async (ev) => {
     ev.preventDefault();
@@ -96,39 +100,52 @@ export const CheckoutForm = () => {
     <form
       id="payment-form"
       onSubmit={handleSubmit}
-      style={{ padding: "10px 20px", width: 400, marginTop: 100 }}
+      style={{ padding: "10px 20px", width: "100%", marginTop: 100 }}
     >
-      <p>At the moment we only accept credit cards.</p>
       <p>
-        If you wish to pay via bank transfer or PayPal, please contact Matias
-        Facio:{" "}
+        At the moment we only accept credit cards. If you wish to pay via bank
+        transfer or PayPal, please contact Matias Facio:{" "}
         <span
           style={{ display: "flex", width: "100%", justifyContent: "center" }}
         >
           <b>matiaspersonal@gmail.com</b>
         </span>
       </p>
-      <p style={{ marginTop: 50 }}>Enter your payment information here:</p>
-      <CardElement id="card-element" options={cardStyle} />
-      <PrimaryButton disabled={processing || disabled || succeeded} id="submit">
-        <span id="button-text">
-          {processing ? (
-            <div className="spinner" id="spinner"></div>
-          ) : (
-            "CHECKOUT"
-          )}
-        </span>
-      </PrimaryButton>
-      <p
-        style={{
-          fontSize: "0.7rem",
-          display: "flex",
-          width: "100%",
-          justifyContent: "center",
-        }}
-      >
-        Payments are being handle with Stripe
-      </p>
+      {cart.length !== 0 && (
+        <>
+          <p style={{ marginTop: 50 }}>Enter your payment information here:</p>
+          <div style={{ textAlign: "right" }}>
+            Total to be charged: {cartTotal !== 0 ? cartTotal : 0} €
+          </div>
+          <CardElement
+            id="card-element"
+            options={cardStyle}
+            onChange={handleChange}
+          />
+          <SecondaryButton
+            disabled={processing || disabled || succeeded}
+            id="submit"
+          >
+            <span id="button-text">
+              {processing ? (
+                <div className="spinner" id="spinner"></div>
+              ) : (
+                "CHECKOUT"
+              )}
+            </span>
+          </SecondaryButton>
+          <p
+            style={{
+              fontSize: "0.7rem",
+              display: "flex",
+              width: "100%",
+              justifyContent: "center",
+            }}
+          >
+            Payments are being handle with Stripe
+          </p>
+        </>
+      )}
       {/* Show any error that happens when processing the payment */}
       {error && (
         <div className="card-error" role="alert">

@@ -7,36 +7,10 @@ import { Card, Modal } from "antd";
 import siluette from "../images/siluette.png";
 import { PrimaryButton } from "../components/UIComponents/PrimaryButton";
 import { SecondaryButton } from "../components/UIComponents/SecondaryButton";
-import { Course, CartContext } from "../contexts/CartContext";
+import { CartContext } from "../contexts/CartContext";
+import { Course, CoursesAvailable } from "./types";
 
 export type Currency = "eur" | "usd";
-
-const CoursesAvailable: Course[] = [
-  {
-    name: "The Tango Structure Bootcamp",
-    id: "1",
-    value: 99,
-    currency: "eur",
-  },
-  {
-    name: "The Tango Musicality Bootcamp",
-    id: "2",
-    value: 59,
-    currency: "eur",
-  },
-  {
-    name: "A few words about Improvisation",
-    id: "3",
-    value: 0,
-    currency: "eur",
-  },
-  {
-    name: "Excercises",
-    id: "4",
-    value: 50,
-    currency: "eur",
-  },
-];
 
 const { Meta } = Card;
 export const Courses = () => {
@@ -53,9 +27,8 @@ export const Courses = () => {
     if (data.courses?.length === 0) {
       return false;
     }
-    return data.courses.some(
-      (course: any) =>
-        courseName.id === course.id && course.status === "approved"
+    return data.courses?.some(
+      (course: any) => courseName.id === course.course_id
     );
   };
 

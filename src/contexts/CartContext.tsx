@@ -1,16 +1,10 @@
 import React from "react";
-
-export type Course = {
-  id: string;
-  name: string;
-  value: number;
-  currency: "eur" | "usd";
-};
+import { Course } from "../backend/types";
 
 export type CartProps = {
   cart: Course[];
   addProductToCart: (Product: Course) => void;
-  removeProductFromCart: (id: string) => void;
+  removeProductFromCart: (id: number) => void;
   error: string | null;
   handleError: () => void;
   emptyCart: () => void;
@@ -61,7 +55,7 @@ const CartContextProvider = ({ children }) => {
     setCart([]);
   };
 
-  const removeProductFromCart = (id: string) => {
+  const removeProductFromCart = (id: number) => {
     const newCart = cart.filter((product) => product.id !== id);
     setCart(newCart);
   };

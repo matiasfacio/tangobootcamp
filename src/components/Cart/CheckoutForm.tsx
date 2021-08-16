@@ -11,6 +11,7 @@ import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { CartContext } from "../../contexts/CartContext";
 import { useHistory } from "react-router";
 import { SecondaryButton } from "../UIComponents/SecondaryButton";
+import { useAuth0 } from "@auth0/auth0-react";
 
 export const CheckoutForm = ({ cart }) => {
   const [succeeded, setSucceeded] = useState(false);
@@ -23,9 +24,10 @@ export const CheckoutForm = ({ cart }) => {
   // const [modalCancel, setModalCancel] = useState<boolean>(false);
   const stripe = useStripe();
   const elements = useElements();
+  const { user } = useAuth0();
 
   const cartTotal: number = cart
-    .map((course) => course.value)
+    .map((course) => course.value - course.discount)
     .reduce((a, b) => a + b, 0);
 
   useEffect(() => {
@@ -48,6 +50,32 @@ export const CheckoutForm = ({ cart }) => {
 
     fetchData();
   }, [cart]);
+
+  const updateDB = async (payload: any) => {
+    const body = {
+      user: user,
+      cart: cart,
+      paymentIntent: payload,
+    };
+    try {
+      const result = await fetch(
+        "https://tbc.tangodefinitions.com/api/add-course",
+        {
+          method: "POST",
+          mode: "cors",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: await JSON.stringify(body),
+        }
+      );
+      const data = result.json();
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+    emptyCart();
+  };
 
   const cardStyle = {
     style: {
@@ -91,7 +119,7 @@ export const CheckoutForm = ({ cart }) => {
       setError(null);
       setProcessing(false);
       setSucceeded(true);
-      emptyCart();
+      updateDB(payload);
       history.push("/payment-confirmation");
     }
   };
@@ -100,14 +128,19 @@ export const CheckoutForm = ({ cart }) => {
     <form
       id="payment-form"
       onSubmit={handleSubmit}
-      style={{ padding: "10px 20px", width: "100%", marginTop: 100 }}
+      style={{ padding: "10px 20px", width: "100%", marginTop: 20 }}
     >
-      <p>
-        At the moment we only accept credit cards. If you wish to pay via bank
-        transfer or PayPal, please contact Matias Facio:{" "}
-        <span
-          style={{ display: "flex", width: "100%", justifyContent: "center" }}
-        >
+      <p
+        style={{
+          fontSize: "0.7rem",
+          fontFamily: "sans-serif",
+          textAlign: "center",
+        }}
+      >
+        Please, take into consideration that at the moment we only accept credit
+        cards. If you wish to pay via bank transfer or PayPal, please contact
+        Matias Facio at:{" "}
+        <span>
           <b>matiaspersonal@gmail.com</b>
         </span>
       </p>
@@ -115,7 +148,7 @@ export const CheckoutForm = ({ cart }) => {
         <>
           <p style={{ marginTop: 50 }}>Enter your payment information here:</p>
           <div style={{ textAlign: "right" }}>
-            Total to be charged: {cartTotal !== 0 ? cartTotal : 0} €
+            Total to be charged: {cartTotal !== 0 ? cartTotal.toFixed(2) : 0} €
           </div>
           <CardElement
             id="card-element"

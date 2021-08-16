@@ -2,9 +2,13 @@ import React from "react";
 import styled from "styled-components";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useQueryUser } from "../util/useQueryUser";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { Card, Modal } from "antd";
 import siluette from "../images/siluette.png";
+import structure from "../images/structure.png";
+import musicality from "../images/musicality.png";
+import exercises from "../images/exercises.png";
+import talkimprovisation from "../images/talkimprovisation.png";
 import { PrimaryButton } from "../components/UIComponents/PrimaryButton";
 import { SecondaryButton } from "../components/UIComponents/SecondaryButton";
 import { CartContext } from "../contexts/CartContext";
@@ -48,10 +52,19 @@ export const Courses = () => {
             return (
               <Card
                 key={course.name + course.id}
-                title={`${course.name}`}
                 cover={
                   <img
-                    src={siluette}
+                    src={
+                      course?.picture === "structure"
+                        ? structure
+                        : course?.picture === "musicality"
+                        ? musicality
+                        : course?.picture === "exercises"
+                        ? exercises
+                        : course?.picture === "talkimprovisation"
+                        ? talkimprovisation
+                        : siluette
+                    }
                     alt="course"
                     width="200px"
                     height="300px"
@@ -74,24 +87,24 @@ export const Courses = () => {
                 <Meta title={course.name} description="Your bootcamp" />
                 {checkCourseAvailable(course) || course.value === 0 ? (
                   <>
-                    <PrimaryButton
+                    <SecondaryButton
                       style={{ width: "100%", margin: "10px 0" }}
                       onClick={() => history.push("/course")}
                     >
                       {course.value === 0 ? "Free" : "Learn"}
-                    </PrimaryButton>
+                    </SecondaryButton>
                   </>
                 ) : (
                   <>
                     <>
-                      <PrimaryButton
+                      <SecondaryButton
                         style={{ margin: "10px 0px", width: "100%" }}
                         onClick={() => {
                           handleAddCourseToCart(course);
                         }}
                       >
                         Purchase
-                      </PrimaryButton>
+                      </SecondaryButton>
                     </>
                     <SecondaryButton style={{ width: "100%" }}>
                       Preview
@@ -130,9 +143,16 @@ export const Courses = () => {
         visible={modalPurchaseVisibility}
         title="Cart Information"
         footer={
-          <PrimaryButton onClick={() => setModalPurchaseVisibility(false)}>
-            Ok
-          </PrimaryButton>
+          <div style={{ display: "flex", justifyContent: "flex-end" }}>
+            <Link to="/cart">
+              <SecondaryButton style={{ marginRight: 20 }}>
+                Cart
+              </SecondaryButton>
+            </Link>
+            <PrimaryButton onClick={() => setModalPurchaseVisibility(false)}>
+              Ok
+            </PrimaryButton>
+          </div>
         }
       >
         The course was added to your cart
@@ -151,7 +171,7 @@ const CoursesSection = styled.section`
 
 const CoursesList = styled.div`
   display: flex;
-  max-width: 1200px;
+  max-width: 800px;
   justify-content: center;
   flex-wrap: wrap;
 `;

@@ -22,7 +22,7 @@ export const Cart = () => {
     React.useState<boolean>(false);
 
   const cartTotal: number = cart
-    .map((course) => course.value)
+    .map((course) => course.value - course.discount)
     .reduce((a, b) => a + b, 0);
 
   const columns = [
@@ -36,17 +36,40 @@ export const Cart = () => {
       title: "Price",
       dataIndex: "value",
       key: "value",
-      width: "10%",
+      width: "100px",
+      render: (field, course) => {
+        return (
+          <div>
+            {field.toFixed(2)} {course.currency === "eur" ? "€" : "u$s"}
+          </div>
+        );
+      },
     },
     {
-      title: "Currency",
-      dataIndex: "currency",
-      width: "10%",
-      key: "currency",
-      render: (field) => {
-        if (field === "eur") {
-          return "€";
-        } else return "u$s";
+      title: "Discount",
+      dataIndex: "discount",
+      key: "discount",
+      width: "100px",
+      render: (field, course) => {
+        return (
+          <div>
+            {field.toFixed(2)} {course.currency === "eur" ? "€" : "u$s"}
+          </div>
+        );
+      },
+    },
+    {
+      title: "Total",
+      key: "total",
+      width: "100px",
+      render: (_, course) => {
+        console.log(course);
+        const value = course.value - course.discount;
+        return (
+          <div>
+            {value.toFixed(2)} {course.currency === "eur" ? "€" : "u$s"}
+          </div>
+        );
       },
     },
     {
@@ -72,7 +95,7 @@ export const Cart = () => {
           pagination={false}
           footer={() => (
             <div style={{ textAlign: "right" }}>
-              Total: {cartTotal !== 0 ? cartTotal : 0} €
+              Total: {cartTotal !== 0 ? cartTotal.toFixed(2) : 0} €
             </div>
           )}
         />

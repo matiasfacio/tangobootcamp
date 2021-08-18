@@ -11,6 +11,7 @@ import { Elements } from "@stripe/react-stripe-js";
 import { CheckoutForm } from "./CheckoutForm";
 import { SecondaryButton } from "../UIComponents/SecondaryButton";
 import { Course } from "../../backend/types";
+import { CheckoutCartForm } from "./CheckoutCartForm";
 
 const promise = loadStripe(
   "pk_test_51JLPEJGSbvKyqkt6N9SUPRbrzGgHyNQDPkyO2TbGF0XdolDWdjhNaQktlLoVylWs6nlV7BqDMis38xRiVNK6vou6009yTWVhDF"
@@ -102,6 +103,7 @@ export const Cart = () => {
 
         <Elements stripe={promise}>
           <CheckoutForm cart={cart} />
+          <CheckoutCartForm cart={cart} />
         </Elements>
 
         <SecondaryButton

@@ -6,11 +6,12 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { Modal } from "antd";
 import { HomeOutlined, ShoppingCartOutlined } from "@ant-design/icons";
 import { CartContext } from "../contexts/CartContext";
+// import { useQueryUser } from "../util/useQueryUser";
 
 export const UserAreaMenu = () => {
   const { cart } = React.useContext(CartContext);
-
   const { logout } = useAuth0();
+  // const { data } = useQueryUser(user);
   const [modalVisibility, setModalVisibility] = React.useState<boolean>(false);
   const onOk = () => {
     logout({ returnTo: window.location.origin });
@@ -54,7 +55,12 @@ export const UserAreaMenu = () => {
           </ListItem>
           <ListItem>
             <Link to="/account-settings">
-              <p>Account Information</p>
+              {/* {data?.name ? (
+                <p style={{ textTransform: "capitalize" }}>{data.name}</p>
+              ) : (
+                <p style={{ textTransform: "lowercase" }}>{user.email}</p>
+              )} */}
+              <p>My account</p>
             </Link>
           </ListItem>
 

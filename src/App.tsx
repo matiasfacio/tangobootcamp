@@ -105,7 +105,7 @@ function App() {
     <Auth0Provider
       domain="dev-r45f9tll.eu.auth0.com"
       clientId="eNYipEzbx0t5EFsmPCBp1hGBylFxBB3G"
-      redirectUri={"https://www.tangobootcamp.net"}
+      redirectUri={"http://localhost:8008"}
     >
       <QueryClientProvider client={queryClient}>
         <BrowserRouter>

@@ -22,24 +22,22 @@ const Instructors: React.FunctionComponent<InstructorsProps> = () => {
             <div className="description">
               <p>
                 I started dancing Tango back in Argentina in 1995 a the age of
-                16. Since the moment I started it, I completely inmersed myself
+                16. From the very first moment, I completely inmersed myself
                 into it. <br />I began teaching Tango quite early, already in
-                1998 for children of a dance accademy, and short later for
+                1998 for children of a dance accademy, and shortly after for
                 adults as well. <br />I have taught in many studios in Buenos
-                Aires, I have traveled the world widely, from Vancouver, Canada,
-                to Tokyo, Japan, teaching and performing Argentine Tango. <br />
-                I have danced Tango Escenario, Milonguero, Nuevo, and what is
-                now wrongly called Salon or Traditional.
-                <br />
-                Today, I can proudly say that my style is <span>
-                  unique.
-                </span>{" "}
-                <br />
+                Aires, and I have traveled the world widely, from Vancouver,
+                Canada, to Tokyo, Japan, teaching and performing Argentine
+                Tango. <br />
+                Since 2008 I live in Berlin, Germany, where I continue teaching
+                Argentine Tango. <br />
+                <br />I have danced most of the popular styles, but today, I can
+                proudly say that my style is <span>unique.</span> <br />
                 <br />I believe the reason for having my own style is to having
                 understood how the tango structure works.
                 <br />
                 <span>
-                  Join us in the Tango Structure Bootcamp, and let us help you
+                  Join me in the Tango Structure Bootcamp, and let me help you
                   to find your own style.
                 </span>
               </p>
@@ -98,7 +96,8 @@ const InstructorsContainer = styled.div`
   span {
     background-color: var(--pink);
     color: white;
-    padding: 0 10px;
+    padding: 3px 10px;
+    line-height: 1.9;
   }
   @media screen and (max-width: 800px) {
     flex-direction: column;

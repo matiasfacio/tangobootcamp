@@ -7,6 +7,7 @@ export type Course = {
   discount: number;
   currency: "eur" | "usd";
   picture?: string;
+  available: boolean;
 };
 
 export const CoursesAvailable: Course[] = [
@@ -17,6 +18,7 @@ export const CoursesAvailable: Course[] = [
     discount: 9.9,
     currency: "eur",
     picture: "structure",
+    available: true,
   },
   {
     name: "The Tango Musicality Bootcamp",
@@ -25,6 +27,7 @@ export const CoursesAvailable: Course[] = [
     discount: 0,
     currency: "eur",
     picture: "musicality",
+    available: false,
   },
   {
     name: "A few words about Improvisation",
@@ -33,6 +36,7 @@ export const CoursesAvailable: Course[] = [
     discount: 0,
     currency: "eur",
     picture: "talkimprovisation",
+    available: true,
   },
   {
     name: "Excercises",
@@ -41,5 +45,6 @@ export const CoursesAvailable: Course[] = [
     discount: 0,
     currency: "eur",
     picture: "exercises",
+    available: false,
   },
 ];

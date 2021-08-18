@@ -42,11 +42,10 @@ export const TangoStructure = () => {
             </p>
           </li>
           <li style={{ listStyle: "none" }}>
-            Join us now to fully understand how this dance work!
-            <PrimaryButton
-              style={{ marginLeft: 20 }}
-              onClick={() => authenticateUser()}
-            >
+            <p>
+              Join us now to finally fully understand how tango dance works!
+            </p>
+            <PrimaryButton onClick={() => authenticateUser()}>
               Sign up
             </PrimaryButton>
           </li>

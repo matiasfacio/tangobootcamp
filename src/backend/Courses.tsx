@@ -45,12 +45,25 @@ export const Courses = () => {
 
   return (
     <CoursesSection>
+      <h2>
+        Welcome
+        <span
+          style={
+            data?.name ? { textTransform: "capitalize" } : { display: "none" }
+          }
+        >
+          {", " + data?.name}
+        </span>
+        !
+      </h2>
+      <h2>Courses - Bootcamps - Lectures - Talks</h2>
       <CoursesList>
         {isAuthenticated &&
           isSuccess &&
           CoursesAvailable.map((course) => {
             return (
-              <Card
+              <StyledCard
+                theme={course.available ? "true" : "false"}
                 key={course.name + course.id}
                 cover={
                   <img
@@ -111,7 +124,7 @@ export const Courses = () => {
                     </SecondaryButton>
                   </>
                 )}
-              </Card>
+              </StyledCard>
             );
           })}
       </CoursesList>
@@ -171,7 +184,19 @@ const CoursesSection = styled.section`
 
 const CoursesList = styled.div`
   display: flex;
-  max-width: 800px;
   justify-content: center;
   flex-wrap: wrap;
+`;
+
+const StyledCard = styled(Card)`
+  position: relative;
+
+  &::after {
+    ${({ theme }) =>
+      theme === "false" &&
+      'content: "Coming soon!"; position: absolute; top: 20px; right: 20px;padding: 5px 10px; box-shadow: 1px 1px 5px rgba(0,0,0,0.5);background-color: red; color: white; font-size: 1rem;transform: rotateZ(350deg); transition: transform 250ms ease-in-out'}
+  }
+  &:hover::after {
+    transform: rotateZ(380deg);
+  }
 `;

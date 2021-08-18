@@ -16,14 +16,14 @@ export const WhyThisBootcamp = () => {
           <li>
             <p>
               After 20+ years of experience teaching Argentine Tango, we keep
-              seeing that the same problems repeat and repeat, no matter the
-              culture nor the level.
+              seeing that the same problems repeating and repeating, no matter
+              the culture nor the level.
             </p>
           </li>
           <li>
             <p>
               The Tango Structure isn't hard to understand, actually it is quite
-              simple! But still, most of the dancers we know, not matter if they
+              simple! But yet, most of the dancers we know, not matter if they
               are professionals dancers, teachers, maestros or great popular
               dancers, don't know sometimes the simple things!
             </p>
@@ -31,8 +31,8 @@ export const WhyThisBootcamp = () => {
           <li>
             <p>
               Knowing how the Tango Structure works, will save you so much time
-              and so much money! In others words, again: you can save YEARS and
-              LOT OF MONEY.
+              and so much money! Yes, you can save YEARS of learning and LOT OF
+              MONEY.
             </p>
           </li>
         </ul>

@@ -43,9 +43,34 @@ export const CheckoutCartForm = ({ cart }: { cart: Course[] }) => {
         }
       }}
     >
+      <p
+        style={{
+          fontSize: "0.7rem",
+          display: "inline-block",
+          width: "100%",
+          justifyContent: "flex-end",
+        }}
+      >
+        Payments are being handle by{" "}
+        <a
+          href="https://www.stripe.com"
+          style={{ color: "blue", marginLeft: 5 }}
+        >
+          Stripe.com
+        </a>
+      </p>
       <SecondaryButton
         type="submit"
-        style={cart.length === 0 ? { backgroundColor: "gray" } : {}}
+        style={
+          cart.length === 0
+            ? {
+                backgroundColor: "gray",
+                width: "fit-content",
+                display: "inline-block",
+                alignSelf: "flex-end",
+              }
+            : { width: "fit-content", alignSelf: "flex-end" }
+        }
         disabled={cart.length === 0}
       >
         Checkout

@@ -102,26 +102,9 @@ export const Cart = () => {
             <CheckoutCartForm cart={cart} />
           </Elements>
 
-          <p
-            style={{
-              fontSize: "0.7rem",
-              display: "flex",
-              width: "100%",
-              justifyContent: "center",
-            }}
-          >
-            Payments are being handle by{" "}
-            <a
-              href="https://www.stripe.com"
-              style={{ color: "blue", marginLeft: 5 }}
-            >
-              Stripe.com
-            </a>
-          </p>
-
           <SecondaryButton
             key="security"
-            style={{ marginTop: 20, alignSelf: "center" }}
+            style={{ marginTop: 20, alignSelf: "flex-end" }}
             onClick={() => setModalSecurityVisibility(true)}
           >
             About Security

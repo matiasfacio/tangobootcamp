@@ -52,9 +52,9 @@ export const TangoStructure = () => {
             <p>
               Join us now to finally fully understand how tango dance works!
             </p>
-            <PrimaryButton onClick={() => authenticateUser()}>
+            <PrimaryButtonBoost onClick={() => authenticateUser()}>
               Sign up
-            </PrimaryButton>
+            </PrimaryButtonBoost>
           </li>
         </ul>
       </TangoStructureContainer>
@@ -92,4 +92,8 @@ const Title = styled.div`
     text-transform: uppercase;
     text-align: center;
   }
+`;
+
+const PrimaryButtonBoost = styled(PrimaryButton)`
+  padding: 20px 20px;
 `;

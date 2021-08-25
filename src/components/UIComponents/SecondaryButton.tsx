@@ -7,7 +7,7 @@ export const SecondaryButton = styled.button`
   border-radius: 2px;
   border: none;
   outline: none;
-  padding: 3px 10px;
+  padding: 10px 10px;
   font-size: var(--btn-fontsize);
   font-weight: var(--btn-weight);
   &:hover {

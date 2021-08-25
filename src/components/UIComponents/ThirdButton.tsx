@@ -2,7 +2,8 @@ import styled from "styled-components";
 
 export const ThirdButton = styled.button`
   background-color: white;
-  color: black;
+  color: var(--black);
+  padding: 10px 10px;
   font-size: 1.2rem;
   border-radius: 2px;
   width: 150px;

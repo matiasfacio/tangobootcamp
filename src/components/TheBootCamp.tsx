@@ -7,6 +7,8 @@ export interface TheBootCampProps {}
 const TheBootCamp: React.FunctionComponent<TheBootCampProps> = () => {
   const headStyles = {
     fontSize: "1.3rem",
+    fontWeight: 300,
+    fontFamily: "serif",
   };
 
   return (
@@ -119,9 +121,9 @@ const Section = styled.section`
 
 const CardStyle = styled(Card)`
   min-height: 320px;
+  max-width: 320px;
   ul {
     list-style: none;
-    padding: 10px;
   }
   span {
     color: var(--pink);

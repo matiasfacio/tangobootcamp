@@ -108,7 +108,7 @@ const MenuContainer = styled.nav`
       }
     }
     & a:last-child {
-      padding: 10px 20px;
+      padding: 10px q0px;
       border-radius: 2px;
       transition: all 0.3s ease-in-out;
       cursor: pointer;

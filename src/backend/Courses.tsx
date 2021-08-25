@@ -188,7 +188,9 @@ export const Courses = () => {
       <Modal
         visible={modalPreview.preview}
         title="Video Preview"
-        width={"100%"}
+        style={{ maxWidth: 1200 }}
+        width={"clamp(320px, 100%, 1200px)"}
+        onCancel={() => setModalPreview({ preview: false, id: null })}
         destroyOnClose
         footer={
           <div

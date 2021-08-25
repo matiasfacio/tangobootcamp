@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const PrimaryButton = styled.button`
   background-color: var(--pink);
   border-radius: 2px;
-  padding: 1px 10px;
+  padding: 10px 10px;
   color: white;
   cursor: pointer;
   outline: none;

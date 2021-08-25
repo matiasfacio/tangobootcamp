@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const PrimaryButton = styled.button`
-  background-color: rgb(247, 126, 126);
+  background-color: var(--pink);
   border-radius: 2px;
   padding: 1px 10px;
   color: white;

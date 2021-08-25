@@ -7,8 +7,6 @@ import { PrimaryButton } from "../UIComponents/PrimaryButton";
 import { SecurityModal } from "./SecurityModal";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
-// import { CheckoutCartForm } from "./CheckoutCartForm";
-import { CheckoutForm } from "./CheckoutForm";
 import { SecondaryButton } from "../UIComponents/SecondaryButton";
 import { Course } from "../../backend/types";
 import { CheckoutCartForm } from "./CheckoutCartForm";
@@ -64,7 +62,6 @@ export const Cart = () => {
       key: "total",
       width: "100px",
       render: (_, course) => {
-        console.log(course);
         const value = course.value - course.discount;
         return (
           <div>
@@ -87,7 +84,7 @@ export const Cart = () => {
     <>
       <CartSection>
         <Title>
-          <h2>Shopping Cart</h2>{" "}
+          <h3>Shopping Cart</h3>{" "}
         </Title>
         <Table
           columns={columns}
@@ -100,19 +97,36 @@ export const Cart = () => {
             </div>
           )}
         />
+        <Buttonera>
+          <Elements stripe={promise}>
+            <CheckoutCartForm cart={cart} />
+          </Elements>
 
-        <Elements stripe={promise}>
-          <CheckoutForm cart={cart} />
-          <CheckoutCartForm cart={cart} />
-        </Elements>
+          <p
+            style={{
+              fontSize: "0.7rem",
+              display: "flex",
+              width: "100%",
+              justifyContent: "center",
+            }}
+          >
+            Payments are being handle by{" "}
+            <a
+              href="https://www.stripe.com"
+              style={{ color: "blue", marginLeft: 5 }}
+            >
+              Stripe.com
+            </a>
+          </p>
 
-        <SecondaryButton
-          key="security"
-          style={{ marginTop: 20, alignSelf: "center" }}
-          onClick={() => setModalSecurityVisibility(true)}
-        >
-          How do we handle security
-        </SecondaryButton>
+          <SecondaryButton
+            key="security"
+            style={{ marginTop: 20, alignSelf: "center" }}
+            onClick={() => setModalSecurityVisibility(true)}
+          >
+            About Security
+          </SecondaryButton>
+        </Buttonera>
         <Modal
           title="How do we handle Security in Tangobootcamp.net"
           visible={modalSecurityVisibility}
@@ -142,4 +156,12 @@ const CartSection = styled.section`
 
 const Title = styled.div`
   text-align: center;
+`;
+
+const Buttonera = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
 `;

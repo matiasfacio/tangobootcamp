@@ -11,8 +11,11 @@ import CartContextProvider from "./contexts/CartContext";
 
 const GlobalStyle = createGlobalStyle`
   :root {
-    --black: #292929;
-    --pink: rgb(247, 126, 126);
+    --black-gray: #292929;
+    --black: #062424;
+    --pink: #d66049;
+    --green: #146d6d;
+    /* --pink: rgb(247, 126, 126); */
     --white: white;
     --blue: rgb(45, 153, 199);
     --btn-fontsize: 1.2rem;

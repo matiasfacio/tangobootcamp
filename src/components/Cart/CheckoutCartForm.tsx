@@ -6,14 +6,21 @@
 */
 
 import React from "react";
+// import { useHistory } from "react-router";
 import { Course } from "../../backend/types";
-import { PrimaryButton } from "../UIComponents/PrimaryButton";
+import { SecondaryButton } from "../UIComponents/SecondaryButton";
+import { useAuth0 } from "@auth0/auth0-react";
 
 export const CheckoutCartForm = ({ cart }: { cart: Course[] }) => {
+  const { user } = useAuth0();
+  const body = {
+    user: user,
+    cart: cart,
+  };
+
   return (
     <form
-      // action="https://tbc.tangodefinitions.com/api/create-checkout-session"
-      // method="POST"
+      style={{ display: "flex", justifyContent: "flex-end", width: "100%" }}
       onSubmit={async (e) => {
         e.preventDefault();
         try {
@@ -21,25 +28,28 @@ export const CheckoutCartForm = ({ cart }: { cart: Course[] }) => {
             "https://tbc.tangodefinitions.com/api/create-checkout-session",
             {
               method: "POST",
-              body: JSON.stringify(cart),
+              mode: "cors",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(body),
             }
           );
           const data = await result.json();
-          console.log("result:", result);
-          console.log("data:", data);
+          // history.push(data.url);
+          window.location.href = data.url;
         } catch (error) {
           console.log(error);
         }
-        console.log("todo bien");
       }}
     >
-      <PrimaryButton
+      <SecondaryButton
         type="submit"
         style={cart.length === 0 ? { backgroundColor: "gray" } : {}}
         disabled={cart.length === 0}
       >
         Checkout
-      </PrimaryButton>
+      </SecondaryButton>
     </form>
   );
 };

@@ -10,7 +10,11 @@ export const SecurityModal = () => {
       You can only buy with us if you are authenticated and this is also the
       only way you can access to the Courses area and intent to buy a Course.
       <br />
-      Payments are being securely managed by Stripe.
+      Payments are being securely managed by{" "}
+      <a href="https://www.stripe.com" style={{ color: "blue" }}>
+        Stripe.com
+      </a>
+      .
     </div>
   );
 };

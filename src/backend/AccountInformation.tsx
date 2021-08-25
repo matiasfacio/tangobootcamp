@@ -11,26 +11,31 @@ export const AccountInformation = () => {
   const { user } = useAuth0();
   const { data, isLoading, isSuccess, isError } = useQueryUser(user);
 
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const columns = [
     {
       title: "Course",
       dataIndex: "course_id",
+      key: "course_id",
       width: "300px",
       render: (field) => {
         const courseFounded = CoursesAvailable.find(
           (course) => course.id === field
         );
-        return <div>{courseFounded?.name}</div>;
+        return <div key={field}>{courseFounded?.name}</div>;
       },
     },
   ];
 
   if (isLoading) {
-    return <h2>Loading...</h2>;
+    return <h3>Loading...</h3>;
   }
 
   if (isError) {
-    return <h2>Error fetching data</h2>;
+    return <h3>Error fetching data</h3>;
   }
 
   return (
@@ -40,7 +45,9 @@ export const AccountInformation = () => {
           <Settings>
             <UpdateUserInformation user={data} />
             <CoursesContainer>
-              <Title>Courses</Title>
+              <Title>
+                <h3>Courses</h3>
+              </Title>
               <Table dataSource={data.courses} columns={columns}></Table>
             </CoursesContainer>
           </Settings>
@@ -54,15 +61,12 @@ const AccountSettingsContainer = styled.section`
   min-height: 100vh;
   max-width: 800px;
   background-color: var(--white);
-  margin: 50px auto;
+  margin: 70px auto;
 `;
 
 const Title = styled.div`
   display: flex;
   justify-content: center;
-  color: var(--black);
-  font-family: "Fira Sans", sans-serif;
-  font-size: 1.5rem;
   padding-top: 20px;
   padding-bottom: 20px;
 `;

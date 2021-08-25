@@ -11,7 +11,7 @@ export const ThirdButton = styled.button`
   border: none;
   outline: none;
   &:hover {
-    background-color: rgb(247, 126, 126);
+    background-color: var(--pink);
     color: white;
   }
 `;

@@ -13,19 +13,48 @@ import { PrimaryButton } from "../components/UIComponents/PrimaryButton";
 import { SecondaryButton } from "../components/UIComponents/SecondaryButton";
 import { CartContext } from "../contexts/CartContext";
 import { Course, CoursesAvailable } from "./types";
+import { VideoInterface } from "../components/UIComponents/VideoInterface";
+import { VideoApi } from "./VideoApi";
 
 export type Currency = "eur" | "usd";
 
+const ShowPreview = ({ video }) => {
+  const videoInformation = VideoApi.loadPreview(video);
+  return (
+    <div
+      style={{
+        display: "flex",
+        flexWrap: "wrap",
+        justifyContent: "space-around",
+      }}
+    >
+      <VideoInterface video={videoInformation} autoplay={false} />
+      <div style={{ margin: "50px 0", maxWidth: 320 }}>
+        <p>Snippet: {videoInformation.snippet}</p>
+        <p>Description: {videoInformation.description}</p>
+      </div>
+    </div>
+  );
+};
+
 const { Meta } = Card;
+
 export const Courses = () => {
   const history = useHistory();
   const { user, isAuthenticated } = useAuth0();
   const { data, isSuccess } = useQueryUser(user);
-  const [modalVisibility, setModalVisibility] = React.useState(false);
+  const [modalPreview, setModalPreview] = React.useState({
+    preview: false,
+    id: null,
+  });
   const [modalPurchaseVisibility, setModalPurchaseVisibility] =
     React.useState(false);
   const { addProductToCart, error, handleError } =
     React.useContext(CartContext);
+
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const checkCourseAvailable = (courseName: Course): boolean => {
     if (data.courses?.length === 0) {
@@ -38,25 +67,25 @@ export const Courses = () => {
 
   const handleAddCourseToCart = (course) => {
     addProductToCart(course);
-    if (!error) {
-      setModalPurchaseVisibility(true);
-    }
+    setModalPurchaseVisibility(true);
   };
 
   return (
     <CoursesSection>
-      <h2>
-        Welcome
-        <span
-          style={
-            data?.name ? { textTransform: "capitalize" } : { display: "none" }
-          }
-        >
-          {", " + data?.name}
-        </span>
-        !
-      </h2>
-      <h2>Courses - Bootcamps - Lectures - Talks</h2>
+      <WelcomeMessage>
+        <h3>
+          Welcome
+          <span
+            style={
+              data?.name ? { textTransform: "capitalize" } : { display: "none" }
+            }
+          >
+            {", " + data?.name}
+          </span>
+          .<br />
+          Courses - Bootcamps - Lectures - Talks
+        </h3>
+      </WelcomeMessage>
       <CoursesList>
         {isAuthenticated &&
           isSuccess &&
@@ -84,13 +113,6 @@ export const Courses = () => {
                   />
                 }
                 hoverable
-                style={{
-                  margin: 20,
-                  cursor: "pointer",
-                  flexBasis: "300px",
-                  flexGrow: 0,
-                  flexShrink: 0,
-                }}
                 onClick={() =>
                   (checkCourseAvailable(course) || course.value === 0) &&
                   history.push(`/course/${course.id}`)
@@ -119,7 +141,12 @@ export const Courses = () => {
                         Purchase
                       </SecondaryButton>
                     </>
-                    <SecondaryButton style={{ width: "100%" }}>
+                    <SecondaryButton
+                      style={{ width: "100%" }}
+                      onClick={() =>
+                        setModalPreview({ preview: true, id: course.id })
+                      }
+                    >
                       Preview
                     </SecondaryButton>
                   </>
@@ -128,19 +155,7 @@ export const Courses = () => {
             );
           })}
       </CoursesList>
-      <Modal
-        visible={modalVisibility}
-        title="Access"
-        footer={
-          <PrimaryButton onClick={() => setModalVisibility(false)}>
-            Ok
-          </PrimaryButton>
-        }
-        onCancel={() => setModalVisibility(false)}
-      >
-        You don't have access to this course. The status is 'pending payment'.
-        If you think that there is problem, please contact us!
-      </Modal>
+
       <Modal
         visible={!!error}
         title="Error"
@@ -170,6 +185,28 @@ export const Courses = () => {
       >
         The course was added to your cart
       </Modal>
+      <Modal
+        visible={modalPreview.preview}
+        title="Video Preview"
+        width={"100%"}
+        destroyOnClose
+        footer={
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "flex-end",
+            }}
+          >
+            <PrimaryButton
+              onClick={() => setModalPreview({ preview: false, id: null })}
+            >
+              Close
+            </PrimaryButton>
+          </div>
+        }
+      >
+        <ShowPreview video={modalPreview.id} />
+      </Modal>
     </CoursesSection>
   );
 };
@@ -183,13 +220,20 @@ const CoursesSection = styled.section`
 `;
 
 const CoursesList = styled.div`
+  width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   flex-wrap: wrap;
+  padding: 0 2vw;
 `;
 
 const StyledCard = styled(Card)`
   position: relative;
+  margin: 20;
+  cursor: pointer;
+  flex-basis: 300px;
+  flex-grow: 0;
+  flex-shrink: 0;
 
   &::after {
     ${({ theme }) =>
@@ -199,4 +243,11 @@ const StyledCard = styled(Card)`
   &:hover::after {
     transform: rotateZ(380deg);
   }
+`;
+
+const WelcomeMessage = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  padding: 0 2vw;
 `;

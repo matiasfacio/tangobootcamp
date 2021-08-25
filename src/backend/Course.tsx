@@ -19,6 +19,10 @@ export const Course: React.FC<BackendProps> = () => {
   const [showVideos, setShowVideos] = React.useState<boolean>(true);
   const { isAuthenticated } = useAuth0();
 
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
       {!isAuthenticated && history.push("/login")}
@@ -87,7 +91,7 @@ export const Course: React.FC<BackendProps> = () => {
 
 const BackendLayout = styled.div`
   width: 100%;
-  margin: 50px auto;
+  margin: 70px auto;
   padding: 0 0em;
   min-height: 100vh;
   background-color: white;
@@ -128,7 +132,7 @@ const LeftSideScreen = styled.div`
 const RightSideScreen = styled.div`
   width: 20vw;
   position: absolute;
-  top: 50px;
+  top: 70px;
   right: 0;
   height: 100%;
   transform: ${(props) =>

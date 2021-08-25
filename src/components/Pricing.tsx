@@ -57,7 +57,7 @@ const PricingStyles = styled.div`
 `;
 
 const Price = styled.div`
-  color: var(--blue);
+  color: var(--green);
   font-size: 4vw;
   font-weight: 800;
   padding-left: 50px;

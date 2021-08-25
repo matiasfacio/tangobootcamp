@@ -41,7 +41,6 @@ export const VideoInterface: React.FC<VideoInterfaceProps> = ({
                   },
                 },
               }}
-              onPlay={() => console.log("playing now")}
               progressInterval={250}
             />
           )}
@@ -55,7 +54,7 @@ const VideoContainer = styled.div`
   position: relative;
   display: inline-block;
   height: 100%;
-  width: 100%;
+  max-width: 100%;
 `;
 
 const VideoOnlyContainer = styled.div`

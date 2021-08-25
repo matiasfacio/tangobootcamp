@@ -81,7 +81,7 @@ const Title = styled.div`
   justify-content: center;
   h2 {
     font-size: 2.5rem;
-    color: #292929;
+    color: var(--black);
     text-transform: uppercase;
     text-align: center;
   }
@@ -122,7 +122,7 @@ const Instructor = styled.div`
     h2 {
       font-size: 1.5rem;
       padding: 20px 0;
-      color: #292929;
+      color: var(--black);
       text-transform: uppercase;
     }
     .description {
@@ -131,7 +131,7 @@ const Instructor = styled.div`
     .rol {
       h3 {
         padding: 0px 0px 10px 0px;
-        color: rgb(247, 126, 126);
+        color: var(--pink);
       }
     }
   }

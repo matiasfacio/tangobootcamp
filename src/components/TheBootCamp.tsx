@@ -17,8 +17,8 @@ const TheBootCamp: React.FunctionComponent<TheBootCampProps> = () => {
         </h2>
         <h3>( and why you should join! )</h3>
       </div>
-      <Row gutter={16}>
-        <Col span={8}>
+      <Row gutter={[16, 16]} justify="center" align="middle">
+        <Col span={8} xs={24} sm={16} md={12} xl={8}>
           <CardStyle title="Content" size="small" headStyle={headStyles}>
             <ul>
               <li>
@@ -42,7 +42,7 @@ const TheBootCamp: React.FunctionComponent<TheBootCampProps> = () => {
             </ul>
           </CardStyle>
         </Col>
-        <Col span={8}>
+        <Col span={8} xs={24} sm={16} md={12} xl={8}>
           <CardStyle title="Who are you ?" size="small" headStyle={headStyles}>
             <ul>
               <li>
@@ -62,8 +62,7 @@ const TheBootCamp: React.FunctionComponent<TheBootCampProps> = () => {
             </ul>
           </CardStyle>
         </Col>
-
-        <Col span={8}>
+        <Col span={8} xs={24} sm={16} md={12} xl={8}>
           <CardStyle title="Certificates" size="small" headStyle={headStyles}>
             <ul>
               <li>
@@ -89,7 +88,7 @@ const TheBootCamp: React.FunctionComponent<TheBootCampProps> = () => {
 export default TheBootCamp;
 
 const Section = styled.section`
-  background-color: #292929;
+  background-color: var(--black);
   padding: 20px 2em;
   margin: 0px auto;
   min-height: calc(100vh + 60px);
@@ -119,8 +118,7 @@ const Section = styled.section`
 `;
 
 const CardStyle = styled(Card)`
-  min-height: 350px;
-  max-width: 330px;
+  min-height: 320px;
   ul {
     list-style: none;
     padding: 10px;

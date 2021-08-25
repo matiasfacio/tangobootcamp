@@ -6,6 +6,7 @@ import IconMenuClose from "../images/close.svg";
 import { useAuth0 } from "@auth0/auth0-react";
 import { PrimaryButton } from "./UIComponents/PrimaryButton";
 import { UserOutlined } from "@ant-design/icons";
+import { Logo } from "./Logo";
 
 export type menuResponsiveCss = React.CSSProperties | undefined;
 
@@ -42,6 +43,7 @@ const NavBar: React.FunctionComponent = () => {
           width="60px"
         />
       </BurgerMenuContainer>
+      <Logo />
       <MenuContainer theme={menuOpen.toString()}>
         <ul>
           <HashLink to="/#">home</HashLink>
@@ -51,9 +53,9 @@ const NavBar: React.FunctionComponent = () => {
           <HashLink to="/#program">Program</HashLink>
           <HashLink to="/#contact">contact</HashLink>
           {!isAuthenticated ? (
-            <PrimaryButton onClick={() => authenticateUser()}>
+            <PrimaryButtonBoost onClick={() => authenticateUser()}>
               Login / Register
-            </PrimaryButton>
+            </PrimaryButtonBoost>
           ) : (
             <HashLink to="/userarea">
               <UserOutlined />
@@ -79,12 +81,15 @@ const BurgerMenuContainer = styled.div`
 `;
 
 const MenuContainer = styled.nav`
-  height: 50px;
+  height: 100px;
   width: 100vw;
   background-color: var(--black);
+  display: flex;
+  justify-content: flex-end;
   ul {
     list-style: none;
     height: 100%;
+    width: 80%;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -118,6 +123,7 @@ const MenuContainer = styled.nav`
     position: fixed;
     left: 0;
     top: 0;
+    padding-right: 50px;
     background-color: var(--black);
     transform: ${({ theme }) =>
       theme === "true" ? "translateX(0)" : "translateX(-50%)"};
@@ -128,6 +134,13 @@ const MenuContainer = styled.nav`
     z-index: 999;
     ul {
       flex-direction: column;
+      justify-content: center;
+      align-items: flex-end;
+      height: 80%;
     }
   }
+`;
+
+const PrimaryButtonBoost = styled(PrimaryButton)`
+  padding: 10px 10px;
 `;

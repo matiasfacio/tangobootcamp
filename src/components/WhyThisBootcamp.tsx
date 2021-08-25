@@ -16,8 +16,8 @@ export const WhyThisBootcamp = () => {
           <li>
             <p>
               After 20+ years of experience teaching Argentine Tango, we keep
-              seeing that the same problems repeating and repeating, no matter
-              the culture nor the level.
+              seeing the same problems repeating and repeating, no matter the
+              culture nor the level.
             </p>
           </li>
           <li>

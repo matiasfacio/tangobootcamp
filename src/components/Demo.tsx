@@ -1,15 +1,23 @@
 import * as React from "react";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { VideoInterface } from "./UIComponents/VideoInterface";
 import styled from "styled-components";
 import { PrimaryButton } from "../components/UIComponents/PrimaryButton";
 import { Video } from "../backend/VideoApi";
+import { useAuth0 } from "@auth0/auth0-react";
 
 export interface DemoProps {}
 
 const Demo: React.FunctionComponent<DemoProps> = () => {
+  const { isAuthenticated, loginWithRedirect } = useAuth0();
+  const history = useHistory();
+
+  const authenticateUser = () => {
+    !isAuthenticated ? loginWithRedirect() : history.push("/userarea");
+  };
+
   const HowitWorksVideo: Video = {
-    url: "https://vimeo.com/581727033",
+    url: "https://vimeo.com/590999723",
     name: "UserArea",
     id: 99,
   };
@@ -31,9 +39,9 @@ const Demo: React.FunctionComponent<DemoProps> = () => {
                 of Argentine Tango.
               </p>
             </div>
-            <Link to="/login">
-              <PrimaryButtonBoost>Register now!</PrimaryButtonBoost>
-            </Link>
+            <PrimaryButtonBoost onClick={() => authenticateUser()}>
+              Register now!
+            </PrimaryButtonBoost>
           </VideoDescription>
         </VideoContainer>
       </SectionContainer>

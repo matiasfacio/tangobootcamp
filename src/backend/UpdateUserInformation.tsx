@@ -19,7 +19,9 @@ export const UpdateUserInformation = ({ user }) => {
 
   return (
     <Container>
-      <Title>Information</Title>
+      <Title>
+        <h3>Information</h3>
+      </Title>
       <Form
         {...layout}
         initialValues={{
@@ -61,9 +63,6 @@ const Title = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
-  color: var(--black);
-  font-family: "Fira Sans", sans-serif;
-  font-size: 1.5rem;
   padding-top: 20px;
   padding-bottom: 20px;
 `;

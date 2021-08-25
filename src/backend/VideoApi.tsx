@@ -8,12 +8,45 @@ export type Video = {
 
 let nextId = 0;
 
+export const VideosPreview: Video[] = [
+  {
+    name: "Improvisation",
+    id: 1,
+    url: "https://vimeo.com/583806355",
+    snippet: "Introduction to Improvisation in Tango",
+    description: "So much going on!",
+  },
+  {
+    name: "The Tango Structure BootCamp",
+    id: 2,
+    url: "https://vimeo.com/313714047",
+    snippet: "What will you learn.",
+    description: "This is a small preview of what wer are going to be working!",
+  },
+  {
+    name: "The Tango Musicality BootCamp",
+    id: 3,
+    url: "https://vimeo.com/294424954",
+    snippet: "What will you learn.",
+    description:
+      "Dancing to tango music is not the same than knowing about musical theory.",
+  },
+  {
+    name: "Exercises",
+    id: 4,
+    url: "https://vimeo.com/214391023",
+    snippet: "What will you learn.",
+    description:
+      "Many useful exercises to improve your tango technique. This package will be updated continuosly!",
+  },
+];
+
 export const Improvisation: Video[] = [
   {
     name: "Introduction",
     id: 1,
     url: "https://vimeo.com/583806355",
-    snippet: "Intoduction to Improvisation in Tango",
+    snippet: "Introduction to Improvisation in Tango",
     description: "So much going on!",
   },
   {
@@ -71,7 +104,6 @@ export const videoList: Video[] = [
   { name: "Short Boleos", id: nextId++ },
   { name: "Entradas", id: nextId++ },
   { name: "Entradas or Sacadas", id: nextId++ },
-  { name: "UserArea", id: 99, url: "https://vimeo.com/581727033" },
 ];
 
 const CoursesId = [
@@ -104,5 +136,11 @@ export const VideoApi = {
       (video) => video.name === request
     );
     return requestedVideoName;
+  },
+  loadPreview: (request: number): Video => {
+    const requestPreviewVideo: Video[] = VideosPreview.filter(
+      (video) => video.id === request
+    );
+    return requestPreviewVideo[0];
   },
 };

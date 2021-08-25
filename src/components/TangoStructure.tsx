@@ -2,11 +2,18 @@ import React from "react";
 import styled from "styled-components";
 import { PrimaryButton } from "./UIComponents/PrimaryButton";
 import { useAuth0 } from "@auth0/auth0-react";
+import { useHistory } from "react-router-dom";
 
 export const TangoStructure = () => {
   const { isAuthenticated, loginWithRedirect } = useAuth0();
+  const history = useHistory();
+
   const authenticateUser = () => {
-    !isAuthenticated && loginWithRedirect();
+    if (!isAuthenticated) {
+      loginWithRedirect();
+    } else {
+      history.push("/userarea");
+    }
   };
 
   return (

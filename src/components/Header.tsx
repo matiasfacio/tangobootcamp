@@ -5,14 +5,25 @@ import styled from "styled-components";
 import { SecondaryButton } from "./UIComponents/SecondaryButton";
 import { PrimaryButton } from "./UIComponents/PrimaryButton";
 import { useAuth0 } from "@auth0/auth0-react";
+import { useHistory } from "react-router-dom";
 
 export interface HeaderProps {}
 
 const Header: React.FunctionComponent<HeaderProps> = () => {
   const { isAuthenticated, loginWithRedirect } = useAuth0();
+  const history = useHistory();
+
   const authenticateUser = () => {
-    !isAuthenticated && loginWithRedirect();
+    if (!isAuthenticated) {
+      loginWithRedirect();
+    } else {
+      history.push("/userarea");
+    }
   };
+
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <HeaderSection>
@@ -59,8 +70,14 @@ const PrimaryButtonBoost = styled(PrimaryButton)`
 
 const HeaderSection = styled.section`
   margin: 0 auto;
-  padding-top: 100px;
   min-height: calc(100vh - 50px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @media screen and (max-width: 994px) {
+    padding-top: 100px;
+    min-height: 100vh;
+  }
 `;
 
 const HeaderLeft = styled.div`
@@ -81,8 +98,9 @@ const HeaderLeft = styled.div`
   }
   span {
     box-shadow: 1px 1px 10px;
-    background-color: rgb(247, 126, 126);
-    padding: 5px;
+    color: white;
+    background-color: var(--pink);
+    padding: 1px 10px;
     font-size: 4rem;
     transform: rotateZ(20deg);
   }
@@ -99,13 +117,12 @@ const HeaderRight = styled.div`
       height: auto;
       opacity: 1;
       z-index: 1;
-      animation: rotateImages 10s 5 alternate-reverse;
     }
     #secondary-image {
       position: absolute;
       z-index: -1;
       img#header-img {
-        transform: translate(70%, -130%);
+        transform: translate(50%, -130%);
         opacity: 0.8;
         width: 15vw;
       }

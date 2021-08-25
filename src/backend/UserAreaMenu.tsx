@@ -6,12 +6,10 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { Modal } from "antd";
 import { HomeOutlined, ShoppingCartOutlined } from "@ant-design/icons";
 import { CartContext } from "../contexts/CartContext";
-// import { useQueryUser } from "../util/useQueryUser";
 
 export const UserAreaMenu = () => {
   const { cart } = React.useContext(CartContext);
   const { logout } = useAuth0();
-  // const { data } = useQueryUser(user);
   const [modalVisibility, setModalVisibility] = React.useState<boolean>(false);
   const onOk = () => {
     logout({ returnTo: window.location.origin });
@@ -27,8 +25,8 @@ export const UserAreaMenu = () => {
       <Menu>
         <MenuLeft>
           <ListItem className="home">
-            <Link to="/" style={{ width: "100%", height: "100%" }}>
-              <HomeOutlined size={32} />
+            <Link to="/">
+              <StyledHomeOutlined />
             </Link>
           </ListItem>
           <ListItem>
@@ -55,12 +53,7 @@ export const UserAreaMenu = () => {
           </ListItem>
           <ListItem>
             <Link to="/account-settings">
-              {/* {data?.name ? (
-                <p style={{ textTransform: "capitalize" }}>{data.name}</p>
-              ) : (
-                <p style={{ textTransform: "lowercase" }}>{user.email}</p>
-              )} */}
-              <p>My account</p>
+              <p>My Account</p>
             </Link>
           </ListItem>
 
@@ -83,7 +76,7 @@ export const UserAreaMenu = () => {
 
 const Nav = styled.nav`
   width: 100vw;
-  height: 50px;
+  height: 70px;
   background-color: var(--black);
   display: flex;
   flex-direction: row;
@@ -164,7 +157,7 @@ const StyledShoppingCartOutlined = styled(ShoppingCartOutlined)`
   display: inline-block;
   margin-right: 10px;
   background-color: var(--pink);
-  padding: 4px;
+  padding: 5px;
   border-radius: 50%;
   position: relative;
 
@@ -175,9 +168,19 @@ const StyledShoppingCartOutlined = styled(ShoppingCartOutlined)`
   }
 `;
 
+const StyledHomeOutlined = styled(HomeOutlined)`
+  display: inline-block;
+  background-color: var(--pink);
+  padding: 5px;
+  border-radius: 50%;
+  position: relative;
+`;
+
 const CartContainer = styled.div`
   display: flex;
+  flex-direction: column;
   position: relative;
+  align-items: center;
   div {
     position: absolute;
     top: -2px;

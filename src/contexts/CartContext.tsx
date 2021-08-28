@@ -5,8 +5,6 @@ export type CartProps = {
   cart: Course[];
   addProductToCart: (Product: Course) => void;
   removeProductFromCart: (id: number) => void;
-  error: string | null;
-  handleError: () => void;
   emptyCart: () => void;
   onPayment: () => void;
 };
@@ -15,7 +13,6 @@ export const CartContext = React.createContext({} as CartProps);
 
 const CartContextProvider = ({ children }) => {
   const [cart, setCart] = React.useState([]);
-  const [error, setError] = React.useState<string | null>(null);
   const [paid, setPaid] = React.useState<boolean>(false);
 
   React.useEffect(() => {
@@ -45,8 +42,6 @@ const CartContextProvider = ({ children }) => {
       if (!exist) {
         const newCart = [...cart, Product];
         setCart(newCart);
-      } else {
-        setError("You have this course already in your shopping cart");
       }
     }
   };
@@ -60,10 +55,6 @@ const CartContextProvider = ({ children }) => {
     setCart(newCart);
   };
 
-  const handleError = () => {
-    setError(null);
-  };
-
   const onPayment = () => {
     setPaid(true);
   };
@@ -74,8 +65,6 @@ const CartContextProvider = ({ children }) => {
         cart,
         addProductToCart,
         removeProductFromCart,
-        error,
-        handleError,
         emptyCart,
         onPayment,
       }}

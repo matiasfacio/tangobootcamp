@@ -17,10 +17,10 @@ import { AccountInformation } from "../backend/AccountInformation";
 import { Pricing } from "./Pricing";
 import { WhyThisBootcamp } from "./WhyThisBootcamp";
 import { TangoStructure } from "./TangoStructure";
+import { MessageToFollowers } from "./MessageToFollowers";
 import { UserAreaMenu } from "../backend/UserAreaMenu";
 import { BackToTop } from "./BackToTop";
 import { Cart } from "./Cart/Cart";
-// import CheckoutForm from "./Cart/CheckoutForm";
 import { PaymentConfirmation } from "./Cart/PaymentConfirmation";
 import { RetrieveSession } from "./Cart/RetriveSession";
 
@@ -36,6 +36,7 @@ const RouterMenu = () => {
           <TheBootCamp />
           <WhyThisBootcamp />
           <TangoStructure />
+          <MessageToFollowers />
           <LifeLongAccess />
           <Demo />
           <Instructors />

@@ -18,6 +18,50 @@ import { VideoApi } from "./VideoApi";
 
 export type Currency = "eur" | "usd";
 
+const DuplicatedItemModal = ({
+  visible,
+  onOk,
+}: {
+  visible: boolean;
+  onOk: () => void;
+}) => {
+  return (
+    <Modal
+      visible={visible}
+      title="Duplicated Item"
+      footer={<PrimaryButton onClick={() => onOk()}>Ok</PrimaryButton>}
+      destroyOnClose
+    >
+      You had this item already in your cart.
+    </Modal>
+  );
+};
+
+const CourseAddedModal = ({
+  visible,
+  onOk,
+}: {
+  visible: boolean;
+  onOk: () => void;
+}) => {
+  return (
+    <Modal
+      visible={visible}
+      title="Cart Information"
+      footer={
+        <div style={{ display: "flex", justifyContent: "flex-end" }}>
+          <Link to="/cart">
+            <SecondaryButton style={{ marginRight: 20 }}>Cart</SecondaryButton>
+          </Link>
+          <PrimaryButton onClick={() => onOk()}>Ok</PrimaryButton>
+        </div>
+      }
+    >
+      The course was added to your cart
+    </Modal>
+  );
+};
+
 const ShowPreview = ({ video }) => {
   const videoInformation = VideoApi.loadPreview(video);
   return (
@@ -37,6 +81,39 @@ const ShowPreview = ({ video }) => {
   );
 };
 
+const PreviewModal = ({
+  visible,
+  id,
+  onClose,
+}: {
+  visible: boolean;
+  id: number;
+  onClose: () => void;
+}) => {
+  return (
+    <Modal
+      visible={visible}
+      title="Video Preview"
+      style={{ maxWidth: 1200 }}
+      width={"clamp(320px, 100%, 1200px)"}
+      onCancel={() => onClose()}
+      destroyOnClose
+      footer={
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "flex-end",
+          }}
+        >
+          <PrimaryButton onClick={() => onClose()}>Close</PrimaryButton>
+        </div>
+      }
+    >
+      <ShowPreview video={id} />
+    </Modal>
+  );
+};
+
 const { Meta } = Card;
 
 export const Courses = () => {
@@ -49,12 +126,24 @@ export const Courses = () => {
   });
   const [modalPurchaseVisibility, setModalPurchaseVisibility] =
     React.useState(false);
-  const { addProductToCart, error, handleError } =
-    React.useContext(CartContext);
+  const { cart, addProductToCart } = React.useContext(CartContext);
+  const [isDuplicated, setIsDuplicated] = React.useState<boolean>(false);
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const handleOkDuplicatedModal = () => {
+    setIsDuplicated(false);
+  };
+
+  const handleModalPurchaseVisibility = () => {
+    setModalPurchaseVisibility(false);
+  };
+
+  const handlePreviewClose = () => {
+    setModalPreview({ preview: false, id: null });
+  };
 
   const checkCourseAvailable = (courseName: Course): boolean => {
     if (data.courses?.length === 0) {
@@ -66,8 +155,30 @@ export const Courses = () => {
   };
 
   const handleAddCourseToCart = (course) => {
-    addProductToCart(course);
-    setModalPurchaseVisibility(true);
+    const findInCart = cart.find(
+      (courseInCart) => courseInCart.id === course.id
+    );
+    if (!findInCart) {
+      addProductToCart(course);
+      setModalPurchaseVisibility(true);
+    } else {
+      setIsDuplicated(true);
+    }
+  };
+
+  const returnPicture = (coursePicture: string) => {
+    switch (coursePicture) {
+      case "structure":
+        return structure;
+      case "musicality":
+        return musicality;
+      case "exercises":
+        return exercises;
+      case "talkimprovisation":
+        return talkimprovisation;
+      default:
+        return siluette;
+    }
   };
 
   return (
@@ -94,20 +205,10 @@ export const Courses = () => {
                 key={course.name + course.id}
                 cover={
                   <img
-                    src={
-                      course?.picture === "structure"
-                        ? structure
-                        : course?.picture === "musicality"
-                        ? musicality
-                        : course?.picture === "exercises"
-                        ? exercises
-                        : course?.picture === "talkimprovisation"
-                        ? talkimprovisation
-                        : siluette
-                    }
+                    src={returnPicture(course?.picture)}
                     alt="course"
                     width="200px"
-                    height={course?.picture === "structure" ? "300px" : "230px"}
+                    height={course?.value !== 0 ? "300px" : "230px"}
                   />
                 }
                 hoverable
@@ -117,36 +218,33 @@ export const Courses = () => {
                 }
               >
                 {" "}
-                <Meta title={course.name} description="Your bootcamp" />
+                <Meta title={course.name} description={course?.snippet} />
                 {checkCourseAvailable(course) || course.value === 0 ? (
                   <>
-                    <SecondaryButton
-                      style={{ width: "100%", margin: "10px 0" }}
+                    <SecondaryButtonBoost
                       onClick={() => history.push("/course")}
                     >
                       {course.value === 0 ? "Free" : "Learn"}
-                    </SecondaryButton>
+                    </SecondaryButtonBoost>
                   </>
                 ) : (
                   <>
                     <>
-                      <SecondaryButton
-                        style={{ margin: "10px 0px", width: "100%" }}
+                      <SecondaryButtonBoost
                         onClick={() => {
                           handleAddCourseToCart(course);
                         }}
                       >
                         Purchase
-                      </SecondaryButton>
+                      </SecondaryButtonBoost>
                     </>
-                    <SecondaryButton
-                      style={{ width: "100%" }}
+                    <SecondaryButtonBoost
                       onClick={() =>
                         setModalPreview({ preview: true, id: course.id })
                       }
                     >
                       Preview
-                    </SecondaryButton>
+                    </SecondaryButtonBoost>
                   </>
                 )}
               </StyledCard>
@@ -154,59 +252,19 @@ export const Courses = () => {
           })}
       </CoursesList>
 
-      <Modal
-        visible={!!error}
-        title="Error"
-        footer={<PrimaryButton onClick={() => handleError()}>Ok</PrimaryButton>}
-        destroyOnClose
-        onCancel={() => {
-          handleError();
-        }}
-      >
-        {error}
-      </Modal>
-      <Modal
+      <DuplicatedItemModal
+        visible={isDuplicated}
+        onOk={handleOkDuplicatedModal}
+      />
+      <CourseAddedModal
         visible={modalPurchaseVisibility}
-        title="Cart Information"
-        footer={
-          <div style={{ display: "flex", justifyContent: "flex-end" }}>
-            <Link to="/cart">
-              <SecondaryButton style={{ marginRight: 20 }}>
-                Cart
-              </SecondaryButton>
-            </Link>
-            <PrimaryButton onClick={() => setModalPurchaseVisibility(false)}>
-              Ok
-            </PrimaryButton>
-          </div>
-        }
-      >
-        The course was added to your cart
-      </Modal>
-      <Modal
+        onOk={handleModalPurchaseVisibility}
+      />
+      <PreviewModal
         visible={modalPreview.preview}
-        title="Video Preview"
-        style={{ maxWidth: 1200 }}
-        width={"clamp(320px, 100%, 1200px)"}
-        onCancel={() => setModalPreview({ preview: false, id: null })}
-        destroyOnClose
-        footer={
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "flex-end",
-            }}
-          >
-            <PrimaryButton
-              onClick={() => setModalPreview({ preview: false, id: null })}
-            >
-              Close
-            </PrimaryButton>
-          </div>
-        }
-      >
-        <ShowPreview video={modalPreview.id} />
-      </Modal>
+        id={modalPreview.id}
+        onClose={handlePreviewClose}
+      />
     </CoursesSection>
   );
 };
@@ -223,7 +281,7 @@ const CoursesSection = styled.section`
 const CoursesList = styled.div`
   width: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: flex-start;
   flex-wrap: wrap;
   padding: 0 2vw;
@@ -246,18 +304,36 @@ const StyledCard = styled(Card)`
       'content: "Coming soon!"; position: absolute; top: -10px; right: 0px;padding: 5px 10px; box-shadow: 1px 1px 5px rgba(0,0,0,0.5);background-color: red; color: white; font-size: 1rem;transform: rotateZ(350deg); transition: transform 250ms ease-in-out'}
   }
 
-  &:first-child {
+  &:nth-child(1) {
     flex-basis: 400px;
     max-width: 500px;
     flex-shrink: 1;
     min-width: 300px;
   }
+
+  .ant-card-body {
+    display: flex;
+    flex-direction: column;
+    & > button {
+      align-self: center;
+    }
+    & .ant-card-meta-description {
+      color: var(--black) !important;
+      margin-bottom: 20px;
+    }
+  }
 `;
 
 const WelcomeMessage = styled.div`
-  width: 100%;
+  width: 100vw;
   padding: 20px 2vw;
   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
   background-color: rgba(134, 134, 134, 0.1);
+`;
+
+const SecondaryButtonBoost = styled(SecondaryButton)`
+  width: 100%;
+  width: 230px;
+  margin-top: 10px;
 `;

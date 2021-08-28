@@ -155,7 +155,7 @@ const Transcription = styled.div`
 
 const OpenVideoList = styled.div`
   position: fixed;
-  top: 60px;
+  top: 70px;
   right: 0px;
   padding: 5px 10px;
   z-index: 1001;

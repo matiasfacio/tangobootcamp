@@ -126,7 +126,7 @@ const CardStyle = styled(Card)`
   overflow-y: hidden;
   cursor: pointer;
   border-bottom: 3px var(--pink) solid;
-  border-top-right-radius: 50px;
+  border-top-right-radius: 20px;
 
   ul {
     list-style: none;
@@ -138,26 +138,20 @@ const CardStyle = styled(Card)`
   .ant-card-head {
     border-bottom: 2px var(--black) solid;
   }
-
-  @media (hover) {
-    .ant-card-head {
-      border-bottom: none;
-      position: relative;
-      &::after {
-        content: "";
-        height: 2px;
-        width: 100%;
-        background-color: var(--black);
-        bottom: 0;
-        left: 0;
-        position: absolute;
-        transform: scale(0);
-        transition: transform 500ms ease;
-        transform-origin: left;
-      }
-    }
-    &:hover .ant-card-head::after {
+  .ant-card-head {
+    border-bottom: none;
+    position: relative;
+    &::after {
+      content: "";
+      height: 2px;
+      width: 100%;
+      background-color: var(--black);
+      bottom: 0;
+      left: 0;
+      position: absolute;
       transform: scale(1);
+      transition: transform 500ms ease;
+      transform-origin: left;
     }
   }
 `;

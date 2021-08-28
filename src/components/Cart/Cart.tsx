@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { Table, Modal } from "antd";
+import { useQueryUser } from "../../util/useQueryUser";
+import { useAuth0 } from "@auth0/auth0-react";
 import { CartContext } from "../../contexts/CartContext";
 import { DeleteOutlined } from "@ant-design/icons";
 import { PrimaryButton } from "../UIComponents/PrimaryButton";
@@ -16,7 +18,9 @@ const promise = loadStripe(
 );
 
 export const Cart = () => {
+  const { user } = useAuth0();
   const { cart, removeProductFromCart } = React.useContext(CartContext);
+  const { data } = useQueryUser(user);
   const [modalSecurityVisibility, setModalSecurityVisibility] =
     React.useState<boolean>(false);
 
@@ -82,6 +86,16 @@ export const Cart = () => {
 
   return (
     <>
+      <WelcomeMessage>
+        <span
+          style={
+            data?.name ? { textTransform: "capitalize" } : { display: "none" }
+          }
+        >
+          {data?.name}
+        </span>
+        , this is your cart.
+      </WelcomeMessage>
       <CartSection>
         <Title>
           <h3>Shopping Cart</h3>{" "}
@@ -128,7 +142,7 @@ export const Cart = () => {
 
 const CartSection = styled.section`
   background-color: white;
-  margin: 100px auto;
+  margin: 0px auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -147,4 +161,13 @@ const Buttonera = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-end;
+`;
+
+const WelcomeMessage = styled.div`
+  margin-top: 70px;
+  width: 100%;
+  padding: 20px 2vw;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  background-color: rgba(134, 134, 134, 0.1);
 `;

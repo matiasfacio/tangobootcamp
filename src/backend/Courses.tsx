@@ -5,10 +5,10 @@ import { useQueryUser } from "../util/useQueryUser";
 import { useHistory, Link } from "react-router-dom";
 import { Card, Modal } from "antd";
 import siluette from "../images/siluette.png";
-import structure from "../images/structure.png";
-import musicality from "../images/musicality.png";
-import exercises from "../images/exercises.png";
-import talkimprovisation from "../images/talkimprovisation.png";
+import structure from "../images/tangostructurebootcamp.jpg";
+import musicality from "../images/tangomusicalitybootcamp.jpg";
+import exercises from "../images/Exercises.jpg";
+import talkimprovisation from "../images/tangotalkimprovisation.jpg";
 import { PrimaryButton } from "../components/UIComponents/PrimaryButton";
 import { SecondaryButton } from "../components/UIComponents/SecondaryButton";
 import { CartContext } from "../contexts/CartContext";
@@ -73,18 +73,16 @@ export const Courses = () => {
   return (
     <CoursesSection>
       <WelcomeMessage>
-        <h3>
-          Welcome
-          <span
-            style={
-              data?.name ? { textTransform: "capitalize" } : { display: "none" }
-            }
-          >
-            {", " + data?.name}
-          </span>
-          .<br />
-          Courses - Bootcamps - Lectures - Talks
-        </h3>
+        Welcome
+        <span
+          style={
+            data?.name ? { textTransform: "capitalize" } : { display: "none" }
+          }
+        >
+          {", " + data?.name}
+        </span>
+        . Here you will find "The Tango Structure Bootcamp" and extra free
+        content for you.
       </WelcomeMessage>
       <CoursesList>
         {isAuthenticated &&
@@ -109,7 +107,7 @@ export const Courses = () => {
                     }
                     alt="course"
                     width="200px"
-                    height="300px"
+                    height={course?.picture === "structure" ? "300px" : "230px"}
                   />
                 }
                 hoverable
@@ -214,42 +212,52 @@ export const Courses = () => {
 };
 
 const CoursesSection = styled.section`
-  margin: 100px auto;
+  margin: 70px auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  max-width: 1650px;
 `;
 
 const CoursesList = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-around;
+  align-items: flex-start;
   flex-wrap: wrap;
   padding: 0 2vw;
 `;
 
 const StyledCard = styled(Card)`
   position: relative;
-  margin: 20;
   cursor: pointer;
+  margin-right: 20px;
+  margin-bottom: 20px;
   flex-basis: 300px;
   flex-grow: 0;
   flex-shrink: 0;
+  background-color: rgba(134, 134, 134, 0.1);
+  border-bottom-right-radius: 50px;
 
   &::after {
     ${({ theme }) =>
       theme === "false" &&
-      'content: "Coming soon!"; position: absolute; top: 20px; right: 20px;padding: 5px 10px; box-shadow: 1px 1px 5px rgba(0,0,0,0.5);background-color: red; color: white; font-size: 1rem;transform: rotateZ(350deg); transition: transform 250ms ease-in-out'}
+      'content: "Coming soon!"; position: absolute; top: -10px; right: 0px;padding: 5px 10px; box-shadow: 1px 1px 5px rgba(0,0,0,0.5);background-color: red; color: white; font-size: 1rem;transform: rotateZ(350deg); transition: transform 250ms ease-in-out'}
   }
-  &:hover::after {
-    transform: rotateZ(380deg);
+
+  &:first-child {
+    flex-basis: 400px;
+    max-width: 500px;
+    flex-shrink: 1;
+    min-width: 300px;
   }
 `;
 
 const WelcomeMessage = styled.div`
-  display: flex;
-  justify-content: flex-start;
   width: 100%;
-  padding: 0 2vw;
+  padding: 20px 2vw;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  background-color: rgba(134, 134, 134, 0.1);
 `;

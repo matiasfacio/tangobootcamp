@@ -120,13 +120,44 @@ const Section = styled.section`
 `;
 
 const CardStyle = styled(Card)`
+  margin-top: 50px;
   min-height: 320px;
   max-width: 320px;
+  overflow-y: hidden;
+  cursor: pointer;
+  border-bottom: 3px var(--pink) solid;
+  border-top-right-radius: 50px;
+
   ul {
     list-style: none;
   }
   span {
     color: var(--pink);
     font-weight: 700;
+  }
+  .ant-card-head {
+    border-bottom: 2px var(--black) solid;
+  }
+
+  @media (hover) {
+    .ant-card-head {
+      border-bottom: none;
+      position: relative;
+      &::after {
+        content: "";
+        height: 2px;
+        width: 100%;
+        background-color: var(--black);
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        transform: scale(0);
+        transition: transform 500ms ease;
+        transform-origin: left;
+      }
+    }
+    &:hover .ant-card-head::after {
+      transform: scale(1);
+    }
   }
 `;

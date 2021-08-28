@@ -40,6 +40,18 @@ export const AccountInformation = () => {
 
   return (
     <>
+      <WelcomeMessage>
+        Hey
+        <span
+          style={
+            data?.name ? { textTransform: "capitalize" } : { display: "none" }
+          }
+        >
+          {", " + data?.name}
+        </span>
+        , here you can update your contact information and see the courses you
+        own.
+      </WelcomeMessage>
       {isSuccess && (
         <AccountSettingsContainer>
           <Settings>
@@ -61,7 +73,7 @@ const AccountSettingsContainer = styled.section`
   min-height: 100vh;
   max-width: 800px;
   background-color: var(--white);
-  margin: 70px auto;
+  margin: 0px auto;
 `;
 
 const Title = styled.div`
@@ -93,4 +105,13 @@ const Settings = styled.div`
     justify-content: center;
     align-items: center;
   }
+`;
+
+const WelcomeMessage = styled.div`
+  margin-top: 70px;
+  width: 100%;
+  padding: 20px 2vw;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  background-color: rgba(134, 134, 134, 0.1);
 `;

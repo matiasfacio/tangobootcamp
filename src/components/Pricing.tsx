@@ -54,6 +54,8 @@ const PricingStyles = styled.div`
   border: 2px var(--black) solid;
   padding: 50px 30px;
   background-color: white;
+  border-bottom: 3px var(--pink) solid;
+  border-top-right-radius: 50px;
 `;
 
 const Price = styled.div`

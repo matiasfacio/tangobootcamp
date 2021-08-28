@@ -6,10 +6,14 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { Modal } from "antd";
 import { HomeOutlined, ShoppingCartOutlined } from "@ant-design/icons";
 import { CartContext } from "../contexts/CartContext";
+import IconMenuOpen from "../images/menu_open.svg";
+import IconMenuClose from "../images/close.svg";
 
 export const UserAreaMenu = () => {
   const { cart } = React.useContext(CartContext);
   const { logout } = useAuth0();
+  const [menuOpen, setMenuOpen] = React.useState(false);
+
   const [modalVisibility, setModalVisibility] = React.useState<boolean>(false);
   const onOk = () => {
     logout({ returnTo: window.location.origin });
@@ -21,58 +25,78 @@ export const UserAreaMenu = () => {
   };
 
   return (
-    <Nav>
-      <Menu>
-        <MenuLeft>
-          <ListItem className="home">
-            <Link to="/">
-              <StyledHomeOutlined />
-            </Link>
-          </ListItem>
-          <ListItem>
-            <Link to="/courses">
-              <p>Courses</p>
-            </Link>
-          </ListItem>
-        </MenuLeft>
-        <MenuRight>
-          <ListItem
-            className="home"
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <Link to="/cart">
-              <CartContainer>
-                <StyledShoppingCartOutlined theme={cart} />
-                <div>{cart.length}</div>
-              </CartContainer>
-            </Link>
-          </ListItem>
-          <ListItem>
-            <Link to="/account-settings">
-              <p>My Account</p>
-            </Link>
-          </ListItem>
+    <>
+      <BurgerMenuContainer onClick={() => setMenuOpen(!menuOpen)}>
+        <img
+          src={!menuOpen ? IconMenuOpen : IconMenuClose}
+          alt="burger menu"
+          width="60px"
+        />
+      </BurgerMenuContainer>
+      <Nav theme={menuOpen.toString()}>
+        <Menu>
+          <MenuLeft>
+            <ListItem className="home">
+              <Link to="/">
+                <StyledHomeOutlined />
+              </Link>
+            </ListItem>
+            <ListItem>
+              <Link to="/courses">
+                <p>Courses</p>
+              </Link>
+            </ListItem>
+          </MenuLeft>
+          <MenuRight>
+            <ListItem
+              className="home"
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <Link to="/cart">
+                <CartContainer>
+                  <StyledShoppingCartOutlined theme={cart} />
+                  <div>{cart.length}</div>
+                </CartContainer>
+              </Link>
+            </ListItem>
+            <ListItem>
+              <Link to="/account-settings">
+                <p>My Account</p>
+              </Link>
+            </ListItem>
 
-          <ListItem onClick={() => setModalVisibility(true)}>
-            <p>Logout</p>
-          </ListItem>
-        </MenuRight>
-      </Menu>
-      <Modal
-        visible={modalVisibility}
-        onCancel={() => onCancel()}
-        title="Warning"
-        footer={<PrimaryButton onClick={() => onOk()}>Ok</PrimaryButton>}
-      >
-        You are about to log out.
-      </Modal>
-    </Nav>
+            <ListItem onClick={() => setModalVisibility(true)}>
+              <p>Logout</p>
+            </ListItem>
+          </MenuRight>
+        </Menu>
+        <Modal
+          visible={modalVisibility}
+          onCancel={() => onCancel()}
+          title="Warning"
+          footer={<PrimaryButton onClick={() => onOk()}>Ok</PrimaryButton>}
+        >
+          You are about to log out.
+        </Modal>
+      </Nav>
+    </>
   );
 };
+
+const BurgerMenuContainer = styled.div`
+  display: none;
+  @media screen and (max-width: 440px) {
+    display: block;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+  }
+`;
 
 const Nav = styled.nav`
   width: 100vw;
@@ -86,6 +110,20 @@ const Nav = styled.nav`
   top: 0;
   left: 0;
   z-index: 1000;
+  @media screen and (max-width: 440px) {
+    position: fixed;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    padding-right: 20px;
+    background-color: var(--black);
+    transform: ${({ theme }) =>
+      theme === "true" ? "translateX(0)" : "translateX(-50%)"};
+    opacity: ${({ theme }) => (theme === "true" ? "1" : "0")};
+    width: ${({ theme }) => (theme === "true" ? "100vw" : "30vw")};
+    transition: all 500ms ease-in-out;
+    z-index: 999;
+  }
 `;
 
 const Menu = styled.ul`
@@ -98,13 +136,20 @@ const Menu = styled.ul`
   padding: 0;
   margin: 0;
 
-  @media screen and (max-width: 800px) {
-    flex-wrap: wrap;
+  @media screen and (max-width: 440px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    height: 80%;
   }
 `;
 
 const MenuRight = styled.div`
   display: flex;
+  @media screen and (max-width: 440px) {
+    flex-direction: column;
+    align-items: flex-end;
+  }
 `;
 
 const MenuLeft = styled.div`
@@ -122,6 +167,10 @@ const MenuLeft = styled.div`
         height: 20px;
       }
     }
+  }
+  @media screen and (max-width: 440px) {
+    flex-direction: column;
+    align-items: flex-end;
   }
 `;
 
@@ -150,6 +199,9 @@ const ListItem = styled.li`
     &:not(.home) {
       border-bottom: 2px var(--pink) solid;
     }
+  }
+  @media screen and (max-width: 440px) {
+    margin-bottom: 30px;
   }
 `;
 

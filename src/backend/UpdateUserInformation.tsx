@@ -35,7 +35,6 @@ export const UpdateUserInformation = ({ user }) => {
       setSuccess(data.ok);
     },
     onError: (data) => {
-      console.log("data", data);
       setError(!data.ok);
     },
   };
@@ -77,16 +76,47 @@ export const UpdateUserInformation = ({ user }) => {
         }}
         onFinish={(values) => onFinish(values)}
       >
-        <Form.Item label="Name" name="name">
+        <Form.Item
+          label="Name"
+          name="name"
+          rules={[
+            {
+              required: false,
+              type: "string",
+            },
+          ]}
+        >
           <Input placeholder={user.name || "Name"} />
         </Form.Item>
-        <Form.Item label="Last Name" name="lastName">
+        <Form.Item
+          label="Last Name"
+          name="lastName"
+          rules={[
+            {
+              required: false,
+              type: "string",
+            },
+          ]}
+        >
           <Input placeholder={user.lastName || "Last Name"} />
         </Form.Item>
         <Form.Item label="Email" name="email">
-          <Input placeholder={user.email || "Email"} />
+          <Input
+            placeholder={user.email || "Email"}
+            disabled
+            value={user.email}
+          />
         </Form.Item>
-        <Form.Item label="Phone" name="phone">
+        <Form.Item
+          label="Phone"
+          name="phone"
+          rules={[
+            {
+              required: false,
+              type: "string",
+            },
+          ]}
+        >
           <Input placeholder={user.phone || "Phone number"} />
         </Form.Item>
         <Form.Item style={{ alignSelf: "flex-end" }}>

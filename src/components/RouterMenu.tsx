@@ -6,7 +6,7 @@ import Instructors from "./Instructors";
 import NavBar from "./NavBar";
 import TheBootCamp from "./TheBootCamp";
 import Footer from "./Footer";
-import Contact from "./Contact";
+import ContactForm from "./ContactForm";
 import LifeLongAccess from "./LifeLongAccess";
 import { Courses } from "../backend/Courses";
 import { Course } from "../backend/Course";
@@ -41,7 +41,7 @@ const RouterMenu = () => {
           <Demo />
           <Instructors />
           <Pricing />
-          <Contact />
+          <ContactForm />
           <Footer />
           <ArrowPullDown />
           <BackToTop />

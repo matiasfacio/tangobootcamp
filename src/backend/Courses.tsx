@@ -207,8 +207,8 @@ export const Courses = () => {
                   <img
                     src={returnPicture(course?.picture)}
                     alt="course"
-                    width="200px"
-                    height={course?.value !== 0 ? "300px" : "230px"}
+                    width="100%"
+                    height={course?.value !== 0 ? "100%" : "100%"}
                   />
                 }
                 hoverable
@@ -292,7 +292,7 @@ const StyledCard = styled(Card)`
   cursor: pointer;
   margin-right: 20px;
   margin-bottom: 20px;
-  flex-basis: 300px;
+  flex-basis: clamp(300px, 40vw, 600px);
   flex-grow: 0;
   flex-shrink: 0;
   background-color: rgba(134, 134, 134, 0.1);
@@ -302,13 +302,6 @@ const StyledCard = styled(Card)`
     ${({ theme }) =>
       theme === "false" &&
       'content: "Coming soon!"; position: absolute; top: -10px; right: 0px;padding: 5px 10px; box-shadow: 1px 1px 5px rgba(0,0,0,0.5);background-color: red; color: white; font-size: 1rem;transform: rotateZ(350deg); transition: transform 250ms ease-in-out'}
-  }
-
-  &:nth-child(1) {
-    flex-basis: 400px;
-    max-width: 500px;
-    flex-shrink: 1;
-    min-width: 300px;
   }
 
   .ant-card-body {
@@ -334,6 +327,5 @@ const WelcomeMessage = styled.div`
 
 const SecondaryButtonBoost = styled(SecondaryButton)`
   width: 100%;
-  width: 230px;
   margin-top: 10px;
 `;

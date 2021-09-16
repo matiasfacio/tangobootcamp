@@ -3,6 +3,7 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import { PaymentConfirmation } from "./Cart/PaymentConfirmation";
 import { Main } from "./Main";
+import { LoaderSpinner } from "./UIComponents/LoaderSpinner";
 
 const Courses = lazy(() => import("../backend/Courses"));
 const Course = lazy(() => import("../backend/Course"));
@@ -35,7 +36,7 @@ const RouterMenu = () => {
   return (
     <>
       {isAuthenticated && <Redirect to="/userarea" />}
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<LoaderSpinner />}>
         <Switch>
           <Route path="/" exact>
             <Main />

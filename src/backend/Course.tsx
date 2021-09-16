@@ -11,7 +11,7 @@ import { Video } from "./VideoApi";
 
 export interface BackendProps {}
 
-export const Course: React.FC<BackendProps> = () => {
+const Course: React.FC<BackendProps> = () => {
   const history = useHistory();
   const params: { id: string } = useParams();
   const { data: videos, isLoading } = useQueryAllVideos(params.id);
@@ -89,6 +89,8 @@ export const Course: React.FC<BackendProps> = () => {
     </>
   );
 };
+
+export default Course;
 
 const BackendLayout = styled.div`
   width: 100%;

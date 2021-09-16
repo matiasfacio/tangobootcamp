@@ -7,7 +7,7 @@ import { Table } from "antd";
 import { UpdateUserInformation } from "./UpdateUserInformation";
 import { CoursesAvailable } from "./types";
 
-export const AccountInformation = () => {
+const AccountInformation = () => {
   const { user } = useAuth0();
   const { data, isLoading, isSuccess, isError } = useQueryUser(user);
 
@@ -68,6 +68,8 @@ export const AccountInformation = () => {
     </>
   );
 };
+
+export default AccountInformation;
 
 const AccountSettingsContainer = styled.section`
   min-height: 100vh;

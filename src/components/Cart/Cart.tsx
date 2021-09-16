@@ -17,7 +17,7 @@ const promise = loadStripe(
   "pk_test_51JLPEJGSbvKyqkt6N9SUPRbrzGgHyNQDPkyO2TbGF0XdolDWdjhNaQktlLoVylWs6nlV7BqDMis38xRiVNK6vou6009yTWVhDF"
 );
 
-export const Cart = () => {
+const Cart = () => {
   const { user } = useAuth0();
   const { cart, removeProductFromCart } = React.useContext(CartContext);
   const { data } = useQueryUser(user);
@@ -139,6 +139,8 @@ export const Cart = () => {
     </>
   );
 };
+
+export default Cart;
 
 const CartSection = styled.section`
   background-color: white;

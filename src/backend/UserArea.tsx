@@ -2,9 +2,9 @@ import * as React from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import { useAuth0 } from "@auth0/auth0-react";
-import { Courses } from "./Courses";
+import Courses from "./Courses";
 
-export const UserArea = () => {
+const UserArea = () => {
   const { isAuthenticated, isLoading } = useAuth0();
   const history = useHistory();
 
@@ -21,6 +21,8 @@ export const UserArea = () => {
     </>
   );
 };
+
+export default UserArea;
 
 const FullBackendScreen = styled.section`
   min-height: 100vh;

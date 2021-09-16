@@ -9,7 +9,7 @@ import { CartContext } from "../contexts/CartContext";
 import IconMenuOpen from "../images/menu_open.svg";
 import IconMenuClose from "../images/close.svg";
 
-export const UserAreaMenu = () => {
+const UserAreaMenu = () => {
   const { cart } = React.useContext(CartContext);
   const { logout } = useAuth0();
   const [menuOpen, setMenuOpen] = React.useState(false);
@@ -86,6 +86,8 @@ export const UserAreaMenu = () => {
     </>
   );
 };
+
+export default UserAreaMenu;
 
 const BurgerMenuContainer = styled.div`
   display: none;

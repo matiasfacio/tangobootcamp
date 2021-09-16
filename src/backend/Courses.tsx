@@ -116,7 +116,7 @@ const PreviewModal = ({
 
 const { Meta } = Card;
 
-export const Courses = () => {
+const Courses = () => {
   const history = useHistory();
   const { user, isAuthenticated } = useAuth0();
   const { data, isSuccess } = useQueryUser(user);
@@ -268,6 +268,8 @@ export const Courses = () => {
     </CoursesSection>
   );
 };
+
+export default Courses;
 
 const CoursesSection = styled.section`
   margin: 70px auto;

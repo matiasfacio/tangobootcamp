@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import { PrimaryButton } from "./UIComponents/PrimaryButton";
+import { PrimaryButton } from "../UIComponents/PrimaryButton";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useHistory } from "react-router-dom";
 
-export const MessageToFollowers = () => {
+export const TangoStructure = () => {
   const { isAuthenticated, loginWithRedirect } = useAuth0();
   const history = useHistory();
 
@@ -20,36 +20,37 @@ export const MessageToFollowers = () => {
     <TangoStructureSection>
       <TangoStructureContainer>
         <Title>
-          <h2>A message to followers</h2>
+          <h2>But what is the Tango Structure?!</h2>
         </Title>
         <ul>
           <li>
             <p>
-              As we were creating this bootcamp, many follower colleages asked
-              us how "The Tango Structure Bootcamp" could be useful to followers
-              as well. Of course we understand their concerns.
+              The Structure of the tango dance is the net, the matrix, the
+              geometry hidden behind the beautiful tango movements and figures.
             </p>
           </li>
           <li>
             <p>
-              We want to emphasize that this Bootcamp is so much useful to
-              followers as well. When a follower knows the structure of tango,
-              she/he will become so much independient of any leader, focusing on
-              connection, expression and musicality and not on what to do, as
-              this will become a natural response for simply understanding what
-              is happening.
+              It is the natural consequence of having a specifique type of
+              embrace and two persons moving together to the music, no matter
+              the style of the individuals or of the couple.
             </p>
           </li>
           <li>
             <p>
-              We can asure you, that what you will learn in this bootcamp, will
-              give you the freedom of dancing.
+              And it is so important, that it has determined the Tango
+              Choreography throughout the history of this dance.{" "}
+            </p>
+          </li>
+          <li>
+            <p>
+              Some people limit the structure of the tango dance to the "giro"
+              or "turn", but this is only the big picture.
             </p>
           </li>
           <li style={{ listStyle: "none" }}>
             <p>
-              Both followers and leaders, are very welcome to join "The Tango
-              Structure Bootcamp".
+              Join us now to finally fully understand how tango dance works!
             </p>
             <PrimaryButtonBoost onClick={() => authenticateUser()}>
               Sign up

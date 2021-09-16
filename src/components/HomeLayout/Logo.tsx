@@ -1,5 +1,4 @@
-import tangobootcamps from "../images/logo-small.jpg";
-// import logo from "../images/logo-tbc1.svg";
+import tangobootcamps from "../../images/logo-small.jpg";
 import React from "react";
 import styled from "styled-components";
 

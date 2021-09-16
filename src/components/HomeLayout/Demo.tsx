@@ -1,9 +1,9 @@
 import * as React from "react";
 import { useHistory } from "react-router-dom";
-import { VideoInterface } from "./UIComponents/VideoInterface";
+import { VideoInterface } from "../UIComponents/VideoInterface";
 import styled from "styled-components";
-import { PrimaryButton } from "../components/UIComponents/PrimaryButton";
-import { Video } from "../backend/VideoApi";
+import { PrimaryButton } from "../UIComponents/PrimaryButton";
+import { Video } from "../../backend/VideoApi";
 import { useAuth0 } from "@auth0/auth0-react";
 
 export interface DemoProps {}

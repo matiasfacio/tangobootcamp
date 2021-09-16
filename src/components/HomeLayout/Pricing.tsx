@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { PrimaryButton } from "./UIComponents/PrimaryButton";
+import { PrimaryButton } from "../UIComponents/PrimaryButton";
 
 export const Pricing = () => {
   return (

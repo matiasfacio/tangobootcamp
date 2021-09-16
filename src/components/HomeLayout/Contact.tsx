@@ -1,7 +1,7 @@
 import * as React from "react";
-import useForm from "../hooks/useForm";
+import useForm from "../../hooks/useForm";
 import styled from "styled-components";
-import { PrimaryButton } from "../components/UIComponents/PrimaryButton";
+import { PrimaryButton } from "../UIComponents/PrimaryButton";
 import { Modal } from "antd";
 
 export type FormInfo = {

@@ -1,6 +1,6 @@
 import * as React from "react";
-import javier from "../images/javier-antar.jpg";
-import matias from "../images/matias-facio2.jpg";
+import javier from "../../images/javier-antar.jpg";
+import matias from "../../images/matias-facio2.jpg";
 import styled from "styled-components";
 
 export interface InstructorsProps {}

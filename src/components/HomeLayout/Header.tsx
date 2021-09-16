@@ -1,9 +1,9 @@
 import * as React from "react";
-import silouette from "../images/siluette.png";
-import headerImg from "../images/header-img.svg";
+import silouette from "../../images/siluette.png";
+import headerImg from "../../images/header-img.svg";
 import styled from "styled-components";
-import { SecondaryButton } from "./UIComponents/SecondaryButton";
-import { PrimaryButton } from "./UIComponents/PrimaryButton";
+import { SecondaryButton } from "../UIComponents/SecondaryButton";
+import { PrimaryButton } from "../UIComponents/PrimaryButton";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useHistory } from "react-router-dom";
 

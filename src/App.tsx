@@ -4,7 +4,7 @@ import "antd/dist/antd.css";
 import RouterMenu from "./components/RouterMenu";
 
 import { QueryClientProvider, QueryClient } from "react-query";
-import { Cookie } from "./components/Cookie";
+import { Cookie } from "./components/HomeLayout/Cookie";
 import { Auth0Provider } from "@auth0/auth0-react";
 import { createGlobalStyle } from "styled-components";
 import CartContextProvider from "./contexts/CartContext";

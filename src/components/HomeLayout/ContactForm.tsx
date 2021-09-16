@@ -1,6 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
-import { PrimaryButton } from "../components/UIComponents/PrimaryButton";
+import { PrimaryButton } from "../UIComponents/PrimaryButton";
 import { Modal, Form, Input } from "antd";
 
 export type FormInfo = {

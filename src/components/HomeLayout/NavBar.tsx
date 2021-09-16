@@ -1,10 +1,10 @@
 import * as React from "react";
 import { HashLink } from "react-router-hash-link";
 import styled from "styled-components";
-import IconMenuOpen from "../images/menu_open.svg";
-import IconMenuClose from "../images/close.svg";
+import IconMenuOpen from "../../images/menu_open.svg";
+import IconMenuClose from "../../images/close.svg";
 import { useAuth0 } from "@auth0/auth0-react";
-import { PrimaryButton } from "./UIComponents/PrimaryButton";
+import { PrimaryButton } from "./../UIComponents/PrimaryButton";
 import { UserOutlined } from "@ant-design/icons";
 import { Logo } from "./Logo";
 

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import cancelIcon from "../images/cancel.svg";
+import cancelIcon from "../../images/cancel.svg";
 
 export interface CookieProps {}
 

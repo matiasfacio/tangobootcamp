@@ -22,7 +22,25 @@ import { UserAreaMenu } from "../backend/UserAreaMenu";
 import { BackToTop } from "./BackToTop";
 import { Cart } from "./Cart/Cart";
 import { PaymentConfirmation } from "./Cart/PaymentConfirmation";
-import { RetrieveSession } from "./Cart/RetriveSession";
+
+const AuthenticatedRoute = ({ children, ...rest }) => {
+  const { isAuthenticated } = useAuth0();
+  return (
+    <Route
+      {...rest}
+      render={() =>
+        isAuthenticated ? (
+          <>
+            <UserAreaMenu />
+            {children}
+          </>
+        ) : (
+          <Redirect to="/" />
+        )
+      }
+    />
+  );
+};
 
 const RouterMenu = () => {
   const { isAuthenticated } = useAuth0();
@@ -46,37 +64,24 @@ const RouterMenu = () => {
           <ArrowPullDown />
           <BackToTop />
         </Route>
-        {isAuthenticated && (
-          <>
-            <Route path="/courses">
-              <UserAreaMenu />
-              <Courses />
-            </Route>
-            <Route path="/course/:id">
-              <UserAreaMenu />
-              <Course />
-            </Route>
-            <Route path="/userarea">
-              <UserArea />
-            </Route>
-            <Route path="/account-settings">
-              <UserAreaMenu />
-              <AccountInformation />
-            </Route>
-            <Route path="/cart">
-              <UserAreaMenu />
-              <Cart />
-            </Route>
-            <Route path="/payment-confirmation">
-              <UserAreaMenu />
-              <PaymentConfirmation />
-            </Route>
-            <Route path="/retrieve-session">
-              <RetrieveSession />
-            </Route>
-          </>
-        )}
-
+        <AuthenticatedRoute path="/courses">
+          <Courses />
+        </AuthenticatedRoute>
+        <AuthenticatedRoute path="/course/:id">
+          <Course />
+        </AuthenticatedRoute>
+        <AuthenticatedRoute path="/userarea">
+          <UserArea />
+        </AuthenticatedRoute>
+        <AuthenticatedRoute path="/account-settings">
+          <AccountInformation />
+        </AuthenticatedRoute>
+        <AuthenticatedRoute path="/cart">
+          <Cart />
+        </AuthenticatedRoute>
+        <AuthenticatedRoute path="/payment-confirmation">
+          <PaymentConfirmation />
+        </AuthenticatedRoute>
         <Route path="*">
           <Redirect to="/" />
         </Route>

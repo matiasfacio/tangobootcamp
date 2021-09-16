@@ -25,8 +25,8 @@ const TheBootCamp: React.FunctionComponent<TheBootCampProps> = () => {
             <ul>
               <li>
                 <p>
-                  <span>40+</span> Videos with <span>200+</span>
-                  <b>Minutes of Theorie and Exercises.</b>
+                  <span>40+</span> Videos
+                  <b> with Theorie and Exercises.</b>
                 </p>
               </li>
               <li>

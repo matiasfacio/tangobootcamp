@@ -98,8 +98,10 @@ const GlobalStyle = createGlobalStyle`
 }
 `;
 
-// https://www.tangobootcamp.net
-// http://localhost:8008
+const BaseURL =
+  process.env.NODE_ENV !== "production"
+    ? "http://localhost:8008"
+    : "https://www.tangobootcamp.net";
 
 function App() {
   const queryClient = new QueryClient();
@@ -108,7 +110,7 @@ function App() {
     <Auth0Provider
       domain="dev-r45f9tll.eu.auth0.com"
       clientId="eNYipEzbx0t5EFsmPCBp1hGBylFxBB3G"
-      redirectUri={"http://localhost:8008"}
+      redirectUri={BaseURL}
     >
       <QueryClientProvider client={queryClient}>
         <BrowserRouter>

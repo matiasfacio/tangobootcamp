@@ -6,7 +6,7 @@ export type Video = {
   description?: string;
 };
 
-let nextId = 0;
+let nextId = 1;
 
 export const VideosPreview: Video[] = [
   {
@@ -67,43 +67,67 @@ export const Improvisation: Video[] = [
 
 export const videoList: Video[] = [
   {
-    name: "Positions",
+    name: "El Abrazo",
     id: nextId++,
     url: "https://vimeo.com/313714047",
-    snippet: "What are the positions in Tango ?",
+    snippet: "Another point of view of the Tango embrace",
     description:
       "There are two clear positions in tango, open step or apertura and crossed step or cruce",
   },
   {
-    name: "Directions",
+    name: "Positions",
     id: nextId++,
     url: "https://vimeo.com/294424954",
-    snippet: "What are the possible directions in Tango ?",
+    snippet: "What are the possible positions in Tango ?",
     description:
       "We have, from the leader point of view, two clear directions of how the follower moves. Either does the follower moves to our right or she does move to our left side of the embrace",
   },
-  { name: "Walk", id: nextId++ },
-  { name: "Systems", id: nextId++ },
-  { name: "Cross", id: nextId++ },
-  { name: "Volcada", id: nextId++ },
+  { name: "Directions", id: nextId++ },
+  { name: "Examples", id: nextId++ },
+  { name: "The cross", id: nextId++ },
   {
-    name: "Giro",
+    name: "Crossed and Parallel System",
     id: nextId++,
     url: "https://vimeo.com/214391023",
-    snippet: "Fundamental Structure of Tango Dance",
+    snippet: "Crossed System and Parallel System",
   },
-  { name: "Lines", id: nextId++ },
-  { name: "Circles", id: nextId++ },
+  { name: "Basic figures", id: nextId++ },
+  { name: "Giros / Turns", id: nextId++ },
+  { name: "Giros / Turns fun facts", id: nextId++ },
+  { name: "Exercises", id: nextId++ },
+  { name: "Changes of direction", id: nextId++ },
+  { name: "Changes of direction: ochos", id: nextId++ },
+  { name: "Changes of direction: rebound", id: nextId++ },
+  { name: "Changes of direction: alteration", id: nextId++ },
+  { name: "Exercises", id: nextId++ },
+  { name: "A favor", id: nextId++ },
+  { name: "En contra", id: nextId++ },
+  { name: "Exercises", id: nextId++ },
+  { name: "Analysis of the structure of known elements", id: nextId++ },
   { name: "Ochos", id: nextId++ },
-  { name: "Sacadas", id: nextId++ },
-  { name: "Boleos", id: nextId++ },
-  { name: "Barridas", id: nextId++ },
-  { name: "Ganchos", id: nextId++ },
-  { name: "Linear Boleos", id: nextId++ },
-  { name: "Forth Sacada", id: nextId++ },
-  { name: "Short Boleos", id: nextId++ },
+  { name: "Over turned ochos", id: nextId++ },
   { name: "Entradas", id: nextId++ },
-  { name: "Entradas or Sacadas", id: nextId++ },
+  { name: "Sacadas", id: nextId++ },
+  { name: "Sacadas with rebounds", id: nextId++ },
+  { name: "Forth Sacada", id: nextId++ },
+  { name: "Exercises", id: nextId++ },
+  { name: "Voleos en contra", id: nextId++ },
+  { name: "Voleos a favor", id: nextId++ },
+  { name: "Voleos", id: nextId++ },
+  { name: "Linear Voleo", id: nextId++ },
+  { name: "Hips rebound", id: nextId++ },
+  { name: "Short Voleos", id: nextId++ },
+  { name: "Low Voleos", id: nextId++ },
+  { name: "Exercises", id: nextId++ },
+  { name: "Ganchos en contra", id: nextId++ },
+  { name: "Ganchos a favor", id: nextId++ },
+  { name: "Leg wraps", id: nextId++ },
+  { name: "Piernazos or high ganchos", id: nextId++ },
+  { name: "Exercises", id: nextId++ },
+  { name: "An elastic embrace", id: nextId++ },
+  { name: "Volcadas", id: nextId++ },
+  { name: "Colgadas", id: nextId++ },
+  { name: "Elasticos", id: nextId++ },
 ];
 
 const CoursesId = [

@@ -69,14 +69,15 @@ export const Course: React.FC<BackendProps> = () => {
             }}
             dataSource={videos}
             renderItem={(video) => (
-              <List.Item
+              <StyledListItem
                 onClick={() => {
                   setActualVideo(video);
                 }}
-                style={{ cursor: "pointer" }}
+                style={{ cursor: "pointer", display: "flex" }}
               >
-                {video.name}
-              </List.Item>
+                <VideoId>{video.id}</VideoId>{" "}
+                <div style={{ width: "100%" }}> {video.name}</div>
+              </StyledListItem>
             )}
           />
         </RightSideScreen>
@@ -181,4 +182,18 @@ const ChooseVideoContainer = styled.div`
   justify-content: center;
   align-items: center;
   padding-top: 20px;
+`;
+
+const VideoId = styled.div`
+  width: 30px;
+  font-size: 80%;
+  @media screen and (max-width: 600px) {
+    display: none;
+  } ;
+`;
+
+const StyledListItem = styled(List.Item)`
+  &:hover {
+    background-color: rgb(243, 243, 243);
+  }
 `;

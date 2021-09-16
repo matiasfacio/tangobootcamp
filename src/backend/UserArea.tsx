@@ -2,8 +2,6 @@ import * as React from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import { useAuth0 } from "@auth0/auth0-react";
-
-import { UserAreaMenu } from "./UserAreaMenu";
 import { Courses } from "./Courses";
 
 export const UserArea = () => {
@@ -18,7 +16,6 @@ export const UserArea = () => {
     <>
       {!isAuthenticated && history.push("/login")}
       <FullBackendScreen>
-        <UserAreaMenu />
         <Courses />
       </FullBackendScreen>
     </>

@@ -84,6 +84,7 @@ const MenuContainer = styled.nav`
   height: 100px;
   width: 100vw;
   background-color: var(--black);
+  border-bottom: 2px var(--pink) solid;
   display: flex;
   justify-content: flex-end;
   ul {

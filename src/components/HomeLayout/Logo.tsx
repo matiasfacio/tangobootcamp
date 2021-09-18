@@ -1,4 +1,4 @@
-import tangobootcamps from "../../images/logo-small.jpg";
+import tangobootcamps from "../../images/newlogo-long.svg";
 import React from "react";
 import styled from "styled-components";
 
@@ -12,12 +12,13 @@ export const Logo = () => {
 
 const LogoContainer = styled.div`
   position: absolute;
-  top: 10px;
-  left: 0px;
+  top: 5px;
+  left: 20px;
   background-color: var(--black);
+  height: 87px;
   img {
-    width: 150px;
-    height: 90px;
+    width: 100%;
+    height: 100%;
   }
   @media screen and (max-width: 994px) {
     position: absolute;

@@ -5,10 +5,10 @@ import { useQueryUser } from "../util/useQueryUser";
 import { useHistory, Link } from "react-router-dom";
 import { Card, Modal } from "antd";
 import siluette from "../images/siluette.png";
-import structure from "../images/tangostructurebootcamp.jpg";
-import musicality from "../images/tangomusicalitybootcamp.jpg";
-import exercises from "../images/Exercises.jpg";
-import talkimprovisation from "../images/tangotalkimprovisation.jpg";
+import structure from "../images/tangostructurebootcamp1.svg";
+import musicality from "../images/tangomusicalitybootcamp1.svg";
+import exercises from "../images/Exercises1.svg";
+import talkimprovisation from "../images/tangotalkimprovisation1.svg";
 import { PrimaryButton } from "../components/UIComponents/PrimaryButton";
 import { SecondaryButton } from "../components/UIComponents/SecondaryButton";
 import { CartContext } from "../contexts/CartContext";
@@ -208,7 +208,7 @@ const Courses = () => {
                     src={returnPicture(course?.picture)}
                     alt="course"
                     width="100%"
-                    height={course?.value !== 0 ? "100%" : "100%"}
+                    height="100%"
                   />
                 }
                 hoverable
@@ -294,7 +294,7 @@ const StyledCard = styled(Card)`
   cursor: pointer;
   margin-right: 20px;
   margin-bottom: 20px;
-  flex-basis: clamp(300px, 40vw, 600px);
+  flex-basis: clamp(300px, 40vw, 400px);
   flex-grow: 0;
   flex-shrink: 0;
   background-color: rgba(134, 134, 134, 0.1);
@@ -304,6 +304,10 @@ const StyledCard = styled(Card)`
     ${({ theme }) =>
       theme === "false" &&
       'content: "Coming soon!"; position: absolute; top: -10px; right: 0px;padding: 5px 10px; box-shadow: 1px 1px 5px rgba(0,0,0,0.5);background-color: red; color: white; font-size: 1rem;transform: rotateZ(350deg); transition: transform 250ms ease-in-out'}
+  }
+  .ant-card-cover {
+    margin: 0;
+    padding: 0;
   }
 
   .ant-card-body {

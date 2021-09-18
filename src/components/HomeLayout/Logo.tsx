@@ -12,12 +12,12 @@ export const Logo = () => {
 
 const LogoContainer = styled.div`
   position: absolute;
-  top: 0;
+  top: 10px;
   left: 0px;
   background-color: var(--black);
   img {
     width: 150px;
-    height: 100px;
+    height: 90px;
   }
   @media screen and (max-width: 994px) {
     position: absolute;

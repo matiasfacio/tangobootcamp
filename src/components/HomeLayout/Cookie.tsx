@@ -33,7 +33,7 @@ const CookieContainer = styled.div`
   padding: 10px;
   bottom: 0;
   max-width: 90vw;
-  background-color: rgb(247, 126, 126);
+  background-color: var(--pink);
   color: black;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;

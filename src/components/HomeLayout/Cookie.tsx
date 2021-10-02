@@ -46,11 +46,13 @@ const CookieContainer = styled.div`
 
 const CookieIcon = styled.div`
   content: url(${cancelIcon});
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
   position: absolute;
-  top: -20px;
-  right: -20px;
+  top: -10px;
+  right: -10px;
   cursor: pointer;
   z-index: 2;
+  background-color: white;
+  border-radius: 50%;
 `;

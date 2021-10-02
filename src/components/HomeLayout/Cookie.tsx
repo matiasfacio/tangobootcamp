@@ -34,7 +34,7 @@ const CookieContainer = styled.div`
   bottom: 0;
   max-width: 90vw;
   background-color: var(--pink);
-  color: black;
+  color: white;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
   display: ${({ theme }) => (theme === true ? "none" : "flex")};

@@ -15,7 +15,6 @@ const GlobalStyle = createGlobalStyle`
     --black: #062424;
     --pink: #d66049;
     --green: #146d6d;
-    /* --pink: rgb(247, 126, 126); */
     --white: white;
     --blue: rgb(45, 153, 199);
     --btn-fontsize: 1.2rem;
@@ -25,6 +24,20 @@ const GlobalStyle = createGlobalStyle`
     scroll-behavior: smooth;
     overflow-x: hidden;
   };
+
+  body::-webkit-scrollbar {
+    width: 12px;               /* width of the entire scrollbar */
+  }
+
+  body::-webkit-scrollbar-track {
+    background: var(--black);        /* color of the tracking area */
+  }
+
+  body::-webkit-scrollbar-thumb {
+    background-color: var(--pink);    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    border: 3px solid var(--black);  /* creates padding around scroll thumb */
+  }
   
   * {
     padding:0;

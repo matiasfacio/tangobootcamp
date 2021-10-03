@@ -125,7 +125,7 @@ const GlobalStyle = createGlobalStyle`
 const BaseURL =
   process.env.NODE_ENV !== "production"
     ? "http://localhost:8008"
-    : "https://tangobootcamp.onrender.com";
+    : "https://tangobootcamp.net";
 
 function App() {
   const queryClient = new QueryClient();

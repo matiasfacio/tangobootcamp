@@ -25,19 +25,28 @@ const GlobalStyle = createGlobalStyle`
     overflow-x: hidden;
   };
 
-  body::-webkit-scrollbar {
-    width: 12px;               /* width of the entire scrollbar */
+
+  /* Works on Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--pink) var(--black);
   }
 
-  body::-webkit-scrollbar-track {
-    background: var(--black);        /* color of the tracking area */
+  /* Works on Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+   width: 12px;
   }
 
-  body::-webkit-scrollbar-thumb {
-    background-color: var(--pink);    /* color of the scroll thumb */
-    border-radius: 20px;       /* roundness of the scroll thumb */
-    border: 3px solid var(--black);  /* creates padding around scroll thumb */
+  *::-webkit-scrollbar-track {
+    background: var(--black);
   }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: var(--pink);
+    border-radius: 20px;
+    border: 3px solid var(--black);
+  }
+
   
   * {
     padding:0;

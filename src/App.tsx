@@ -37,6 +37,8 @@ const GlobalStyle = createGlobalStyle`
    width: 12px;
   }
 
+  
+
   *::-webkit-scrollbar-track {
     background: var(--black);
   }
@@ -123,7 +125,7 @@ const GlobalStyle = createGlobalStyle`
 const BaseURL =
   process.env.NODE_ENV !== "production"
     ? "http://localhost:8008"
-    : "https://www.tangobootcamp.net";
+    : "https://www.tangobootcamp.onrender.com";
 
 function App() {
   const queryClient = new QueryClient();

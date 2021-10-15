@@ -7,81 +7,88 @@ export interface InstructorsProps {}
 
 const Instructors: React.FunctionComponent<InstructorsProps> = () => {
   return (
-    <InstructorsSection id="instructors">
-      <Title>
-        <h2>Meet the Instructors</h2>
-      </Title>
-      <InstructorsContainer>
-        <Instructor>
-          <ProfileImage src={matias} alt="matias-facio" />
-          <div className="name">
-            <h2>Matias Facio</h2>
-            <div className="rol">
-              <h3>Creator / Instructor</h3>
+    <MainInstructorContainer>
+      <InstructorsSection id="instructors">
+        <Title>
+          <h2>Meet the Instructors</h2>
+        </Title>
+        <InstructorsContainer>
+          <Instructor>
+            <ProfileImage src={matias} alt="matias-facio" />
+            <div className="name">
+              <h2>Matias Facio</h2>
+              <div className="rol">
+                <h3>Creator / Instructor</h3>
+              </div>
+              <div className="description">
+                <p>
+                  I started dancing Tango back in Argentina in 1995 a the age of
+                  16. From the very first moment, I completely inmersed myself
+                  into it. <br />I began teaching Tango quite early, already in
+                  1998 for children of a dance accademy, and shortly after for
+                  adults as well. <br />I have taught in many studios in Buenos
+                  Aires, and I have traveled the world widely, from Vancouver,
+                  Canada, to Tokyo, Japan, teaching and performing Argentine
+                  Tango. <br />
+                  Since 2008 I live in Berlin, Germany, where I continue
+                  teaching Argentine Tango. <br />
+                  <br />I have danced most of the popular styles, but today, I
+                  can proudly say that my style is <span>unique.</span> <br />
+                  <br />I believe the reason for having my own style is to
+                  having understood how the tango structure works.
+                  <br />
+                  <span>
+                    Join me in the Tango Structure Bootcamp, and let me help you
+                    to find your own style.
+                  </span>
+                </p>
+              </div>
             </div>
-            <div className="description">
-              <p>
-                I started dancing Tango back in Argentina in 1995 a the age of
-                16. From the very first moment, I completely inmersed myself
-                into it. <br />I began teaching Tango quite early, already in
-                1998 for children of a dance accademy, and shortly after for
-                adults as well. <br />I have taught in many studios in Buenos
-                Aires, and I have traveled the world widely, from Vancouver,
-                Canada, to Tokyo, Japan, teaching and performing Argentine
-                Tango. <br />
-                Since 2008 I live in Berlin, Germany, where I continue teaching
-                Argentine Tango. <br />
-                <br />I have danced most of the popular styles, but today, I can
-                proudly say that my style is <span>unique.</span> <br />
-                <br />I believe the reason for having my own style is to having
-                understood how the tango structure works.
-                <br />
-                <span>
-                  Join me in the Tango Structure Bootcamp, and let me help you
-                  to find your own style.
-                </span>
-              </p>
+          </Instructor>
+          <Instructor>
+            <ProfileImage src={javier} alt="javier-antar" />
+            <div className="name">
+              <h2>Javier Antar</h2>
+              <div className="rol">
+                <h3>Creator / Instructor</h3>
+              </div>
+              <div className="description">
+                <p>
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                  Repellat voluptatem itaque iure esse soluta laboriosam alias
+                  consectetur laudantium ab, voluptas porro, suscipit,
+                  voluptates optio inventore. Maiores officia consequatur iure
+                  laborum similique eius necessitatibus enim velit quisquam
+                  doloribus, dolor nostrum molestias magni? Ducimus quas fugiat
+                  reprehenderit itaque sit eos omnis possimus non architecto
+                  soluta inventore totam, praesentium fugit eveniet quo ullam
+                  quibusdam aperiam aspernatur optio porro repellendus quam ipsa
+                  suscipit. Incidunt debitis facere sit, veritatis reps ipsum
+                  dicta, quis velit rem inventore sunt perspiciatis facere? Odit
+                  magni aperiam ipsum dolorem non id obcaecati nobis.
+                </p>
+              </div>
             </div>
-          </div>
-        </Instructor>
-        <Instructor>
-          <ProfileImage src={javier} alt="javier-antar" />
-          <div className="name">
-            <h2>Javier Antar</h2>
-            <div className="rol">
-              <h3>Creator / Instructor</h3>
-            </div>
-            <div className="description">
-              <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Repellat voluptatem itaque iure esse soluta laboriosam alias
-                consectetur laudantium ab, voluptas porro, suscipit, voluptates
-                optio inventore. Maiores officia consequatur iure laborum
-                similique eius necessitatibus enim velit quisquam doloribus,
-                dolor nostrum molestias magni? Ducimus quas fugiat reprehenderit
-                itaque sit eos omnis possimus non architecto soluta inventore
-                totam, praesentium fugit eveniet quo ullam quibusdam aperiam
-                aspernatur optio porro repellendus quam ipsa suscipit. Incidunt
-                debitis facere sit, veritatis reps ipsum dicta, quis velit rem
-                inventore sunt perspiciatis facere? Odit magni aperiam ipsum
-                dolorem non id obcaecati nobis.
-              </p>
-            </div>
-          </div>
-        </Instructor>
-      </InstructorsContainer>
-    </InstructorsSection>
+          </Instructor>
+        </InstructorsContainer>
+      </InstructorsSection>
+    </MainInstructorContainer>
   );
 };
 
 export default Instructors;
+
+const MainInstructorContainer = styled.div`
+  background-color: var(--body-bg-color);
+  width: 100vw;
+`;
 
 const Title = styled.div`
   display: flex;
   justify-content: center;
   h2 {
     font-size: 2.5rem;
-    color: var(--black);
+    color: var(--white);
     text-transform: uppercase;
     text-align: center;
   }
@@ -122,11 +129,12 @@ const Instructor = styled.div`
     h2 {
       font-size: 1.5rem;
       padding: 20px 0;
-      color: var(--black);
+      color: var(--white);
       text-transform: uppercase;
     }
     .description {
       max-width: auto;
+      color: var(--white);
     }
     .rol {
       h3 {
@@ -146,5 +154,6 @@ const InstructorsSection = styled.section`
   flex-direction: column;
   justify-content: center;
   max-width: 1200px;
-  margin: 100px auto;
+  margin: 0 auto;
+  background-color: var(--body-bg-color);
 `;

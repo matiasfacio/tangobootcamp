@@ -3,34 +3,45 @@ import styled from "styled-components";
 
 function LifeLongAccess() {
   return (
-    <LifeLongAccessStyle>
-      <h2>
-        As long as this project exists, we offer you{" "}
-        <span>life long access</span> to the program. <br />
-        The content will be constantly upgraded, and you will have access to all
-        the newly added videos and homework
-        <br /> <span>without having to pay extra!</span>
-      </h2>
-    </LifeLongAccessStyle>
+    <MainLLContainer>
+      <LifeLongAccessStyle>
+        <h2>
+          As long as this project exists, we offer you{" "}
+          <span>life long access</span> to the program. <br />
+          The content will be constantly upgraded, and you will have access to
+          all the newly added videos and homework
+          <br /> <span>without having to pay extra!</span>
+        </h2>
+      </LifeLongAccessStyle>
+    </MainLLContainer>
   );
 }
 
 export default LifeLongAccess;
 
+const MainLLContainer = styled.div`
+  width: 100vw;
+  min-height: 100vh;
+  background-color: var(--body-bg-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 const LifeLongAccessStyle = styled.div`
+  background-color: var(--body-bg-color);
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 100px auto;
-  padding: 0 0em;
-  max-width: 70vw;
-  min-height: 70vh;
-  border-top: 10px var(--black) dotted;
-  border-bottom: 10px var(--black) dotted;
+  margin: 0 auto;
+  padding: 0px 0em;
+  max-width: 1500px;
+  min-height: 50vh;
+  border-top: 10px var(--white) dotted;
+  border-bottom: 10px var(--white) dotted;
   h2 {
-    color: $h1-font-color;
-    font-size: $h2-font-size;
+    color: var(--white);
     line-height: 2;
   }
   span {

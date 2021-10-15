@@ -5,20 +5,23 @@ import { PrimaryButton } from "../UIComponents/PrimaryButton";
 export const Pricing = () => {
   return (
     <PricingStylesContainer id="price">
+      <Title>
+        <h2>Pricing</h2>
+      </Title>
       <PricingStyles>
         <OriginalPrice>
-          <Title>
+          <Details>
             <span>Tango Structure Bootcamp</span> with life long access and
             updates
-          </Title>
+          </Details>
           <Price>99.-€</Price>
         </OriginalPrice>
         <hr style={{ width: "100%" }} />
         <PriceContainer>
-          <Title>
+          <Details>
             Take adventage of our launch promotion until January 15th, 2022 and
             get 20€ discount!
-          </Title>
+          </Details>
           <Price theme={true}>99.-€</Price>
           <Price>79.-€</Price>
         </PriceContainer>
@@ -81,6 +84,18 @@ const Price = styled.div`
 `;
 
 const Title = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  h2 {
+    font-size: 2.5rem;
+    color: var(--white);
+    text-transform: uppercase;
+    text-align: center;
+  }
+`;
+
+const Details = styled.div`
   color: var(--white);
   font-size: 1.6vw;
   font-family: serif;

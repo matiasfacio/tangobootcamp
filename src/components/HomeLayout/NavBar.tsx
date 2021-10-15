@@ -35,7 +35,7 @@ const NavBar: React.FunctionComponent = () => {
   };
 
   return (
-    <>
+    <MainMenuContainer>
       <BurgerMenuContainer onClick={() => setMenuOpen(!menuOpen)}>
         <img
           src={!menuOpen ? IconMenuOpen : IconMenuClose}
@@ -50,7 +50,7 @@ const NavBar: React.FunctionComponent = () => {
           <HashLink to="/#">home</HashLink>
           <HashLink to="/#what-is">the bootcamp</HashLink>
           <HashLink to="/#instructors">instructors</HashLink>
-          <HashLink to="/#price">Price</HashLink>
+          <HashLink to="/#price">Pricing</HashLink>
           <HashLink to="/#program">Program</HashLink>
           <HashLink to="/#contact">contact</HashLink>
         </ul>
@@ -66,11 +66,16 @@ const NavBar: React.FunctionComponent = () => {
           )}
         </RegisterUser>
       </MenuContainer>
-    </>
+    </MainMenuContainer>
   );
 };
 
 export default NavBar;
+
+const MainMenuContainer = styled.div`
+  width: 100vw;
+  background-color: var(--body-bg-color);
+`;
 
 const BurgerMenuContainer = styled.div`
   display: none;
@@ -85,11 +90,13 @@ const BurgerMenuContainer = styled.div`
 
 const MenuContainer = styled.nav`
   min-width: 1024px;
+  max-width: 1500px;
+  margin: 0 auto;
   background-color: var(--body-bg-color);
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 3rem;
+  padding: 1.5rem;
   ul {
     list-style: none;
     height: calc(100% - 50px);
@@ -123,10 +130,10 @@ const MenuContainer = styled.nav`
     min-width: 100%;
     background-color: var(--body-bg-color);
     transform: ${({ theme }) =>
-      theme === "true" ? "translateX(0)" : "translateX(-50%)"};
+      theme === "true" ? "translateX(0)" : "translateX(-100%)"};
     opacity: ${({ theme }) => (theme === "true" ? "1" : "0")};
     height: 100vh;
-    width: ${({ theme }) => (theme === "true" ? "100vw" : "30vw")};
+    width: 100vw;
     transition: all 500ms ease-in-out;
     z-index: 999;
     ul {

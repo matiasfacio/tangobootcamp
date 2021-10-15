@@ -124,16 +124,20 @@ const CardStyle = styled(Card)`
   min-height: 320px;
   max-width: 320px;
   overflow-y: hidden;
-  cursor: pointer;
-  border-bottom: 3px var(--pink) solid;
-  border-top-right-radius: 20px;
+  box-shadow: 10px 10px 5px black, 20px 20px 0px var(--pink);
+  border-radius: 5px;
 
   ul {
     list-style: none;
+    cursor: default;
   }
   span {
     color: var(--pink);
     font-weight: 700;
+    cursor: inherit;
+  }
+  p {
+    cursor: default;
   }
   .ant-card-head {
     border-bottom: 2px var(--black) solid;

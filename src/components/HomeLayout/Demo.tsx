@@ -54,6 +54,7 @@ export default Demo;
 const Section = styled.section`
   margin: 0px auto;
   padding-top: 50px;
+  min-height: 80vh;
   background-color: var(--body-bg-color);
 `;
 

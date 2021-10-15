@@ -24,6 +24,20 @@ const UserAreaMenu = () => {
     setModalVisibility(false);
   };
 
+  React.useEffect(() => {
+    const handleClick = () => setMenuOpen(false);
+    const allLinksInMenu = document.querySelectorAll("nav ul a");
+    if (menuOpen) {
+      allLinksInMenu.forEach((a) => {
+        a.addEventListener("click", (e) => handleClick());
+      });
+    }
+
+    return allLinksInMenu.forEach((a) => {
+      a.removeEventListener("click", handleClick);
+    });
+  }, [menuOpen]);
+
   return (
     <>
       <BurgerMenuContainer onClick={() => setMenuOpen(!menuOpen)}>
@@ -118,11 +132,11 @@ const Nav = styled.nav`
     left: 0;
     top: 0;
     padding-right: 20px;
-    background-color: var(--black);
+    background-color: var(--body-bg-color);
     transform: ${({ theme }) =>
-      theme === "true" ? "translateX(0)" : "translateX(-50%)"};
+      theme === "true" ? "translateX(0)" : "translateX(-100%)"};
     opacity: ${({ theme }) => (theme === "true" ? "1" : "0")};
-    width: ${({ theme }) => (theme === "true" ? "100vw" : "30vw")};
+    width: 100vw;
     transition: all 500ms ease-in-out;
     z-index: 999;
   }

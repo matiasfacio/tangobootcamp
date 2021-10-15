@@ -43,8 +43,9 @@ const NavBar: React.FunctionComponent = () => {
           width="60px"
         />
       </BurgerMenuContainer>
-      <Logo />
+
       <MenuContainer theme={menuOpen.toString()}>
+        <Logo />
         <ul>
           <HashLink to="/#">home</HashLink>
           <HashLink to="/#what-is">the bootcamp</HashLink>
@@ -52,16 +53,18 @@ const NavBar: React.FunctionComponent = () => {
           <HashLink to="/#price">Price</HashLink>
           <HashLink to="/#program">Program</HashLink>
           <HashLink to="/#contact">contact</HashLink>
+        </ul>
+        <RegisterUser>
           {!isAuthenticated ? (
             <PrimaryButtonBoost onClick={() => authenticateUser()}>
-              Login / Register
+              Login/Register
             </PrimaryButtonBoost>
           ) : (
             <HashLink to="/userarea">
               <UserOutlined />
             </HashLink>
           )}
-        </ul>
+        </RegisterUser>
       </MenuContainer>
     </>
   );
@@ -71,7 +74,7 @@ export default NavBar;
 
 const BurgerMenuContainer = styled.div`
   display: none;
-  @media screen and (max-width: 994px) {
+  @media screen and (max-width: 1100px) {
     display: block;
     position: fixed;
     top: 10px;
@@ -81,18 +84,18 @@ const BurgerMenuContainer = styled.div`
 `;
 
 const MenuContainer = styled.nav`
-  height: 100px;
-  width: 100vw;
+  min-width: 1024px;
   background-color: var(--body-bg-color);
-  border-bottom: 2px var(--pink) solid;
   display: flex;
-  justify-content: flex-end;
+  flex-direction: row;
+  align-items: center;
+  padding: 3rem;
   ul {
     list-style: none;
-    height: 100%;
-    width: 80%;
+    height: calc(100% - 50px);
+    width: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     font-size: 1.1rem;
     text-transform: uppercase;
@@ -108,23 +111,16 @@ const MenuContainer = styled.nav`
         color: black;
       }
     }
-    & a:last-child {
-      padding: 10px q0px;
-      border-radius: 2px;
-      transition: all 0.3s ease-in-out;
-      cursor: pointer;
-      background-color: var(--pink);
-      color: white;
-      &:hover {
-        background-color: black;
-      }
-    }
   }
-  @media screen and (max-width: 994px) {
+  @media screen and (max-width: 1100px) {
     position: fixed;
     left: 0;
     top: 0;
     padding-right: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 100%;
     background-color: var(--body-bg-color);
     transform: ${({ theme }) =>
       theme === "true" ? "translateX(0)" : "translateX(-50%)"};
@@ -138,10 +134,25 @@ const MenuContainer = styled.nav`
       justify-content: center;
       align-items: flex-end;
       height: 80%;
+      width: 100%;
     }
   }
 `;
 
+const RegisterUser = styled.div`
+  padding: 10px 15px;
+  border-radius: 2px;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  background-color: var(--pink);
+  color: white;
+  align-self: center;
+  &:hover {
+    background-color: black;
+  }
+`;
+
 const PrimaryButtonBoost = styled(PrimaryButton)`
-  padding: 10px 10px;
+  padding: 0px 0px;
+  width: fit-content;
 `;

@@ -70,8 +70,8 @@ const PrimaryButtonBoost = styled(PrimaryButton)`
 
 const HeaderSection = styled.section`
   margin: 0 auto;
-  min-height: calc(100vh - 50px);
   display: flex;
+  height: calc(100vh - 6rem - 6rem);
   justify-content: center;
   align-items: center;
   background-color: var(--body-bg-color);

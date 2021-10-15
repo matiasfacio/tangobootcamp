@@ -11,7 +11,7 @@ import { Logo } from "./Logo";
 export type menuResponsiveCss = React.CSSProperties | undefined;
 
 const NavBar: React.FunctionComponent = () => {
-  const [menuOpen, setMenuOpen] = React.useState(false);
+  const [menuOpen, setMenuOpen] = React.useState<boolean>(false);
   const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
 
   React.useEffect(() => {
@@ -44,7 +44,7 @@ const NavBar: React.FunctionComponent = () => {
         />
       </BurgerMenuContainer>
 
-      <MenuContainer theme={menuOpen.toString()}>
+      <MenuContainer menuOpen={menuOpen}>
         <Logo />
         <ul>
           <HashLink to="/#">home</HashLink>
@@ -88,7 +88,7 @@ const BurgerMenuContainer = styled.div`
   }
 `;
 
-const MenuContainer = styled.nav`
+const MenuContainer = styled.nav<{ menuOpen: boolean }>`
   min-width: 1024px;
   max-width: 1500px;
   margin: 0 auto;
@@ -129,9 +129,9 @@ const MenuContainer = styled.nav`
     justify-content: center;
     min-width: 100%;
     background-color: var(--body-bg-color);
-    transform: ${({ theme }) =>
-      theme === "true" ? "translateX(0)" : "translateX(-100%)"};
-    opacity: ${({ theme }) => (theme === "true" ? "1" : "0")};
+    transform: ${(props) =>
+      props.menuOpen ? "translateX(0)" : "translateX(-100%)"};
+    opacity: ${(props) => (props.menuOpen ? "1" : "0")};
     height: 100vh;
     width: 100vw;
     transition: all 500ms ease-in-out;

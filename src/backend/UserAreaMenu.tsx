@@ -12,7 +12,7 @@ import IconMenuClose from "../images/close.svg";
 const UserAreaMenu = () => {
   const { cart } = React.useContext(CartContext);
   const { logout } = useAuth0();
-  const [menuOpen, setMenuOpen] = React.useState(false);
+  const [menuOpen, setMenuOpen] = React.useState<boolean>(false);
 
   const [modalVisibility, setModalVisibility] = React.useState<boolean>(false);
   const onOk = () => {
@@ -47,7 +47,7 @@ const UserAreaMenu = () => {
           width="60px"
         />
       </BurgerMenuContainer>
-      <Nav theme={menuOpen.toString()}>
+      <Nav menuOpen={menuOpen}>
         <Menu>
           <MenuLeft>
             <ListItem className="home">
@@ -114,7 +114,7 @@ const BurgerMenuContainer = styled.div`
   }
 `;
 
-const Nav = styled.nav`
+const Nav = styled.nav<{ menuOpen: boolean }>`
   width: 100vw;
   height: 70px;
   background-color: var(--body-bg-color);
@@ -133,9 +133,9 @@ const Nav = styled.nav`
     top: 0;
     padding-right: 20px;
     background-color: var(--body-bg-color);
-    transform: ${({ theme }) =>
-      theme === "true" ? "translateX(0)" : "translateX(-100%)"};
-    opacity: ${({ theme }) => (theme === "true" ? "1" : "0")};
+    transform: ${(props) =>
+      props.menuOpen ? "translateX(0)" : "translateX(-100%)"};
+    opacity: ${(props) => (props.menuOpen ? "1" : "0")};
     width: 100vw;
     transition: all 500ms ease-in-out;
     z-index: 999;

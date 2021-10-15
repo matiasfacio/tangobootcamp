@@ -25,13 +25,14 @@ const GlobalStyle = createGlobalStyle`
   html {
     scroll-behavior: smooth;
     overflow-x: hidden;
+   
   };
 
 
   /* Works on Firefox */
   * {
     scrollbar-width: thin;
-    scrollbar-color: var(--pink) var(--black);
+    scrollbar-color: var(--pink) var(--body-bg-color);
   }
 
   /* Works on Chrome, Edge, and Safari */
@@ -48,7 +49,7 @@ const GlobalStyle = createGlobalStyle`
   *::-webkit-scrollbar-thumb {
     background-color: var(--pink);
     border-radius: 20px;
-    border: 3px solid var(--black);
+    border: 3px solid var(--body-bg-color);
   }
 
   
@@ -56,12 +57,12 @@ const GlobalStyle = createGlobalStyle`
     padding:0;
     margin:0;
     box-sizing: border-box;
+    ::selection {
+      background-color: var(--pink);
+      color: white;
+    }
   };
   
-
-  body {
-    background-color: var(---body-bg-color);
-  }
 
   h1, h2, h3 {
   font-family: 'Merriweather', serif;

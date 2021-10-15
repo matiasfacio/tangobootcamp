@@ -166,7 +166,7 @@ const OpenVideoList = styled.div`
   font-size: 1.3rem;
   color: white;
   &:hover {
-    background-color: var(--black);
+    background-color: var(--body-bg-color);
   }
 `;
 

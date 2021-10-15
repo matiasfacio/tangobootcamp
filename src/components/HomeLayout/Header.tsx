@@ -60,12 +60,12 @@ export default Header;
 const SecondaryButtonBoost = styled(SecondaryButton)`
   display: inline-block;
   margin: 10px 10px;
-  padding: 5px 10px;
+  padding: 20px 20px;
 `;
 
 const PrimaryButtonBoost = styled(PrimaryButton)`
   box-shadow: 10px 10px 20px rgb(0, 0, 0);
-  padding: 5px 10px;
+  padding: 20px 20px;
 `;
 
 const HeaderSection = styled.section`

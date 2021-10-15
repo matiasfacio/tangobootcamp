@@ -125,7 +125,7 @@ const MenuContainer = styled.nav`
     left: 0;
     top: 0;
     padding-right: 50px;
-    background-color: var(--black);
+    background-color: var(--body-bg-color);
     transform: ${({ theme }) =>
       theme === "true" ? "translateX(0)" : "translateX(-50%)"};
     opacity: ${({ theme }) => (theme === "true" ? "1" : "0")};

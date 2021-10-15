@@ -16,8 +16,8 @@ export const Pricing = () => {
         <hr style={{ width: "100%" }} />
         <PriceContainer>
           <Title>
-            Take adventage of our launch promotion until October 15th and get
-            20€ discount!
+            Take adventage of our launch promotion until January 15th, 2022 and
+            get 20€ discount!
           </Title>
           <Price theme={true}>99.-€</Price>
           <Price>79.-€</Price>
@@ -33,7 +33,7 @@ export const Pricing = () => {
 const PricingStylesContainer = styled.div`
   margin: 0px auto;
   padding: 50px 2em;
-  background-color: var(--black);
+  background-color: var(--body-bg-color);
   min-height: 100vh;
   width: 100%;
   display: flex;
@@ -51,15 +51,14 @@ const PricingStyles = styled.div`
   flex-direction: column;
   margin: 0 auto;
   border-radius: 2px;
-  border: 2px var(--black) solid;
   padding: 50px 30px;
-  background-color: white;
+  background-color: var(--body-bg-color);
   border-bottom: 3px var(--pink) solid;
   border-top-right-radius: 50px;
 `;
 
 const Price = styled.div`
-  color: var(--green);
+  color: var(--white);
   font-size: 4vw;
   font-weight: 800;
   padding-left: 50px;
@@ -82,7 +81,7 @@ const Price = styled.div`
 `;
 
 const Title = styled.div`
-  color: var(--black);
+  color: var(--white);
   font-size: 1.6vw;
   font-family: serif;
   max-width: 350px;

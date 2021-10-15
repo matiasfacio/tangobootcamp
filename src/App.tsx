@@ -11,10 +11,12 @@ import CartContextProvider from "./contexts/CartContext";
 
 const GlobalStyle = createGlobalStyle`
   :root {
+    --body-bg-color: #0e182a;
     --black-gray: #292929;
     --black: #062424;
     --pink: #d66049;
     --green: #146d6d;
+    --main-blue: #0e182a;
     --white: white;
     --blue: rgb(45, 153, 199);
     --btn-fontsize: 1.2rem;
@@ -40,7 +42,7 @@ const GlobalStyle = createGlobalStyle`
   
 
   *::-webkit-scrollbar-track {
-    background: var(--black);
+    background: var(--body-bg-color);
   }
 
   *::-webkit-scrollbar-thumb {
@@ -56,6 +58,10 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   };
   
+
+  body {
+    background-color: var(---body-bg-color);
+  }
 
   h1, h2, h3 {
   font-family: 'Merriweather', serif;

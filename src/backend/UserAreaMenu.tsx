@@ -103,7 +103,7 @@ const BurgerMenuContainer = styled.div`
 const Nav = styled.nav`
   width: 100vw;
   height: 70px;
-  background-color: var(--black);
+  background-color: var(--body-bg-color);
   display: flex;
   flex-direction: row;
   justify-content: center;

@@ -42,7 +42,7 @@ export const WhyThisBootcamp = () => {
 };
 
 const WhyContainer = styled.section`
-  background-color: var(--black);
+  background-color: var(--body-bg-color);
   width: 100%;
   padding: 2em;
   display: flex;

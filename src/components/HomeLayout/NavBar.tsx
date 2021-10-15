@@ -83,7 +83,7 @@ const BurgerMenuContainer = styled.div`
 const MenuContainer = styled.nav`
   height: 100px;
   width: 100vw;
-  background-color: var(--black);
+  background-color: var(--body-bg-color);
   border-bottom: 2px var(--pink) solid;
   display: flex;
   justify-content: flex-end;
@@ -116,7 +116,7 @@ const MenuContainer = styled.nav`
       background-color: var(--pink);
       color: white;
       &:hover {
-        background-color: var(--black);
+        background-color: black;
       }
     }
   }

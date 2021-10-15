@@ -130,7 +130,7 @@ const SectionContact = styled.section`
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  background-color: var(--black);
+  background-color: var(--body-bg-color);
   min-height: 100vh;
   h2 {
     color: var(--white);

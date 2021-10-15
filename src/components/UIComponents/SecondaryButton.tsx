@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const SecondaryButton = styled.button`
-  background-color: var(--black);
+  background-color: var(--body-bg-color);
   color: white;
   font-size: 1.2rem;
   border-radius: 2px;

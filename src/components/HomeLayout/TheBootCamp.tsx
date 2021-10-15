@@ -90,7 +90,7 @@ const TheBootCamp: React.FunctionComponent<TheBootCampProps> = () => {
 export default TheBootCamp;
 
 const Section = styled.section`
-  background-color: var(--black);
+  background-color: var(--body-bg-color);
   padding: 20px 2em;
   margin: 0px auto;
   min-height: calc(100vh + 60px);

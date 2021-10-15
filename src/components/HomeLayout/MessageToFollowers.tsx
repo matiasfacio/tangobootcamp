@@ -62,7 +62,7 @@ export const MessageToFollowers = () => {
 };
 
 const TangoStructureSection = styled.section`
-  background-color: var(--black);
+  background-color: var(--body-bg-color);
   min-height: 100vh;
   width: 100%;
   padding: 2em;

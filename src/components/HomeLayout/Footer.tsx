@@ -18,7 +18,7 @@ const FooterContainer = styled.footer`
   min-height: 60px;
   overflow: hidden;
   padding: 20px auto;
-  background-color: var(--black);
+  background-color: var(--body-bg-color);
   display: flex;
   justify-content: center;
   align-items: center;

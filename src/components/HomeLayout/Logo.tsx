@@ -14,7 +14,7 @@ const LogoContainer = styled.div`
   position: absolute;
   top: 5px;
   left: 20px;
-  background-color: var(--black);
+  background-color: var(--body-bg-color);
   height: 87px;
   img {
     width: 100%;

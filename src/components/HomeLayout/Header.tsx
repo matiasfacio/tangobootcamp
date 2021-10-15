@@ -64,7 +64,7 @@ const SecondaryButtonBoost = styled(SecondaryButton)`
 `;
 
 const PrimaryButtonBoost = styled(PrimaryButton)`
-  box-shadow: 10px 10px 20px rgb(213, 213, 213);
+  box-shadow: 10px 10px 20px rgb(0, 0, 0);
   padding: 5px 10px;
 `;
 
@@ -74,6 +74,7 @@ const HeaderSection = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: var(--body-bg-color);
   @media screen and (max-width: 994px) {
     padding-top: 100px;
     min-height: 100vh;
@@ -89,15 +90,15 @@ const HeaderLeft = styled.div`
     font-size: clamp(3rem, 10vw, 4rem);
     text-transform: uppercase;
     letter-spacing: -3px;
-    color: var(--black);
+    color: var(--white);
   }
   h2 {
     font-size: 1.5rem;
-    color: $h2-color;
+    color: var(--white);
     text-transform: capitalize;
   }
   span {
-    box-shadow: 1px 1px 10px;
+    box-shadow: 10px 10px 10px black;
     color: white;
     background-color: var(--pink);
     padding: 1px 10px;

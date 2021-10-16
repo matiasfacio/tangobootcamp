@@ -21,6 +21,7 @@ const GlobalStyle = createGlobalStyle`
     --blue: rgb(45, 153, 199);
     --btn-fontsize: 1.2rem;
     --btn-weight: bold;
+    --dark-gray: #1f2028;
   }
   html {
     scroll-behavior: smooth;

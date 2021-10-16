@@ -44,6 +44,9 @@ export const Contact: React.FC = () => {
   return (
     <>
       <SectionContact id="contact">
+        <Title>
+          <h2>Contact</h2>
+        </Title>
         <Form
           layout="vertical"
           onFinish={(values) => {
@@ -51,7 +54,6 @@ export const Contact: React.FC = () => {
           }}
         >
           <SubcontainerInformation>
-            <h2>Contact us:</h2>
             <div>Phone: (+49) 01774946117 (Germany)</div>
             <div>Email: info@tangobootcamp.net</div>
           </SubcontainerInformation>
@@ -161,6 +163,18 @@ const SectionContact = styled.section`
   }
 `;
 
+const Title = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  h2 {
+    font-size: 2.5rem;
+    color: var(--white);
+    text-transform: uppercase;
+    text-align: center;
+  }
+`;
+
 const Container = styled.div`
   display: flex;
   flex-direction: row;
@@ -179,6 +193,8 @@ const SubcontainerInformation = styled.div`
   align-items: center;
   flex-direction: column;
   width: 100%;
+  font-family: serif;
+  font-size: 1.2rem;
   & > * {
     padding: 10px 0;
   }

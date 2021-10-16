@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const SecondaryButton = styled.button`
-  background-color: #1f2028;
+  background-color: var(--dark-gray);
   color: white;
   font-size: 1.2rem;
   border-radius: 2px;
@@ -12,6 +12,7 @@ export const SecondaryButton = styled.button`
   font-weight: var(--btn-weight);
   cursor: pointer;
   box-shadow: 10px 10px 10px black;
+  transition: all 500ms ease;
   &:hover {
     background-color: var(--pink);
     color: white;

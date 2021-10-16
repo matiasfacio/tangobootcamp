@@ -122,11 +122,12 @@ const Section = styled.section`
 const CardStyle = styled(Card)`
   margin-top: 50px;
   min-height: 320px;
-  max-width: 320px;
+  max-width: 300px;
   overflow-y: hidden;
-  box-shadow: 10px 10px 5px black, 20px 20px 0px var(--pink);
+  box-shadow: 5px 5px 0px var(--dark-gray);
   border-radius: 5px;
-
+  transition: all 250ms ease-in-out;
+  opacity: 1;
   ul {
     list-style: none;
     cursor: default;
@@ -139,23 +140,28 @@ const CardStyle = styled(Card)`
   p {
     cursor: default;
   }
-  .ant-card-head {
-    border-bottom: 2px var(--black) solid;
-  }
+
   .ant-card-head {
     border-bottom: none;
     position: relative;
     &::after {
       content: "";
-      height: 2px;
+      height: 1px;
       width: 100%;
-      background-color: var(--black);
+      background-color: var(--pink);
       bottom: 0;
       left: 0;
       position: absolute;
-      transform: scale(1);
-      transition: transform 500ms ease;
+      transform: scale(0);
+      transition: transform 1000ms ease;
       transform-origin: left;
     }
+  }
+  &:hover {
+    transform: translateY(-5px) rotateZ(0deg);
+    box-shadow: 5px 5px 0px var(--pink);
+  }
+  &:hover .ant-card-head::after {
+    transform: scale(1);
   }
 `;

@@ -1,21 +1,11 @@
 import * as React from "react";
-import { useHistory } from "react-router-dom";
 import { VideoInterface } from "../UIComponents/VideoInterface";
 import styled from "styled-components";
-import { PrimaryButton } from "../UIComponents/PrimaryButton";
 import { Video } from "../../backend/VideoApi";
-import { useAuth0 } from "@auth0/auth0-react";
 
 export interface DemoProps {}
 
 const Demo: React.FunctionComponent<DemoProps> = () => {
-  const { isAuthenticated, loginWithRedirect } = useAuth0();
-  const history = useHistory();
-
-  const authenticateUser = () => {
-    !isAuthenticated ? loginWithRedirect() : history.push("/userarea");
-  };
-
   const HowitWorksVideo: Video = {
     url: "https://vimeo.com/590999723",
     name: "UserArea",
@@ -28,7 +18,6 @@ const Demo: React.FunctionComponent<DemoProps> = () => {
           <h2>How does it work?!</h2>
         </SectionTitle>
         <VideoContainer>
-          <VideoInterface video={HowitWorksVideo} autoplay={false} />
           <VideoDescription>
             <div>
               <h2>Have a look!</h2>
@@ -39,10 +28,8 @@ const Demo: React.FunctionComponent<DemoProps> = () => {
                 of Argentine Tango.
               </p>
             </div>
-            <PrimaryButtonBoost onClick={() => authenticateUser()}>
-              Register now!
-            </PrimaryButtonBoost>
           </VideoDescription>
+          <VideoInterface video={HowitWorksVideo} autoplay={false} />
         </VideoContainer>
       </SectionContainer>
     </Section>
@@ -70,6 +57,7 @@ const VideoContainer = styled.div`
   width: 100%;
   padding: 0 20px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   margin-bottom: 50px;
@@ -97,12 +85,6 @@ const SectionTitle = styled.div`
     font-size: 2.5rem;
     color: var(--white);
     text-transform: uppercase;
-  }
-`;
-
-const PrimaryButtonBoost = styled(PrimaryButton)`
-  &:hover {
-    background-color: var(--pink);
-    color: var(--black);
+    text-align: center;
   }
 `;

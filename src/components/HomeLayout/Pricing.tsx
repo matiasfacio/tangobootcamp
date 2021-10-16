@@ -11,19 +11,15 @@ export const Pricing = () => {
       <PricingStyles>
         <OriginalPrice>
           <Details>
-            <span>Tango Structure Bootcamp</span> with life long access and
-            updates
+            Master the Tango Structure <br />
+            Tango Structure Bootcamp with life long access and updates
           </Details>
-          <Price>99.-€</Price>
+          <Price discount={false}>99€</Price>
         </OriginalPrice>
         <hr style={{ width: "100%" }} />
         <PriceContainer>
-          <Details>
-            Take adventage of our launch promotion until January 15th, 2022 and
-            get 20€ discount!
-          </Details>
-          <Price theme={true}>99.-€</Price>
-          <Price>79.-€</Price>
+          <Details>Promo until January 15th 2022!</Details>
+          <Price discount={true}>79€</Price>
         </PriceContainer>
         <PrimaryButton style={{ alignSelf: "center", marginTop: 50 }}>
           Sign up now!
@@ -43,12 +39,11 @@ const PricingStylesContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  border-bottom: 3px white solid;
 `;
 
 const PricingStyles = styled.div`
   display: flex;
-  max-width: 800px;
+  max-width: 1200px;
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
@@ -56,31 +51,19 @@ const PricingStyles = styled.div`
   border-radius: 2px;
   padding: 50px 30px;
   background-color: var(--body-bg-color);
-  border-bottom: 3px var(--pink) solid;
   border-top-right-radius: 50px;
 `;
 
-const Price = styled.div`
+const Price = styled.div<{ discount }>`
   color: var(--white);
-  font-size: 4vw;
+  font-size: clamp(2rem, 4vw, 4rem);
   font-weight: 800;
-  padding-left: 50px;
+  margin-left: 50px;
   font-family: serif;
   position: relative;
-  ${({ theme }) =>
-    theme === true &&
-    `
-    transform: scale(0.7);
-    &::after {
-    position: absolute;
-    left: 20%;
-    top: 50%;
-    content: "";
-    height: 10px;
-    width: 100px;
-    background-color: var(--pink);
-    transform: rotateZ(315deg);
-    }`}
+  ${({ discount }) =>
+    discount &&
+    `border: 10px var(--pink) solid; border-radius: 50%; padding: 5px 10px`};
 `;
 
 const Title = styled.div`
@@ -97,9 +80,9 @@ const Title = styled.div`
 
 const Details = styled.div`
   color: var(--white);
-  font-size: 1.6vw;
+  font-size: 1.2rem;
   font-family: serif;
-  max-width: 350px;
+  max-width: 500px;
   span {
     background-color: var(--pink);
     color: white;
@@ -113,6 +96,7 @@ const PriceContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 50px;
 `;
 
 const OriginalPrice = styled.div`

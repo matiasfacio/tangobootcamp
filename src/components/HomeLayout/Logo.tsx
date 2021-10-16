@@ -12,7 +12,7 @@ export const Logo = () => {
 
 const LogoContainer = styled.div`
   background-color: var(--body-bg-color);
-  height: 100px;
+  height: 150px;
   img {
     width: 100%;
     height: 100%;

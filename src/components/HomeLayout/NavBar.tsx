@@ -147,19 +147,31 @@ const MenuContainer = styled.nav<{ menuOpen: boolean }>`
 `;
 
 const RegisterUser = styled.div`
-  padding: 10px 15px;
   border-radius: 2px;
   transition: all 0.3s ease-in-out;
   cursor: pointer;
   background-color: var(--pink);
   color: white;
   align-self: center;
+
+  .anticon {
+    padding: 20px;
+  }
+  .anticon svg {
+    height: 30px;
+    width: 30px;
+  }
   &:hover {
-    background-color: black;
+    transform: scale(1.1);
   }
 `;
 
 const PrimaryButtonBoost = styled(PrimaryButton)`
-  padding: 0px 0px;
+  padding: 10px 20px;
   width: fit-content;
+  outline: none;
+  border: none;
+  &:hover {
+    background-color: var(--pink);
+  }
 `;

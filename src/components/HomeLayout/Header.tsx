@@ -1,6 +1,5 @@
 import * as React from "react";
 import silouette from "../../images/siluette.png";
-import headerImg from "../../images/header-img.svg";
 import styled from "styled-components";
 import { SecondaryButton } from "../UIComponents/SecondaryButton";
 import { PrimaryButton } from "../UIComponents/PrimaryButton";
@@ -44,10 +43,7 @@ const Header: React.FunctionComponent<HeaderProps> = () => {
         </HeaderLeft>
         <HeaderRight>
           <div id="primary-image">
-            <img src={silouette} alt="siloutte" id="silouette" />
-            <div id="secondary-image">
-              <img src={headerImg} alt="header-img" id="header-img" />
-            </div>
+            {/* <img src={silouette} alt="siloutte" id="silouette" /> */}
           </div>
         </HeaderRight>
       </StyledHeader>
@@ -108,26 +104,20 @@ const HeaderLeft = styled.div`
 `;
 
 const HeaderRight = styled.div`
-  z-index: -1;
   display: none;
   #primary-image {
+    width: 40vw;
+    max-width: 400px;
+    height: 70vh;
+    max-height: 400px;
     position: relative;
-    img#silouette {
-      border-radius: 20px;
-      width: 30vw;
-      height: auto;
-      opacity: 1;
-      z-index: 1;
-    }
-    #secondary-image {
-      position: absolute;
-      z-index: -1;
-      img#header-img {
-        transform: translate(50%, -130%);
-        opacity: 0.8;
-        width: 15vw;
-      }
-    }
+    border-radius: 50%;
+    border-right: 3px white solid;
+    background-image: url(${silouette});
+    background-size: 150%;
+    background-position: 50% 50%;
+    background-blend-mode: lighten;
+    transition: all 1s ease-in-out;
   }
   @media (min-width: 800px) {
     display: block;

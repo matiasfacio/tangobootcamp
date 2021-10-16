@@ -161,9 +161,6 @@ const RegisterUser = styled.div`
     height: 30px;
     width: 30px;
   }
-  &:hover {
-    transform: scale(1.1);
-  }
 `;
 
 const PrimaryButtonBoost = styled(PrimaryButton)`
@@ -171,7 +168,28 @@ const PrimaryButtonBoost = styled(PrimaryButton)`
   width: fit-content;
   outline: none;
   border: none;
-  &:hover {
-    background-color: var(--pink);
+  position: relative;
+  border: 1px var(--pink) solid;
+  background-color: var(--body-bg-color);
+
+  &::after {
+    content: "Register Now";
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--body-bg-color);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: scale(0);
+    transition: all 250ms ease-in-out;
+    transform-origin: top center;
+  }
+
+  &:hover::after {
+    transform: scale(1);
+    border: 1px var(--pink) solid;
   }
 `;

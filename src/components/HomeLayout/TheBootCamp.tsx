@@ -128,6 +128,7 @@ const CardStyle = styled(Card)`
   border-radius: 5px;
   transition: all 250ms ease-in-out;
   opacity: 1;
+
   ul {
     list-style: none;
     cursor: default;

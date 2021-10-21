@@ -18,7 +18,7 @@ export const Contact: React.FC = () => {
 
   const sendEmail = async (values) => {
     try {
-      const result = await fetch(`${BASE_URL}/contact`, {
+      const result = await fetch(`${BASE_URL}/contact/contact`, {
         method: "POST",
         mode: "cors",
         headers: {

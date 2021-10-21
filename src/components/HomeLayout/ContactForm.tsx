@@ -10,7 +10,7 @@ export type FormInfo = {
   text?: string;
 };
 
-const BASE_URL = "https://tbc.tangodefinitions.com/api";
+const BASE_URL = "https://tbc.tangodefinitions.com/api/contact";
 
 export const Contact: React.FC = () => {
   const [modalVisiblity, setModalVisibility] = React.useState<boolean>(false);
@@ -18,7 +18,7 @@ export const Contact: React.FC = () => {
 
   const sendEmail = async (values) => {
     try {
-      const result = await fetch(`${BASE_URL}/contact/contact`, {
+      const result = await fetch(`${BASE_URL}/contact`, {
         method: "POST",
         mode: "cors",
         headers: {

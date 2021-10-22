@@ -11,7 +11,8 @@ import CartContextProvider from "./contexts/CartContext";
 
 const GlobalStyle = createGlobalStyle`
   :root {
-    --body-bg-color: #0e182a;
+    --body-bg-color: #1a2b4d;
+    /* --body-bg-color: #0e182a; */
     --black-gray: #292929;
     --black: #062424;
     --pink: #d66049;

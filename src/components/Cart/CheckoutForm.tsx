@@ -122,6 +122,7 @@ export const CheckoutForm = ({ cart }) => {
       setProcessing(false);
       setSucceeded(true);
       updateDB(payload);
+      console.log("I am here!!!!!!");
       history.push("/payment-confirmation");
     }
   };

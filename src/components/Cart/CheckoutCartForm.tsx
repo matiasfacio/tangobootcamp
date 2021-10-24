@@ -37,6 +37,7 @@ export const CheckoutCartForm = ({ cart }: { cart: Course[] }) => {
           );
           const data = await result.json();
           // history.push(data.url);
+          console.log("data from form creating a checkout session:", data);
           window.location.href = data.url;
         } catch (error) {
           console.log(error);

@@ -42,7 +42,7 @@ const Cart = () => {
       width: "100px",
       render: (field, course) => {
         return (
-          <div>
+          <div key={course + "course"}>
             {field.toFixed(2)} {course.currency === "eur" ? "€" : "u$s"}
           </div>
         );
@@ -55,7 +55,7 @@ const Cart = () => {
       width: "100px",
       render: (field, course) => {
         return (
-          <div>
+          <div key={course + "disccount"}>
             {field.toFixed(2)} {course.currency === "eur" ? "€" : "u$s"}
           </div>
         );
@@ -68,7 +68,7 @@ const Cart = () => {
       render: (_, course) => {
         const value = course.value - course.discount;
         return (
-          <div>
+          <div key={course + "total"}>
             {value.toFixed(2)} {course.currency === "eur" ? "€" : "u$s"}
           </div>
         );

@@ -45,6 +45,7 @@ export const CheckoutForm = ({ cart }) => {
       );
 
       const data = await result.json();
+      console.log(data);
       setClientSecret(data.clientSecret);
     };
 

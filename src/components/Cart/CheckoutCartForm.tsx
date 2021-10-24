@@ -1,7 +1,7 @@
 /* 
 
   this component is for using the UI of Stripe. 
-  CURRENTLY NOT IN USE
+  CURRENTLY IN USE
 
 */
 

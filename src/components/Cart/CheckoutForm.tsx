@@ -2,7 +2,7 @@
 
 this component is for only receiving Credit Card payment with out displaying much information
 
-CURRENTLY IN USE
+CURRENTLY not IN USE
 
 */
 

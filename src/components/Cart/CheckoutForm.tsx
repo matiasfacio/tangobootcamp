@@ -28,7 +28,7 @@ export const CheckoutForm = ({ cart }) => {
 
   const cartTotal: number = cart
     .map((course) => course.value - course.discount)
-    .reduce((a, b) => a + b, 0);
+    .reduce((a: number, b: number) => a + b, 0);
 
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
@@ -66,10 +66,10 @@ export const CheckoutForm = ({ cart }) => {
           headers: {
             "Content-type": "application/json",
           },
-          body: await JSON.stringify(body),
+          body: JSON.stringify(body),
         }
       );
-      const data = result.json();
+      const data = await result.json();
       console.log(data);
     } catch (error) {
       console.log(error);

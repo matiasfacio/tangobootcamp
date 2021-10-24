@@ -57,6 +57,7 @@ export const CheckoutForm = ({ cart }) => {
       cart: cart,
       paymentIntent: payload,
     };
+    console.log(body);
     try {
       const result = await fetch(
         "https://tbc.tangodefinitions.com/api/add-course",

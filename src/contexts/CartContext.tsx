@@ -19,7 +19,7 @@ const CartContextProvider = ({ children }) => {
     const handlePaid = async () => {
       try {
         const result = await fetch(
-          "https://tbc.tangodefinitions.com/api/retrieve-session"
+          "https://tbc.tangodefinitions.com/api/stripe/retrieve-session"
         );
         const data = result.json();
         console.log(data);

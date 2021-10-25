@@ -25,7 +25,7 @@ export const CheckoutCartForm = ({ cart }: { cart: Course[] }) => {
         e.preventDefault();
         try {
           const result = await fetch(
-            "https://tbc.tangodefinitions.com/api/create-checkout-session",
+            "https://tbc.tangodefinitions.com/api/stripe/create-checkout-session",
             {
               method: "POST",
               mode: "cors",
